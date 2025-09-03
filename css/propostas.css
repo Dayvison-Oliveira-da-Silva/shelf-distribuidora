@@ -1,4 +1,4 @@
-/* ---- LISTA (header + corpo) ---- */
+/* ===== LISTA (header + corpo) ===== */
 #pp-lista{ border-radius:12px; overflow:hidden; }
 #pp-lista > div:first-child{
   display:grid;
@@ -9,42 +9,44 @@
   color:#6b7280; font-size:12px; font-weight:600;
 }
 
-/* Cada linha criada pelo JS (mountRow) vira um grid 6 colunas (a 6ª é Ações) */
+/* linhas criadas pelo JS (mountRow) – 6 colunas: Cliente | CPF | Data | Total | Itens | Ações */
 #pp-corpo > div{
   display:grid;
-  grid-template-columns:3fr 2fr 2fr 2fr 1fr 1fr; /* Cliente | CPF | Data | Total | Itens | Ações */
+  grid-template-columns:3fr 2fr 2fr 2fr 1fr 1fr;
   gap:8px;
   padding:10px 12px;
   border-top:1px solid #e0e4e7;
   align-items:center;
 }
 
-/* Botão "Gerenciar" (estilo global p/ não depender do modal) */
+/* garante que o conteúdo possa quebrar em telas menores */
+#pp-corpo > div > div{ min-width:0; overflow-wrap:anywhere; word-break:break-word; }
+#pp-corpo > div > div:nth-child(4){ font-weight:700; color:#111827; } /* total */
+#pp-corpo > div > div:nth-child(5){ text-align:right; }               /* itens */
+
+/* botão “Gerenciar” (fora do modal pra já estilizar) */
 .pp-btn-sec{
   padding:8px 12px; border:1px solid #d1d5db; background:#fff;
   border-radius:8px; cursor:pointer; font:inherit;
 }
 .pp-btn-sec:hover{ background:#f9fafb; }
 
-/* Valor (Total) em destaque e Itens alinhado à direita (colunas 4 e 5) */
-#pp-corpo > div > div:nth-child(4){ font-weight:700; color:#111827; }
-#pp-corpo > div > div:nth-child(5){ text-align:right; }
-
-/* ====== MOBILE (cards em coluna) ====== */
-@media (max-width: 720px){
+/* ====== LAYOUT EM CARTÕES (MOBILE/TABLET ATÉ 900px) ====== */
+@media (max-width: 900px){
+  /* evita clipping do container */
   #pp-lista{ overflow:visible !important; }
 
-  /* some o cabeçalho da tabela */
+  /* esconde o cabeçalho “tabelar” */
   #pp-lista > div:first-child{ display:none !important; }
 
-  /* cada linha -> card vertical com grid-areas */
+  /* cada linha vira um card empilhado */
   #pp-corpo > div{
     grid-template-columns:1fr auto !important;
     grid-template-areas:
-      "cliente cliente"  /* 1 */
-      "total   itens"    /* 4 | 5 */
-      "data    cpf"      /* 3 | 2 */
-      "acao    acao" !important; /* 6 */
+      "cliente cliente"  /* col 1 */
+      "total   itens"    /* col 4 | 5 */
+      "data    cpf"      /* col 3 | 2 */
+      "acao    acao" !important; /* col 6 */
     gap:8px 10px !important;
     align-items:start !important;
 
@@ -55,26 +57,26 @@
     margin:10px 12px;
     padding:12px;
   }
-  /* remover borda de separação herdada */
   #pp-corpo > div + div{ border-top:none !important; }
 
-  /* mapear as 6 colunas geradas pelo JS */
-  #pp-corpo > div > div:nth-child(1){ grid-area:cliente; } /* Cliente + badge */
-  #pp-corpo > div > div:nth-child(4){ grid-area:total; }   /* Total */
-  #pp-corpo > div > div:nth-child(5){ grid-area:itens; }   /* Itens */
-  #pp-corpo > div > div:nth-child(3){ grid-area:data; }    /* Data */
-  #pp-corpo > div > div:nth-child(2){ grid-area:cpf; }     /* CPF */
+  /* mapeia as 6 colunas originais para as áreas do card */
+  #pp-corpo > div > div:nth-child(1){ grid-area:cliente; }
+  #pp-corpo > div > div:nth-child(4){ grid-area:total; }
+  #pp-corpo > div > div:nth-child(5){ grid-area:itens; text-align:left !important; }
+  #pp-corpo > div > div:nth-child(3){ grid-area:data; }
+  #pp-corpo > div > div:nth-child(2){ grid-area:cpf; }
   #pp-corpo > div > div:nth-child(6){
     grid-area:acao; text-align:right !important; justify-self:end;
   }
 
-  /* legendas antes dos valores */
+  /* legendas acima dos valores */
   #pp-corpo > div > div:nth-child(4)::before,
   #pp-corpo > div > div:nth-child(5)::before,
   #pp-corpo > div > div:nth-child(3)::before,
   #pp-corpo > div > div:nth-child(2)::before{
     display:block; font-size:11px; color:#6b7280; margin-bottom:2px;
     text-transform:uppercase; letter-spacing:.02em;
+    content:"";
   }
   #pp-corpo > div > div:nth-child(4)::before{ content:"Valor"; }
   #pp-corpo > div > div:nth-child(5)::before{ content:"Itens"; }
@@ -84,28 +86,19 @@
   /* reforços visuais */
   #pp-corpo > div > div:nth-child(1){ margin-bottom:2px; }
   #pp-corpo > div > div:nth-child(4){ font-weight:700; color:#111827; }
-  #pp-corpo > div > div:nth-child(5){ text-align:left !important; }
 }
 
-/* ====== TABLET (empilhado, mas com duas colunas lado a lado) ====== */
-@media (min-width: 721px) and (max-width: 1024px){
-  /* header continua visível, só ajusta respiro */
+/* ====== DESKTOP COMPACTO (901–1200px): ajusta proporções sem virar card ====== */
+@media (min-width: 901px) and (max-width: 1200px){
   #pp-lista > div:first-child{ gap:10px; padding:12px 14px; }
-
-  /* linhas em “grid confortável” com 2 colunas principais + ações ao fim */
   #pp-corpo > div{
-    grid-template-columns: 2fr 1.4fr 1.2fr 1.2fr 0.8fr 1fr; /* mantém 6 colunas */
-    gap:10px 12px;
-    padding:12px 14px;
+    grid-template-columns:2.4fr 1.6fr 1.4fr 1.4fr 0.8fr 1fr;
+    gap:10px 12px; padding:12px 14px;
   }
-
-  /* deixa cliente + badge com mais espaço */
-
-  /* garante que o botão não quebre */
   #pp-corpo > div > div:nth-child(6){ text-align:right; }
 }
 
-/* (opcional) inputs do filtro no topo: full-width em telas pequenas */
+/* filtros do topo full-width em telas bem pequenas */
 @media (max-width: 480px){
   #pp-busca{ min-width:0 !important; width:100% !important; }
   #pp-status{ width:100% !important; }
