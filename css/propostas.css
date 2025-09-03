@@ -1,74 +1,79 @@
-/* ===== Lista de propostas — layout vertical (mobile) ===== */
-@media (max-width: 720px){
+/* ===== Lista de propostas — tablets (cards em 2 colunas) ===== */
+@media (min-width: 721px) and (max-width: 1100px){
 
-  /* deixa os cards respirarem */
+  /* libera a área e esconde o cabeçalho da tabela */
   #pp-lista{ overflow: visible !important; }
-
-  /* some com o cabeçalho (linha das labels) */
   #pp-lista > div:first-child{ display:none !important; }
 
-  /* cada linha viro um "card" com grid vertical */
+  /* o corpo vira um grid de 2 colunas de cards */
+  #pp-corpo{
+    display:grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap:12px;
+    padding:10px 12px;
+  }
+
+  /* cada linha vira um “card” (mesma lógica do mobile) */
   #pp-corpo > div{
-    grid-template-columns: 1fr auto !important;
+    display:grid !important;
+    grid-template-columns: 1fr auto;
     grid-template-areas:
       "cliente cliente"
       "total   itens"
       "data    cpf"
-      "acao    acao" !important;
-    gap: 8px 10px !important;
-    align-items: start !important;
+      "acao    acao";
+    gap:10px 12px;
+    align-items:start;
 
-    /* card look */
     background:#fff;
     border:1px solid #e0e4e7;
     border-radius:12px;
     box-shadow:0 2px 8px rgba(0,0,0,.05);
-    margin:10px 12px;
     padding:12px;
+    margin:0;                 /* o espaçamento já vem do gap do grid pai */
+    border-top:none !important;
   }
 
-  /* remove a borda de separação herdada */
-  #pp-corpo > div + div{ border-top:none !important; }
-
-  /* mapear as 6 colunas da linha:
-     1=Cliente, 2=CPF, 3=Data, 4=Total, 5=Itens, 6=Ações */
-  #pp-corpo > div > div:nth-child(1){ grid-area: cliente; }      /* Cliente + badge */
-  #pp-corpo > div > div:nth-child(4){ grid-area: total; }        /* Valor total */
-  #pp-corpo > div > div:nth-child(5){ grid-area: itens; }        /* Qtd de itens */
-  #pp-corpo > div > div:nth-child(3){ grid-area: data; }         /* Data */
-  #pp-corpo > div > div:nth-child(2){ grid-area: cpf; }          /* CPF/CNPJ */
+  /* mapear as 6 colunas originais para as áreas do card */
+  #pp-corpo > div > div:nth-child(1){ grid-area: cliente; }  /* Cliente + badge */
+  #pp-corpo > div > div:nth-child(4){ grid-area: total; }    /* Valor */
+  #pp-corpo > div > div:nth-child(5){ grid-area: itens; }    /* Itens */
+  #pp-corpo > div > div:nth-child(3){ grid-area: data; }     /* Data */
+  #pp-corpo > div > div:nth-child(2){ grid-area: cpf; }      /* CPF/CNPJ */
   #pp-corpo > div > div:nth-child(6){
     grid-area: acao;
-    text-align: right !important;
-    align-self: center;
-    justify-self: end;
+    text-align:right !important;
+    align-self:center; justify-self:end;
   }
 
-  /* títulos/legendas antes dos valores (tipo lista vertical) */
+  /* legendas (labels) acima dos valores, como no mobile */
   #pp-corpo > div > div:nth-child(4)::before,
   #pp-corpo > div > div:nth-child(5)::before,
   #pp-corpo > div > div:nth-child(3)::before,
   #pp-corpo > div > div:nth-child(2)::before{
-    display:block;
-    font-size:11px;
-    color:#6b7280;
-    margin-bottom:2px;
-    text-transform:uppercase;
-    letter-spacing:.02em;
+    display:block; content:attr(data-label);
+    font-size:11px; color:#6b7280; margin-bottom:2px;
+    text-transform:uppercase; letter-spacing:.02em;
   }
+  /* se preferir sem data-label no HTML, force os textos: */
   #pp-corpo > div > div:nth-child(4)::before{ content:"Valor"; }
   #pp-corpo > div > div:nth-child(5)::before{ content:"Itens"; }
   #pp-corpo > div > div:nth-child(3)::before{ content:"Data"; }
   #pp-corpo > div > div:nth-child(2)::before{ content:"CPF/CNPJ"; }
 
   /* reforços visuais */
-  #pp-corpo > div > div:nth-child(4){ font-weight:700; color:#111827; }   /* Valor */
-  #pp-corpo > div > div:nth-child(5){ text-align:left !important; }       /* Itens */
-  #pp-corpo > div > div:nth-child(1){ margin-bottom:2px; }                /* Cliente */
+  #pp-corpo > div > div:nth-child(4){ font-weight:700; color:#111827; } /* Valor */
+  #pp-corpo > div > div:nth-child(5){ text-align:left !important; }     /* Itens */
+  #pp-corpo > div > div:nth-child(1){ margin-bottom:2px; }              /* Cliente */
 }
 
-/* um extra opcional pra telas bem pequenas */
-@media (max-width: 480px){
-  #pp-busca{ min-width:0 !important; width:100% !important; }
-  #pp-status{ width:100% !important; }
+/* opcional: “grandes tablets” em 3 colunas */
+@media (min-width: 1101px) and (max-width: 1280px){
+  #pp-lista > div:first-child{ display:none !important; }
+  #pp-corpo{
+    display:grid !important;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap:12px; padding:10px 12px;
+  }
+  #pp-corpo > div{ border-top:none !important; }
 }
