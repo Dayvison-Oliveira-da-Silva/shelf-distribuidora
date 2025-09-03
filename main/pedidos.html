@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bottom Nav • Mobile</title>
+  <link rel="stylesheet" href="bottom-nav.css">
+  <link rel="stylesheet" href="main.css">
+  <style>
+    header{
+      width: 100%;
+      height: 70px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <header></header>
+  <main>
+    
+  </main>
+  <nav class="navigation" aria-label="Navegação principal">
+    <ul>
+      <li class="list active">
+        <a href="marcas.html" aria-current="page">
+          <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+          <span class="text">Marcas</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="produtos.html">
+          <span class="icon"><ion-icon name="storefront-outline"></ion-icon></span>
+          <span class="text">Produtos</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="carrinho.html">
+          <span class="icon"><ion-icon name="bag-add-outline"></ion-icon></span>
+          <span class="text">Carrinho</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="propostas.html">
+          <span class="icon"><ion-icon name="create-outline"></ion-icon></span>
+          <span class="text">Propostas</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="pedidos.html">
+          <span class="icon"><ion-icon name="bag-check-outline"></ion-icon></span>
+          <span class="text">Pedidos</span>
+        </a>
+      </li>
+
+      <div class="indicator" aria-hidden="true"></div>
+    </ul>
+  </nav>
+
+  <!-- Ionicons: use module + fallback (não duplique) -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <script>
+    const nav = document.querySelector('.navigation');
+    const items = nav.querySelectorAll('.list');
+
+    // Atualiza a quantidade de itens para o CSS calcular 20%, 25%, etc.
+    nav.style.setProperty('--items', items.length);
+
+    function setActive(index) {
+      // classe "active"
+      items.forEach(li => li.classList.remove('active'));
+      items[index].classList.add('active');
+
+      // move o indicador para o slot (0..N-1)
+      nav.style.setProperty('--i', index);
+    }
+
+    // Click/touch
+    items.forEach((li, idx) => {
+      li.addEventListener('click', () => setActive(idx));
+    });
+
+    // inicia no primeiro
+    setActive(0);
+  </script>
+</body>
+
+</html>

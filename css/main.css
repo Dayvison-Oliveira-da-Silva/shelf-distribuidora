@@ -1,0 +1,18 @@
+@media (max-width: 768px) {
+    main {
+        /* ocupa a tela toda menos a barra + safe area do iOS */
+        min-height: calc(100svh - var(--h) - env(safe-area-inset-bottom));
+        padding-bottom: calc(var(--h) + env(safe-area-inset-bottom));
+        background-color: #f9f9f9;
+    }
+}
+
+
+/* ====== Opcional: esconder no desktop ====== */
+@media (min-width: 769px) {
+    main {
+        min-height: calc(100vh - 70px);
+        padding-bottom: 70px;
+        background-color: #f9f9f9;
+    }
+}

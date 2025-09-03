@@ -1,0 +1,38 @@
+<main class="carrinhoProposta-main">
+    <h1 class="carrinhoProposta-title">Carrinho de Propostas</h1>
+    <div id="carrinhoProposta-cart"></div>
+    <div class="carrinhoProposta-section-title">Dados do cliente</div>
+    <form id="carrinhoProposta-form" autocomplete="off">
+      <div class="carrinhoProposta-campos">
+        <div>
+          <label>Nome <span style="color:#e95;">*</span></label>
+          <input type="text" name="carrinhoProposta-nome" id="carrinhoProposta-nome" required>
+        </div>
+        <div>
+          <label>Tipo de Pessoa <span id="carrinhoProposta-tipo-obrig">*</span></label>
+          <select name="carrinhoProposta-tipo" id="carrinhoProposta-tipo">
+            <option value="">Selecione</option>
+            <option value="Física">Física</option>
+            <option value="Jurídica">Jurídica</option>
+          </select>
+        </div>
+        <div>
+          <label>CPF/CNPJ <span id="carrinhoProposta-cpfcnpj-obrig">*</span></label>
+          <input type="text" name="carrinhoProposta-cpfcnpj" id="carrinhoProposta-cpfcnpj" placeholder="Apenas números">
+        </div>
+        <div>
+          <label>Telefone</label>
+          <input type="text" name="carrinhoProposta-tel" id="carrinhoProposta-tel">
+        </div>
+        <div>
+          <label>Email</label>
+          <input type="email" name="carrinhoProposta-email" id="carrinhoProposta-email">
+        </div>
+      </div>
+      <div class="carrinhoProposta-botoes">
+        <button type="button" id="carrinhoProposta-btn-proposta" class="carrinhoProposta-btn">Salvar Proposta</button>
+        <button type="button" id="carrinhoProposta-btn-pedido" class="carrinhoProposta-btn">Pedido de Venda</button>
+      </div>
+    </form>
+    <div class="carrinhoProposta-msg" id="carrinhoProposta-msg"></div>
+  </main>
