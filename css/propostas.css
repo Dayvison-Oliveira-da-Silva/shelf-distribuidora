@@ -1,4 +1,4 @@
-/* ===== LISTA (header + corpo) ===== */
+/* ============ LISTA — BASE (DESKTOP) ============ */
 #pp-lista{ border-radius:12px; overflow:hidden; }
 #pp-lista > div:first-child{
   display:grid;
@@ -9,7 +9,8 @@
   color:#6b7280; font-size:12px; font-weight:600;
 }
 
-/* linhas criadas pelo JS (mountRow) – 6 colunas: Cliente | CPF | Data | Total | Itens | Ações */
+/* linhas geradas pelo JS (6 colunas):
+   1 Cliente | 2 CPF | 3 Data | 4 Total | 5 Itens | 6 Ações */
 #pp-corpo > div{
   display:grid;
   grid-template-columns:3fr 2fr 2fr 2fr 1fr 1fr;
@@ -17,37 +18,53 @@
   padding:10px 12px;
   border-top:1px solid #e0e4e7;
   align-items:center;
+  box-sizing:border-box;
 }
 
-/* garante que o conteúdo possa quebrar em telas menores */
-#pp-corpo > div > div{ min-width:0; overflow-wrap:anywhere; word-break:break-word; }
+/* conteúdo quebra com elegância */
+#pp-corpo > div > div{
+  min-width:0;
+  white-space:normal;
+  overflow-wrap:break-word;
+  word-break:break-word;
+}
 #pp-corpo > div > div:nth-child(4){ font-weight:700; color:#111827; } /* total */
 #pp-corpo > div > div:nth-child(5){ text-align:right; }               /* itens */
 
-/* botão “Gerenciar” (fora do modal pra já estilizar) */
+/* botão "Gerenciar" */
 .pp-btn-sec{
   padding:8px 12px; border:1px solid #d1d5db; background:#fff;
   border-radius:8px; cursor:pointer; font:inherit;
 }
 .pp-btn-sec:hover{ background:#f9fafb; }
 
-/* ====== LAYOUT EM CARTÕES (MOBILE/TABLET ATÉ 900px) ====== */
-@media (max-width: 900px){
-  /* evita clipping do container */
+/* ============ “DESKTOP COMPACTO” (901–1200px) ============ */
+@media (min-width:901px) and (max-width:1200px){
+  #pp-lista > div:first-child{ gap:10px; padding:12px 14px; }
+  #pp-corpo > div{
+    grid-template-columns:2.4fr 1.6fr 1.4fr 1.4fr 0.8fr 1fr;
+    gap:10px 12px; padding:12px 14px;
+  }
+}
+
+/* ============ MODO CARTÃO (ATÉ 900px: tablets & phones) ============ */
+@media (max-width:900px){
+  /* container não corta sombras */
   #pp-lista{ overflow:visible !important; }
 
-  /* esconde o cabeçalho “tabelar” */
+  /* some o cabeçalho tabelar */
   #pp-lista > div:first-child{ display:none !important; }
 
-  /* cada linha vira um card empilhado */
+  /* cada linha vira um card */
   #pp-corpo > div{
-    grid-template-columns:1fr auto !important;
+    /* 2 colunas: conteúdo e coluna de métricas com largura mínima */
+    grid-template-columns: minmax(0,1fr) minmax(140px, auto) !important;
     grid-template-areas:
-      "cliente cliente"  /* col 1 */
-      "total   itens"    /* col 4 | 5 */
-      "data    cpf"      /* col 3 | 2 */
-      "acao    acao" !important; /* col 6 */
-    gap:8px 10px !important;
+      "cliente cliente"
+      "total   itens"
+      "data    cpf"
+      "acao    acao" !important;
+    gap:10px 12px !important;
     align-items:start !important;
 
     background:#fff;
@@ -59,47 +76,71 @@
   }
   #pp-corpo > div + div{ border-top:none !important; }
 
-  /* mapeia as 6 colunas originais para as áreas do card */
+  /* mapeamento das 6 colunas originais para áreas do card */
   #pp-corpo > div > div:nth-child(1){ grid-area:cliente; }
-  #pp-corpo > div > div:nth-child(4){ grid-area:total; }
-  #pp-corpo > div > div:nth-child(5){ grid-area:itens; text-align:left !important; }
-  #pp-corpo > div > div:nth-child(3){ grid-area:data; }
-  #pp-corpo > div > div:nth-child(2){ grid-area:cpf; }
+  #pp-corpo > div > div:nth-child(4){ grid-area:total; }  /* Valor */
+  #pp-corpo > div > div:nth-child(5){ grid-area:itens; text-align:left !important; } /* Itens */
+  #pp-corpo > div > div:nth-child(3){ grid-area:data; }   /* Data */
+  #pp-corpo > div > div:nth-child(2){ grid-area:cpf; }    /* CPF/CNPJ */
   #pp-corpo > div > div:nth-child(6){
     grid-area:acao; text-align:right !important; justify-self:end;
   }
 
-  /* legendas acima dos valores */
+  /* coloca “legendas” acima dos valores */
   #pp-corpo > div > div:nth-child(4)::before,
   #pp-corpo > div > div:nth-child(5)::before,
   #pp-corpo > div > div:nth-child(3)::before,
   #pp-corpo > div > div:nth-child(2)::before{
     display:block; font-size:11px; color:#6b7280; margin-bottom:2px;
-    text-transform:uppercase; letter-spacing:.02em;
-    content:"";
+    text-transform:uppercase; letter-spacing:.02em; content:"";
   }
   #pp-corpo > div > div:nth-child(4)::before{ content:"Valor"; }
   #pp-corpo > div > div:nth-child(5)::before{ content:"Itens"; }
   #pp-corpo > div > div:nth-child(3)::before{ content:"Data"; }
   #pp-corpo > div > div:nth-child(2)::before{ content:"CPF/CNPJ"; }
 
-  /* reforços visuais */
+  /* reforços */
   #pp-corpo > div > div:nth-child(1){ margin-bottom:2px; }
   #pp-corpo > div > div:nth-child(4){ font-weight:700; color:#111827; }
 }
 
-/* ====== DESKTOP COMPACTO (901–1200px): ajusta proporções sem virar card ====== */
-@media (min-width: 901px) and (max-width: 1200px){
-  #pp-lista > div:first-child{ gap:10px; padding:12px 14px; }
+/* ============ PHONES MÉDIOS (ATÉ 600px) — CARD DE 1 COLUNA ============ */
+@media (max-width:600px){
   #pp-corpo > div{
-    grid-template-columns:2.4fr 1.6fr 1.4fr 1.4fr 0.8fr 1fr;
-    gap:10px 12px; padding:12px 14px;
+    grid-template-columns: 1fr !important;
+    grid-template-areas:
+      "cliente"
+      "total"
+      "itens"
+      "data"
+      "cpf"
+      "acao" !important;
   }
-  #pp-corpo > div > div:nth-child(6){ text-align:right; }
+
+  /* linhas meta em uma “faixa” com label à esquerda e valor à direita */
+  #pp-corpo > div > div:nth-child(4),
+  #pp-corpo > div > div:nth-child(5),
+  #pp-corpo > div > div:nth-child(3),
+  #pp-corpo > div > div:nth-child(2){
+    display:flex; justify-content:space-between; align-items:center;
+    gap:12px;
+  }
+  #pp-corpo > div > div:nth-child(5){ text-align:left !important; }
 }
 
-/* filtros do topo full-width em telas bem pequenas */
-@media (max-width: 480px){
+/* ============ PHONES PEQUENOS (ATÉ 380px) — tipografia e ellipsis ============ */
+@media (max-width:380px){
+  /* email do cliente: mantém em uma linha com reticências */
+  #pp-corpo > div > div:first-child > div:nth-child(2){
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    max-width:100%;
+  }
+  /* leve redução de padding para caber melhor */
+  #pp-corpo > div{ padding:10px; }
+}
+
+/* ============ FILTROS DO TOPO EM TELAS PEQUENAS ============ */
+@media (max-width:480px){
   #pp-busca{ min-width:0 !important; width:100% !important; }
   #pp-status{ width:100% !important; }
 }
