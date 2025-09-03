@@ -39,7 +39,7 @@
         display: flex;
         align-items: center;
         padding-bottom: env(safe-area-inset-bottom);
-        z-index: 99999;
+        z-index: 999999;
       }
 
       .navigation ul {
@@ -291,4 +291,5 @@
       .navigation ul li:nth-child(5).active~.indicator {
         transform: translateX(calc(70px * 4));
       }
+
     }
