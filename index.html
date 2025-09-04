@@ -14,7 +14,10 @@
   <link rel="icon" href="img/logo.png">
 
   <style>
-    main { margin-bottom: 75px; }
+    main {
+      margin-bottom: 75px;
+    }
+
     header {
       background: #fff;
       box-shadow: 0 2px 8px rgba(50, 80, 50, .08);
@@ -23,43 +26,109 @@
       position: sticky;
       top: 0;
     }
+
     .header-top {
-      display: flex; align-items: center; gap: 16px;
-      padding: 0 16px; height: 64px; border-bottom: 1px solid #e0e4e7;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 16px;
+      height: 64px;
+      border-bottom: 1px solid #e0e4e7;
     }
+
     .filtro-clientes select {
-      padding: 8px 12px; border-radius: 8px; border: 1px solid #ccc; background: #f9f9f9;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background: #f9f9f9;
     }
-    .barra-pesquisa { flex: 1; display: flex; align-items: center; gap: 8px; }
+
+    .barra-pesquisa {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
     .barra-pesquisa input {
-      width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid #ccc; background: #f5f6fa;
+      width: 100%;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background: #f5f6fa;
     }
+
     .barra-pesquisa button {
-      background: #09f; color: #fff; border: none; border-radius: 8px; padding: 7px 10px; cursor: pointer;
+      background: #09f;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 7px 10px;
+      cursor: pointer;
     }
-    .usuario { display: flex; align-items: center; gap: 10px; }
+
+    .usuario {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
     .usuario span {
-      color: #333; font-weight: 500; max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      color: #333;
+      font-weight: 500;
+      max-width: 120px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
-    .usuario button { background: none; border: none; color: #b90000; font-size: 18px; cursor: pointer; }
+
+    .usuario button {
+      background: none;
+      border: none;
+      color: #b90000;
+      font-size: 18px;
+      cursor: pointer;
+    }
 
     .categorias-menu {
-      display: flex; gap: 10px; overflow-x: auto; padding: 10px 16px;
-      background: #f6f8fa; border-bottom: 1px solid #e0e4e7; scrollbar-width: thin;
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 10px 16px;
+      background: #f6f8fa;
+      border-bottom: 1px solid #e0e4e7;
+      scrollbar-width: thin;
     }
+
     .categorias-menu button {
-      background: #fff; color: #222; border: 1px solid #cde8c9;
-      padding: 7px 14px; border-radius: 20px; cursor: pointer; font-size: 15px;
+      background: #fff;
+      color: #222;
+      border: 1px solid #cde8c9;
+      padding: 7px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 15px;
       transition: background .2s, color .2s, box-shadow .2s;
     }
+
     .categorias-menu button.active,
     .categorias-menu button:hover {
-      background: #cde8c9; color: #21582a; box-shadow: 0 2px 8px rgba(50, 80, 50, .05);
+      background: #cde8c9;
+      color: #21582a;
+      box-shadow: 0 2px 8px rgba(50, 80, 50, .05);
     }
 
     @media (max-width: 768px) {
-      .header-top { flex-direction: column; gap: 8px; height: auto; padding: 8px; }
-      .categorias-menu { padding: 8px 6px; }
+      .header-top {
+        flex-direction: column;
+        gap: 8px;
+        height: auto;
+        padding: 8px;
+      }
+
+      .categorias-menu {
+        padding: 8px 6px;
+      }
     }
   </style>
 </head>
@@ -89,9 +158,16 @@
       <!-- Categorias geradas automaticamente quando #produtos carrega -->
     </nav>
     <div class="print-toolbar">
-    <button id="prn-visiveis">🖨️ Imprimir visíveis</button>
-    <button id="prn-todos">🖨️ Imprimir todos</button>
-  </div>
+      <button id="prn-visiveis" class="print-btn">
+        <ion-icon name="print-outline" aria-hidden="true"></ion-icon>
+        Imprimir visíveis
+      </button>
+
+      <button id="prn-todos" class="print-btn">
+        <ion-icon name="print" aria-hidden="true"></ion-icon>
+        Imprimir todos
+      </button>
+    </div>
   </header>
 
   <main></main>
@@ -151,11 +227,11 @@
     nav.style.setProperty('--items', items.length);
 
     const routes = [
-      { hash: '#marcas',   file: 'main/marcas.html' },
+      { hash: '#marcas', file: 'main/marcas.html' },
       { hash: '#produtos', file: 'main/produtos.html', js: 'javascript/produto.js' },
       { hash: '#carrinho', file: 'main/carrinho.html', js: 'javascript/carrinho.js' },
-      { hash: '#propostas',file: 'main/propostas.html', js: 'javascript/propostas.js' },
-      { hash: '#pedidos',  file: 'main/pedidos.html', js: 'javascript/pedidos.js'  }
+      { hash: '#propostas', file: 'main/propostas.html', js: 'javascript/propostas.js' },
+      { hash: '#pedidos', file: 'main/pedidos.html', js: 'javascript/pedidos.js' }
     ];
 
     let currentTeardown = null;
@@ -176,7 +252,7 @@
       main.innerHTML = novoMain ? novoMain.innerHTML : html;
 
       if (typeof currentTeardown === 'function') {
-        try { currentTeardown(); } catch (e) {}
+        try { currentTeardown(); } catch (e) { }
         currentTeardown = null;
       }
 
@@ -397,8 +473,8 @@
           const cats = PF_getCatsFromCard(card);
 
           const inAllowed = !allowed || cats.some(c => allowed.includes(c));
-          const matchCat  = (cat === 'todas') || cats.includes(cat);
-          const matchQ    = !q || PF_cardText(card).includes(q);
+          const matchCat = (cat === 'todas') || cats.includes(cat);
+          const matchQ = !q || PF_cardText(card).includes(q);
 
           const show = inAllowed && matchCat && matchQ;
           card.classList.toggle('pf-hidden', !show);
@@ -476,4 +552,5 @@
   </script>
 
 </body>
+
 </html>
