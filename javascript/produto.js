@@ -384,25 +384,36 @@ export function init(root) {
   // --------------------------------------------------
 
   // Coleta os produtos atualmente VISÍVEIS na tela
-  function collectVisibleProducts() {
-    const cards = Array.from(document.querySelectorAll(".produto-card"))
-      .filter(c => c.offsetParent !== null); // ignora escondidos por filtro
+  // Coleta os produtos VISÍVEIS usando o MESMO snapshot do cache (idêntico ao "todos")
+function collectVisibleProducts() {
+  // pega os SKUs dos cards visíveis na tela
+  const visibleSkus = Array.from(document.querySelectorAll(".produto-card"))
+    .filter(c => c.offsetParent !== null) // ignora ocultos por filtro
+    .map(card => card.querySelector("[data-sku]")?.dataset?.sku)
+    .filter(Boolean);
 
-    return cards.map(card => {
-      const sku = card.querySelector("[data-sku]")?.dataset?.sku || "";
-      const nome = card.querySelector(".produto-nome")?.textContent?.trim() || "";
-      const img = card.querySelector(".produto-card-img img")?.src || "img/logo-nav.png";
+  const out = [];
+  for (const sku of visibleSkus) {
+    const p = cache.get(sku) || {};
+    const estoque = Number(p.estoqueAtual || 0);
+    const pBase = Number(p.preco || 0);
+    const pPromo = Number(p.precoPromocional || 0);
+    const preco = (pPromo > 0 && pPromo < pBase) ? pPromo : pBase;
 
-      // tenta pegar do cache (mantém seu snapshot)
-      const p = cache.get(sku) || {};
-      const estoque = Number(p.estoqueAtual || 0);
-      const pBase = Number(p.preco || 0);
-      const pPromo = Number(p.precoPromocional || 0);
-      const preco = (pPromo > 0 && pPromo < pBase) ? pPromo : pBase;
-
-      return { sku, nome, img, estoque, preco };
+    out.push({
+      sku: String(sku),
+      nome: String(p.nome || ""),                     // <<< mesma “descrição/nome” do banco
+      img: (p.anexos?.[0]?.url) || "img/logo-nav.png",
+      estoque,
+      preco
     });
   }
+
+  // ordena por nome pra ficar idêntico ao "todos"
+  out.sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR", { sensitivity: "base" }));
+  return out;
+}
+
 
   // Coleta TODOS os produtos do cache (independente de filtro)
   function collectAllProducts() {
