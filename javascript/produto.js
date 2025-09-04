@@ -12,7 +12,7 @@ export function init(root) {
   // --------- refs de DOM ----------
   const lista = document.getElementById("lista-produtos");
   const tpl = document.getElementById("produto-card-tpl");
-  if (!lista || !tpl) return () => {};
+  if (!lista || !tpl) return () => { };
 
   // SKUs opcionais (para ordenar / limitar). Se vazio => renderiza todos do banco
   const skus = (lista.dataset.skus || "")
@@ -75,7 +75,7 @@ export function init(root) {
   // --------- delegação de eventos (quantidade / add-to-cart) ----------
   lista.addEventListener("click", (e) => {
     const menos = e.target.closest(".menos");
-    const mais  = e.target.closest(".mais");
+    const mais = e.target.closest(".mais");
     const btnAdd = e.target.closest(".btn-add");
     const card = e.target.closest(".produto-card");
     if (!card) return;
@@ -99,7 +99,7 @@ export function init(root) {
       const dados = cache.get(sku);
       if (!dados) return;
 
-      const pBase  = num(dados.preco);
+      const pBase = num(dados.preco);
       const pPromo = num(dados.precoPromocional);
       const precoUsado = (pPromo > 0 && pPromo < pBase) ? pPromo : pBase;
 
@@ -202,7 +202,7 @@ export function init(root) {
 
     const priceWrap = card.querySelector(".produto-card-price");
     const divPreco = priceWrap.querySelector(".price");
-    const divDesc  = priceWrap.querySelector(".desconto");
+    const divDesc = priceWrap.querySelector(".desconto");
     if (promo > 0 && promo < preco) {
       const pct = Math.round(((preco - promo) / preco) * 100);
       divPreco.innerHTML = `
@@ -287,7 +287,98 @@ export function init(root) {
 
     localStorage.setItem("carrinhoProposta_itens", JSON.stringify(carrinho));
   }
+  function ensureEstoqueModal() {
+    const el = document.getElementById("estoque-modal");
+    if (!el) return null;
 
+    if (!el._wired) {
+      el._wired = true;
+      // fechar clicando no X, backdrop ou botão "Cancelar"
+      el.addEventListener("click", (ev) => {
+        if (ev.target.hasAttribute?.("data-em-close") || ev.target === el) {
+          closeEstoqueModal();
+        }
+      });
+      document.addEventListener("keydown", (ev) => {
+        if (ev.key === "Escape" && !el.hasAttribute("hidden")) closeEstoqueModal();
+      });
+    }
+    return el;
+  }
+  function openEstoqueModal(payload) {
+    const el = ensureEstoqueModal();
+    if (!el) return;
+
+    const { sku, dados, precoUsado, sugestaoQtd } = payload;
+
+    // popula UI
+    el.querySelector("#em-img").src = (dados?.anexos?.[0]?.url) || "img/logo-nav.png";
+    el.querySelector("#em-img").alt = dados?.nome || "";
+    el.querySelector("#em-nome").textContent = dados?.nome || "(Sem nome)";
+    el.querySelector("#em-sku").textContent = `SKU: ${sku}`;
+    const estoque = parseInt(dados?.estoqueAtual || 0, 10) || 0;
+    el.querySelector("#em-estoque").textContent = String(estoque);
+    el.querySelector("#em-preco").textContent = (Number(precoUsado) || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+
+    const qtdInp = el.querySelector("#em-qtd");
+    qtdInp.min = 1;
+    qtdInp.max = Math.max(1, estoque);
+    qtdInp.value = Math.min(Math.max(1, sugestaoQtd || 1), qtdInp.max);
+
+    // confirma
+    const okBtn = el.querySelector("#em-ok");
+    okBtn.onclick = () => {
+      const qtd = Math.max(1, Math.min(Number(qtdInp.value) || 1, estoque));
+      if (estoque <= 0) { alert("Produto sem estoque."); return; }
+
+      // salva no carrinho
+      upsertCarrinhoItem(sku, qtd, precoUsado, dados);
+
+      // opcional: atualiza a caixinha de quantidade do card (se visível)
+      const card = document.querySelector(`.produto-card [data-sku="${sku}"]`)?.closest(".produto-card");
+      if (card) {
+        const inputQtd = card.querySelector(".quantidade input");
+        if (inputQtd) inputQtd.value = qtd;
+        const btnAdd = card.querySelector(".btn-add");
+        if (btnAdd) {
+          const old = btnAdd.textContent;
+          btnAdd.textContent = "Salvo ✓";
+          btnAdd.disabled = true;
+          setTimeout(() => { btnAdd.textContent = old || "Adicionar ao carrinho"; btnAdd.disabled = false; }, 900);
+        }
+      }
+      closeEstoqueModal();
+    };
+
+    // exibe
+    el.removeAttribute("hidden");
+  }
+  function closeEstoqueModal() {
+    const el = document.getElementById("estoque-modal");
+    if (el) el.setAttribute("hidden", "");
+  }
+
+  // [2] DELEGAÇÃO: ao clicar na IMAGEM, abre o modal
+  lista.addEventListener("click", (e) => {
+    const img = e.target.closest(".produto-card-img img");
+    if (!img) return;
+
+    const card = e.target.closest(".produto-card");
+    const sku = card?.querySelector("[data-sku]")?.dataset?.sku;
+    if (!sku) return;
+
+    const dados = cache.get(sku);
+    if (!dados) return;
+
+    const pBase = Number(dados.preco || 0);
+    const pPromo = Number(dados.precoPromocional || 0);
+    const precoUsado = (pPromo > 0 && pPromo < pBase) ? pPromo : pBase;
+
+    // sugestão = valor do input do card (se houver)
+    const sug = parseInt(card.querySelector(".quantidade input")?.value || "1", 10);
+
+    openEstoqueModal({ sku, dados, precoUsado, sugestaoQtd: sug });
+  });
   // teardown
-  return () => {};
+  return () => { };
 }

@@ -34,4 +34,34 @@
       </div>
     </li>
   </template>
+  <!-- Modal de estoque (inicialmente oculto) -->
+<div id="estoque-modal" hidden>
+  <div class="em-backdrop" data-em-close></div>
+  <div class="em-card" role="dialog" aria-modal="true" aria-labelledby="em-title">
+    <header class="em-head">
+      <h3 id="em-title">Selecionar quantidade</h3>
+      <button class="em-x" title="Fechar" data-em-close>&times;</button>
+    </header>
+
+    <div class="em-body">
+      <div class="em-prod">
+        <img id="em-img" alt="" />
+        <div class="em-info">
+          <div class="em-nome" id="em-nome"></div>
+          <div class="em-sku"  id="em-sku"></div>
+          <div class="em-estoque">Estoque: <b id="em-estoque">0</b> un.</div>
+          <div class="em-preco">Preço: <b id="em-preco">R$ 0,00</b></div>
+        </div>
+      </div>
+
+      <label class="em-lb">Quantidade</label>
+      <input id="em-qtd" class="em-input" type="number" min="1" value="1" inputmode="numeric" />
+      <small class="em-hint">o valor deve ser entre 1 e o estoque disponível</small>
+    </div>
+
+    <footer class="em-foot">
+      <button class="em-btn em-sec" data-em-close>Cancelar</button>
+      <button id="em-ok" class="em-btn em-pri">Adicionar</button>
+    </footer>
+  </div>
 </main>
