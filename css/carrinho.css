@@ -45,10 +45,10 @@ h1.carrinhoProposta-title{
   color:var(--c-brand); margin:6px 0 0 6px;
 }
 .carrinhoProposta-desc{
-  grid-area:desc; color:var(--c-muted); line-height:1.35; max-width:220px; padding:8px 10px 0 6px;
+  grid-area:desc; color:var(--c-muted); line-height:1.35; max-width:auto; padding:8px 10px 0 6px;
 }
 section[aria-labelledby="itens-carrinho"]{ grid-area:items; }
-section[aria-labelledby="dados-cliente"]{  grid-area:form; }
+section[aria-labelledby="dados-cliente"]{  grid-area:form; padding: 10px;border: 1px double rgba(0,0,0,0.2);border-radius: 7px;}
 
 /* ===========================
    CONTROLES DE DESCONTO
