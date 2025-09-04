@@ -332,3 +332,91 @@ input[type="number"] {
   opacity: .6;
   cursor: not-allowed;
 }
+.print-toolbar {
+  display: flex;
+  gap: 10px;
+  margin: 12px;
+}
+.print-toolbar button {
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  font: inherit;
+}
+.print-toolbar button:hover {
+  background: #f9fafb;
+}
+/* ===== Toolbar de impressão ===== */
+.print-toolbar{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  margin: 8px 0 16px;
+}
+
+.print-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:10px;
+  border:1.5px solid #cfe7ff;
+  background:#f3f8ff;
+  color:#0a58ca;
+  font-weight:700;
+  font-size:14px;
+  cursor:pointer;
+  transition:
+    transform .08s ease,
+    background .18s ease,
+    border-color .18s ease,
+    box-shadow .18s ease;
+  box-shadow: 0 2px 8px rgba(9, 153, 255, 0.08);
+}
+
+.print-btn:hover{
+  background:#e8f2ff;
+  border-color:#9fd0ff;
+  box-shadow: 0 4px 14px rgba(9, 153, 255, 0.12);
+}
+
+.print-btn:active{
+  transform: translateY(1px);
+}
+
+.print-btn:disabled{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
+.print-btn ion-icon{
+  font-size:18px;
+}
+
+/* variação primária */
+.print-btn--primary{
+  background: linear-gradient(180deg, #2ea2ff 0%, #0a7cff 100%);
+  color:#fff;
+  border-color:#0a7cff;
+  box-shadow: 0 6px 16px rgba(10, 124, 255, .25);
+}
+.print-btn--primary:hover{
+  filter: brightness(1.03);
+  box-shadow: 0 8px 22px rgba(10, 124, 255, .32);
+}
+
+/* responsivo: cola nas bordas em telas estreitas */
+@media (max-width: 560px){
+  .print-toolbar{
+    padding: 0 10px;
+    justify-content: space-between;
+  }
+  .print-btn{
+    flex:1 1 auto;
+    justify-content:center;
+  }
+}
