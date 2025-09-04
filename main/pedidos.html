@@ -1,91 +1,40 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<main id="pd-root" aria-label="Pedidos">
+  <aside id="pd-side">
+    <h2 class="pd-side-title">Meus Pedidos</h2>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bottom Nav • Mobile</title>
-  <link rel="stylesheet" href="bottom-nav.css">
-  <link rel="stylesheet" href="main.css">
-  <style>
-    header{
-      width: 100%;
-      height: 70px;
-      background-color: red;
-    }
-  </style>
-</head>
+    <label class="pd-lb" for="pd-busca">Buscar por cliente/CPF/E-mail</label>
+    <input id="pd-busca" class="pd-inp" placeholder="Buscar por cliente/CPF/E-mail" />
 
-<body>
-  <header></header>
-  <main>
-    
-  </main>
-  <nav class="navigation" aria-label="Navegação principal">
-    <ul>
-      <li class="list active">
-        <a href="marcas.html" aria-current="page">
-          <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
-          <span class="text">Marcas</span>
-        </a>
-      </li>
-      <li class="list">
-        <a href="produtos.html">
-          <span class="icon"><ion-icon name="storefront-outline"></ion-icon></span>
-          <span class="text">Produtos</span>
-        </a>
-      </li>
-      <li class="list">
-        <a href="carrinho.html">
-          <span class="icon"><ion-icon name="bag-add-outline"></ion-icon></span>
-          <span class="text">Carrinho</span>
-        </a>
-      </li>
-      <li class="list">
-        <a href="propostas.html">
-          <span class="icon"><ion-icon name="create-outline"></ion-icon></span>
-          <span class="text">Propostas</span>
-        </a>
-      </li>
-      <li class="list">
-        <a href="pedidos.html">
-          <span class="icon"><ion-icon name="bag-check-outline"></ion-icon></span>
-          <span class="text">Pedidos</span>
-        </a>
-      </li>
+    <label class="pd-lb" for="pd-status-select">Status</label>
+    <select id="pd-status-select" class="pd-inp">
+      <option value="todos">Todos status</option>
+      <option value="em aberto">em aberto</option>
+      <option value="aprovado">aprovado</option>
+      <option value="preparando envio">preparando envio</option>
+      <option value="faturado">faturado</option>
+      <option value="pronto para envio">pronto para envio</option>
+      <option value="enviado">enviado</option>
+      <option value="entregue">entregue</option>
+      <option value="não entregue">não entregue</option>
+      <option value="cancelado">cancelado</option>
+    </select>
+  </aside>
 
-      <div class="indicator" aria-hidden="true"></div>
-    </ul>
-  </nav>
+  <section id="pd-list">
+    <div class="pd-head">
+      <div>Cliente</div>
+      <div>CPF/CNPJ</div>
+      <div>Criado em</div>
+      <div>Total</div>
+      <div>Itens</div>
+      <div>Nº pedido</div>
+      <div>Situação</div>
+      <div></div>
+    </div>
 
-  <!-- Ionicons: use module + fallback (não duplique) -->
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <div id="pd-erro" class="pd-error" style="display:none"></div>
+    <div id="pd-vazio" class="pd-empty" style="display:none">Nenhum pedido encontrado.</div>
 
-  <script>
-    const nav = document.querySelector('.navigation');
-    const items = nav.querySelectorAll('.list');
-
-    // Atualiza a quantidade de itens para o CSS calcular 20%, 25%, etc.
-    nav.style.setProperty('--items', items.length);
-
-    function setActive(index) {
-      // classe "active"
-      items.forEach(li => li.classList.remove('active'));
-      items[index].classList.add('active');
-
-      // move o indicador para o slot (0..N-1)
-      nav.style.setProperty('--i', index);
-    }
-
-    // Click/touch
-    items.forEach((li, idx) => {
-      li.addEventListener('click', () => setActive(idx));
-    });
-
-    // inicia no primeiro
-    setActive(0);
-  </script>
-</body>
-
-</html>
+    <div id="pd-corpo"></div>
+  </section>
+</main>

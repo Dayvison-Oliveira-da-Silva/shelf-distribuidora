@@ -1,0 +1,103 @@
+/* ===== layout ===== */
+#pd-root{
+  display:grid;
+  grid-template-columns: 260px 1fr;
+  gap:18px; margin:12px;
+}
+#pd-side{
+  background:#fff; border:1px solid #e5e7eb; border-radius:14px; padding:14px;
+  box-shadow:0 2px 8px rgba(0,0,0,.05); position:sticky; top:84px; height:max-content;
+}
+.pd-side-title{ margin:0 0 10px; font-size:18px; font-weight:700; color:#111827; }
+.pd-lb{ display:block; font-size:12px; color:#6b7280; margin:10px 0 6px; }
+.pd-inp{
+  width:100%; padding:9px 12px; border:1px solid #d1d5db; border-radius:10px; background:#fff; font:inherit;
+}
+#pd-list{
+  background:#fff; border:1px solid #e5e7eb; border-radius:14px; overflow:hidden;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+
+/* ===== table-like list ===== */
+.pd-head{
+  display:grid; grid-template-columns:3fr 2fr 2fr 2fr 1fr 1.4fr 1.4fr 1fr;
+  gap:8px; padding:10px 12px; border-bottom:1px solid #e5e7eb;
+  color:#6b7280; font-size:12px; font-weight:600;
+}
+#pd-corpo > .pd-row{
+  display:grid; grid-template-columns:3fr 2fr 2fr 2fr 1fr 1.4fr 1.4fr 1fr;
+  gap:8px; padding:12px; border-top:1px solid #eef2f6; align-items:center;
+}
+#pd-corpo > .pd-row > div{ min-width:0; word-break:break-word; }
+#pd-corpo > .pd-row > div:nth-child(4){ font-weight:700; color:#111827; } /* total */
+#pd-corpo > .pd-row > div:nth-child(5){ text-align:right; }               /* itens */
+
+.pd-btn-sec{
+  padding:8px 12px; border:1px solid #d1d5db; background:#fff; border-radius:8px; cursor:pointer; font:inherit;
+}
+.pd-btn-sec:hover{ background:#f9fafb; }
+
+.pd-empty{ padding:12px; color:#6b7280; }
+.pd-error{ padding:12px; color:#b91c1c; }
+
+/* ===== badge cores ===== */
+.pd-badge{ display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; font-weight:600; border:1px solid; }
+.pd-badge[data-s="em aberto"]{ background:#fff7ed; color:#9a3412; border-color:#fed7aa; }
+.pd-badge[data-s="aprovado"]{ background:#d1fae5; color:#065f46; border-color:#a7f3d0; }
+.pd-badge[data-s="preparando envio"]{ background:#e0f2fe; color:#075985; border-color:#bae6fd; }
+.pd-badge[data-s="faturado"]{ background:#dbeafe; color:#1e40af; border-color:#bfdbfe; }
+.pd-badge[data-s="pronto para envio"]{ background:#ffedd5; color:#9a3412; border-color:#fed7aa; }
+.pd-badge[data-s="enviado"]{ background:#ede9fe; color:#5b21b6; border-color:#ddd6fe; }
+.pd-badge[data-s="entregue"]{ background:#ecfccb; color:#365314; border-color:#d9f99d; }
+.pd-badge[data-s="não entregue"]{ background:#f3f4f6; color:#374151; border-color:#e5e7eb; }
+.pd-badge[data-s="cancelado"]{ background:#fee2e2; color:#991b1b; border-color:#fecaca; }
+
+/* ===== modal ===== */
+#pd-modal{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,.35); z-index:9999; }
+#pd-card{ background:#fff; width:min(980px,96vw); max-height:90vh; overflow:auto; border-radius:14px; box-shadow:0 10px 30px rgba(0,0,0,.25); }
+.pd-table{ width:100%; border-collapse:collapse; }
+.pd-table th,.pd-table td{ border-top:1px solid #e5e7eb; padding:8px; vertical-align:top; }
+.pd-prod{ display:flex; gap:10px; align-items:flex-start; }
+.pd-thumb{ width:42px; height:42px; object-fit:contain; background:#fff; border:1px solid #e5e7eb; border-radius:8px; flex:0 0 auto; }
+.pd-prod-info{ min-width:0; }
+.pd-prod-nome{ font-size:12px; color:#374151; line-height:1.25; margin-bottom:4px; }
+
+/* ===== responsive ===== */
+@media (max-width:900px){
+  #pd-root{ display:block; }
+  #pd-side{ position:static; margin-bottom:10px; }
+  .pd-head{ display:none; }
+  #pd-corpo > .pd-row{
+    grid-template-columns:minmax(0,1fr) minmax(150px,auto);
+    grid-template-areas:
+      "cliente cliente"
+      "total   itens"
+      "data    cpf"
+      "numero  situ"
+      "acao    acao";
+    margin:10px; border:1px solid #e5e7eb; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,.05);
+  }
+  #pd-corpo > .pd-row > div:nth-child(1){ grid-area:cliente; }
+  #pd-corpo > .pd-row > div:nth-child(4){ grid-area:total; }
+  #pd-corpo > .pd-row > div:nth-child(5){ grid-area:itens; text-align:left; }
+  #pd-corpo > .pd-row > div:nth-child(3){ grid-area:data; }
+  #pd-corpo > .pd-row > div:nth-child(2){ grid-area:cpf; }
+  #pd-corpo > .pd-row > div:nth-child(6){ grid-area:numero; }
+  #pd-corpo > .pd-row > div:nth-child(7){ grid-area:situ; }
+  #pd-corpo > .pd-row > div:nth-child(8){ grid-area:acao; text-align:right; }
+  #pd-corpo > .pd-row > div:nth-child(4)::before,
+  #pd-corpo > .pd-row > div:nth-child(5)::before,
+  #pd-corpo > .pd-row > div:nth-child(3)::before,
+  #pd-corpo > .pd-row > div:nth-child(2)::before,
+  #pd-corpo > .pd-row > div:nth-child(6)::before,
+  #pd-corpo > .pd-row > div:nth-child(7)::before{
+    display:block; font-size:11px; color:#6b7280; margin-bottom:2px; letter-spacing:.02em; content:"";
+    text-transform:uppercase;
+  }
+  #pd-corpo > .pd-row > div:nth-child(4)::before{ content:"Valor"; }
+  #pd-corpo > .pd-row > div:nth-child(5)::before{ content:"Itens"; }
+  #pd-corpo > .pd-row > div:nth-child(3)::before{ content:"Data"; }
+  #pd-corpo > .pd-row > div:nth-child(2)::before{ content:"CPF/CNPJ"; }
+  #pd-corpo > .pd-row > div:nth-child(6)::before{ content:"Nº pedido"; }
+  #pd-corpo > .pd-row > div:nth-child(7)::before{ content:"Situação"; }
+}
