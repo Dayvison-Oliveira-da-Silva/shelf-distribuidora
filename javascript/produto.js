@@ -385,10 +385,11 @@ export function init(root) {
 
   // Coleta os produtos atualmente VISÍVEIS na tela
   // Coleta os produtos VISÍVEIS usando o MESMO snapshot do cache (idêntico ao "todos")
+// Coleta os produtos atualmente VISÍVEIS na tela
+  // Coleta os produtos VISÍVEIS usando o MESMO snapshot do cache (idêntico ao "todos")
 function collectVisibleProducts() {
-  // pega os SKUs dos cards visíveis na tela
   const visibleSkus = Array.from(document.querySelectorAll(".produto-card"))
-    .filter(c => c.offsetParent !== null) // ignora ocultos por filtro
+    .filter(c => c.offsetParent !== null)
     .map(card => card.querySelector("[data-sku]")?.dataset?.sku)
     .filter(Boolean);
 
@@ -402,47 +403,54 @@ function collectVisibleProducts() {
 
     out.push({
       sku: String(sku),
-      nome: String(p.nome || ""),                     // <<< mesma “descrição/nome” do banco
+      nome: String(p.nome || ""),
       img: (p.anexos?.[0]?.url) || "img/logo-nav.png",
       estoque,
       preco
     });
   }
-
-  // ordena por nome pra ficar idêntico ao "todos"
   out.sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR", { sensitivity: "base" }));
   return out;
 }
 
+function collectAllProducts() {
+  const out = [];
+  cache.forEach((p, sku) => {
+    const estoque = Number(p.estoqueAtual || 0);
+    const pBase = Number(p.preco || 0);
+    const pPromo = Number(p.precoPromocional || 0);
+    const preco = (pPromo > 0 && pPromo < pBase) ? pPromo : pBase;
 
-  // Coleta TODOS os produtos do cache (independente de filtro)
-  function collectAllProducts() {
-    const out = [];
-    cache.forEach((p, sku) => {
-      const estoque = Number(p.estoqueAtual || 0);
-      const pBase = Number(p.preco || 0);
-      const pPromo = Number(p.precoPromocional || 0);
-      const preco = (pPromo > 0 && pPromo < pBase) ? pPromo : pBase;
-
-      out.push({
-        sku: String(sku),
-        nome: String(p.nome || ""),
-        img: (p.anexos?.[0]?.url) || "img/logo-nav.png",
-        estoque, preco
-      });
+    out.push({
+      sku: String(sku),
+      nome: String(p.nome || ""),
+      img: (p.anexos?.[0]?.url) || "img/logo-nav.png",
+      estoque,
+      preco
     });
-    // ordena por nome pra facilitar leitura
-    out.sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR", { sensitivity: "base" }));
-    return out;
-  }
+  });
+  out.sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR", { sensitivity: "base" }));
+  return out;
+}
 
   // --------------------------------------------------
   // IMPRESSÃO
   // --------------------------------------------------
-  function formatBRL(n) { return (Number(n) || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" }); }
+  function formatBRL(n) { 
+  return (Number(n) || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" }); 
+}
 
-  function openPrintWindow(items, titulo = "Lista de produtos") {
-    const rows = items.map(p => `
+function openPrintWindow(items, titulo = "Lista de produtos", opts = { showPrices: true }) {
+  const showPrices = !!opts.showPrices;
+
+  const header = `
+    <tr>
+      <th>Produto / SKU</th>
+      ${showPrices ? '<th class="right" style="width:120px">Preço</th>' : ''}
+      <th class="right" style="width:110px">Estoque</th>
+    </tr>`;
+
+  const rows = items.map(p => `
     <tr>
       <td style="display:flex;gap:10px;align-items:center">
         <img src="${p.img}" alt="" style="width:42px;height:42px;object-fit:contain;border:1px solid #e5e7eb;border-radius:6px;background:#fff">
@@ -451,13 +459,13 @@ function collectVisibleProducts() {
           <div style="font-size:12px;color:#6b7280">SKU: ${p.sku}</div>
         </div>
       </td>
-      <td style="text-align:right">${formatBRL(p.preco)}</td>
+      ${showPrices ? `<td style="text-align:right">${formatBRL(p.preco)}</td>` : ''}
       <td style="text-align:right">${p.estoque}</td>
     </tr>
   `).join("");
 
-    const win = window.open("", "_blank");
-    win.document.write(`
+  const win = window.open("", "_blank");
+  win.document.write(`
     <html>
       <head>
         <meta charset="utf-8">
@@ -481,38 +489,42 @@ function collectVisibleProducts() {
         <h1>${titulo}</h1>
         <div class="meta">Gerado em ${new Date().toLocaleString("pt-BR")}</div>
         <table>
-          <thead>
-            <tr>
-              <th>Produto / SKU</th>
-              <th class="right" style="width:120px">Preço</th>
-              <th class="right" style="width:110px">Estoque</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${rows || '<tr><td colspan="3">Nenhum produto.</td></tr>'}
-          </tbody>
+          <thead>${header}</thead>
+          <tbody>${rows || `<tr><td colspan="${showPrices ? 3 : 2}">Nenhum produto.</td></tr>`}</tbody>
         </table>
         <script>window.onload = () => window.print();</script>
       </body>
     </html>
   `);
-    win.document.close();
-  }
+  win.document.close();
+}
+
 
   // --------------------------------------------------
   // BIND DOS BOTÕES
   // (chame isso dentro do seu init(...) depois de montar a lista)
   // --------------------------------------------------
-  const btnVis = document.getElementById("prn-visiveis");
-  const btnAll = document.getElementById("prn-todos");
-  if (btnVis) btnVis.addEventListener("click", () => {
-    const items = collectVisibleProducts();
-    openPrintWindow(items, "Produtos (filtrados/visíveis)");
-  });
-  if (btnAll) btnAll.addEventListener("click", () => {
-    const items = collectAllProducts();
-    openPrintWindow(items, "Produtos (todos)");
-  });
+  const btnVis        = document.getElementById("prn-visiveis");          // COM preços (visíveis)
+const btnAll        = document.getElementById("prn-todos");             // COM preços (todos)
+const btnVisNoPrice = document.getElementById("prn-visiveis-no-price"); // SEM preços (visíveis)
+const btnAllNoPrice = document.getElementById("prn-todos-no-price");    // SEM preços (todos)
+
+if (btnVis) btnVis.addEventListener("click", () => {
+  const items = collectVisibleProducts();
+  openPrintWindow(items, "Produtos (filtrados/visíveis) – com preços", { showPrices: true });
+});
+if (btnAll) btnAll.addEventListener("click", () => {
+  const items = collectAllProducts();
+  openPrintWindow(items, "Produtos (todos) – com preços", { showPrices: true });
+});
+if (btnVisNoPrice) btnVisNoPrice.addEventListener("click", () => {
+  const items = collectVisibleProducts();
+  openPrintWindow(items, "Produtos (filtrados/visíveis) – sem preços", { showPrices: false });
+});
+if (btnAllNoPrice) btnAllNoPrice.addEventListener("click", () => {
+  const items = collectAllProducts();
+  openPrintWindow(items, "Produtos (todos) – sem preços", { showPrices: false });
+});
 
   // teardown
   return () => { };
