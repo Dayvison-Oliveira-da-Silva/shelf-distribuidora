@@ -217,15 +217,21 @@ export function init(root) {
              value="${String(clampPerc(Number(item.descPerc)||0)).replace('.',',')}" style="width:68px;padding:6px 8px;border:1px solid #d4dde7;border-radius:7px;text-align:right;">
            <div style="font-size:11px;color:#5c6a67;margin-top:2px;">máx ${MAX_DESC}%</div>`
         : `<span>${descGlobal.toFixed(1).replace('.',',')}%</span>`;
-      const produtoCell=`
-        <div style="display:flex;gap:10px;align-items:flex-start;">
-          <img src="${escapeHtml(imgUrl)}" alt="" loading="lazy" style="width:48px;height:48px;object-fit:contain;background:#fff;border:1px solid var(--c-border);border-radius:8px;">
-          <span class="nome-produto-inner" style="display:inline-block;line-height:1.25;">${escapeHtml(nomeInicial)}</span>
-        </div>`;
+      const imageCell=`<div class="produto-cell">
+    <img class="produto-thumb" src="${escapeHtml(imgUrl)}" alt="${escapeHtml(nomeInicial || 'Produto')}" loading="lazy">`;
+      const produtoCell = `
+    <div class="produto-info">
+      <span class="nome-produto-inner">${escapeHtml(nomeInicial)}</span>
+      <!-- se quiser, dá pra colocar marca/código aqui depois -->
+    </div>
+  </div>
+`;
+
       return `
         <tr>
           <td class="carrinhoProposta-td">${item.sku}</td>
-          <td class="carrinhoProposta-td nome-produto" data-sku="${String(item.sku)}">${produtoCell}</td>
+          <td class="carrinhoProposta-td" style="text-align:center">${imageCell}</td>
+          <td class="carrinhoProposta-td" style="text-align:left">${produtoCell}</td>
           <td class="carrinhoProposta-td" style="text-align:center">${qtd}</td>
           <td class="carrinhoProposta-td" style="text-align:right">${fmt(preco)}</td>
           <td class="carrinhoProposta-td" style="text-align:center">${descCell}</td>
@@ -243,7 +249,8 @@ export function init(root) {
         <thead>
           <tr>
             <th class="carrinhoProposta-th">SKU</th>
-            <th class="carrinhoProposta-th nomeproduto">Produto</th>
+            <th class="carrinhoProposta-th">Image</th>
+            <th class="carrinhoProposta-th">Produto</th>
             <th class="carrinhoProposta-th">Qtd</th>
             <th class="carrinhoProposta-th">Preço (un)</th>
             <th class="carrinhoProposta-th">Desc. (%)</th>
