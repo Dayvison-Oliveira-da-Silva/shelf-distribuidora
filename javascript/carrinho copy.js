@@ -1,5 +1,5 @@
 // javascript/carrinho.js
-// Carrinho com nomes via Firebase + clamp por "ch" +
+// Carrinho com nomes via snapshot do item (fallback: Firebase) + clamp por "ch" +
 // Desconto exclusivo (por item OU global) + cadastro/endereços do cliente
 // Propostas salvas em RTDB proposta-shelf-distribuidora (propostas/ e cadastrosClientes/)
 
@@ -44,7 +44,7 @@ export function init(root) {
   const VENDEDOR = getVendedorFromLS();
 
   // ====== BASES DO FIREBASE ======
-  // 1) estoque... -> só para buscar nome de produto
+  // 1) estoque... -> fallback para buscar nome de produto (apenas se item do carrinho não tiver snapshot)
   const usuario = JSON.parse(localStorage.getItem("usuario_shelf") || "{}"); // fallback antigo
   let databaseBaseUrl = "https://estoque-distribuidora-default-rtdb.firebaseio.com/";
   const tipoBase = (VENDEDOR?.tipo ?? usuario?.tipo) || "";
@@ -63,7 +63,7 @@ export function init(root) {
   const DESC_MODE_KEY    = "carrinhoProposta_descMode";         // 'item' | 'global'
   const DESC_GLOBAL_KEY  = "carrinhoProposta_descGlobalPerc";   // número (0..MAX_DESC)
 
-  // ------------------ CACHE DE NOMES ------------------
+  // ------------------ CACHE DE NOMES (fallback) ------------------
   let nomeCache = {};
   try { nomeCache = JSON.parse(localStorage.getItem(NOME_CACHE_KEY)) || {}; } catch { nomeCache = {}; }
   const saveNomeCache = () => localStorage.setItem(NOME_CACHE_KEY, JSON.stringify(nomeCache));
@@ -347,8 +347,17 @@ export function init(root) {
       const preco = Number(item.preco) || 0;
       const qtd = Number(item.quantidade) || 0;
 
+      // Snapshot preferido
+      const nomeSnapshot = (item.nome && String(item.nome).trim()) ? String(item.nome).trim() : null;
       const nomeCached = nomeCache[item.sku] ?? undefined;
-      const nomeInicial = (nomeCached === null) ? "(sem nome)" : (nomeCached || "Carregando nome...");
+      const nomeInicial = nomeSnapshot
+        ? nomeSnapshot
+        : (nomeCached === null) ? "(sem nome)" : (nomeCached || "Carregando nome...");
+
+      // Imagem (snapshot) com placeholder
+      const imgUrl = (item.imagemUrl && String(item.imagemUrl).trim())
+        ? String(item.imagemUrl).trim()
+        : "img/logo-nav.png";
 
       let descPercLinha = (mode === 'item') ? clampPerc(Number(item.descPerc) || 0) : getDescGlobalPerc();
 
@@ -367,14 +376,23 @@ export function init(root) {
         `
         : `<span>${getDescGlobalPerc().toFixed(1).replace('.', ',')}%</span>`;
 
+      // Produto: THUMB + NOME (na mesma coluna)
+      const produtoCell = `
+        <div class="produto-cell" style="display:flex;gap:10px;align-items:flex-start;">
+          <img class="produto-thumb" src="${escapeHtml(imgUrl)}" alt="" loading="lazy"
+               style="width:48px;height:48px;object-fit:contain;background:#fff;border:1px solid var(--c-border);border-radius:8px;flex:0 0 auto;">
+          <span class="nome-produto-inner"
+                style="display:inline-block; white-space:normal; word-break:break-word; hyphens:auto; line-height:1.25;">
+            ${escapeHtml(nomeInicial)}
+          </span>
+        </div>
+      `;
+
       return `
         <tr>
           <td class="carrinhoProposta-td">${item.sku}</td>
           <td class="carrinhoProposta-td nome-produto" data-sku="${String(item.sku)}">
-            <span class="nome-produto-inner"
-                  style="display:inline-block; white-space:normal; word-break:break-word; hyphens:auto; line-height:1.25;">
-              ${escapeHtml(nomeInicial)}
-            </span>
+            ${produtoCell}
           </td>
           <td class="carrinhoProposta-td" style="text-align:center">${qtd}</td>
           <td class="carrinhoProposta-td" style="text-align:right">${fmt(preco)}</td>
@@ -404,7 +422,7 @@ export function init(root) {
             <th class="carrinhoProposta-th nomeproduto">Produto</th>
             <th class="carrinhoProposta-th">Qtd</th>
             <th class="carrinhoProposta-th">Preço (un)</th>
-            <th class="carrinhoProposta-th">${getDescMode()==='item' ? 'Desc. (%)' : 'Desc. (%)'}</th>
+            <th class="carrinhoProposta-th">Desc. (%)</th>
             <th class="carrinhoProposta-th">Total</th>
             <th class="carrinhoProposta-th"></th>
           </tr>
@@ -465,12 +483,21 @@ export function init(root) {
     }
 
     applyNomeWidth();
-    hidratarNomes(itens);
+    // hidrata apenas itens sem snapshot de nome
+    hidratarNomes(itens.filter(it => !it?.nome));
   }
 
-  async function hidratarNomes(itens) {
-    await Promise.all(itens.map(async (item) => {
+  // Hidrata nomes para itens ANTIGOS (sem snapshot) e atualiza o carrinho
+  async function hidratarNomes(itensSemNome) {
+    if (!itensSemNome?.length) return;
+
+    const carrinhoAtual = getCarrinho();
+    const indexBySku = new Map();
+    carrinhoAtual.forEach((it, i) => indexBySku.set(String(it.sku), i));
+
+    await Promise.all(itensSemNome.map(async (item) => {
       const nome = await getNomeProdutoPorSKU(item.sku);
+      // Atualiza DOM
       const seletor = (window.CSS && CSS.escape)
         ? `td.nome-produto[data-sku="${CSS.escape(String(item.sku))}"] .nome-produto-inner`
         : `td.nome-produto[data-sku="${String(item.sku).replace(/"/g, '\\"')}"] .nome-produto-inner`;
@@ -480,7 +507,15 @@ export function init(root) {
         span.textContent = texto;
         span.parentElement.title = texto;
       }
+      // Migra o item no localStorage para já manter snapshot.nome
+      const idx = indexBySku.get(String(item.sku));
+      if (typeof idx === "number" && idx >= 0 && carrinhoAtual[idx]) {
+        const norm = (s) => (s && String(s).trim() ? String(s).trim() : null);
+        carrinhoAtual[idx].nome = norm(nome) ?? carrinhoAtual[idx].nome ?? null;
+      }
     }));
+
+    setCarrinho(carrinhoAtual);
     applyNomeWidth();
   }
 
@@ -596,7 +631,7 @@ export function init(root) {
         showMsg("Cadastro carregado pelo CPF/CNPJ.");
       }
     }catch(e){
-      // silencioso para não incomodar
+      // silencioso
     }
   });
 
@@ -606,7 +641,6 @@ export function init(root) {
     (elDoc?.value && onlyDigits(elDoc.value).length >= 11);
 
   function validarPedido() {
-    // igual por enquanto; “situação” você define depois
     return validarProposta();
   }
 
@@ -708,10 +742,10 @@ export function init(root) {
 
     const proposta = {
       createdAt: nowISO(),
-      status,                     // você pode alterar depois
+      status,
       clienteKey,
-      clienteSnapshot: cliente,   // guarda uma foto do cadastro no momento
-      itens,
+      clienteSnapshot: cliente,
+      itens,                         // inclui snapshot: nome, marca, imagemUrl (quando presentes)
       totais: calcularTotais(),
       vendedor: {
         id: VENDEDOR?.id ?? null,
@@ -746,7 +780,6 @@ export function init(root) {
 
   if (btnPed) btnPed.onclick = async () => {
     try{
-      // “em aberto”: mesma gravação, status que você decidir depois
       await salvarProposta("pedido_em_aberto");
     }catch(e){ showMsg(e.message || "Erro ao salvar pedido", true); }
   };
