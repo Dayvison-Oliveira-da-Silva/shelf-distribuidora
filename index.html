@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shelf Distribuidora</title>
+  <link rel="stylesheet" href="css/bottom-nav.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/produtos.css">
+  <link rel="stylesheet" href="css/carrinho.css">
+  <link rel="stylesheet" href="css/propostas.css">
+  <link rel="stylesheet" href="css/pedidos.css">
+  <link rel="icon" href="img/logo.png">
+
+  <style>
+    main { margin-bottom: 75px; }
+    header {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(50, 80, 50, .08);
+      padding-bottom: 0;
+      z-index: 10;
+      position: sticky;
+      top: 0;
+    }
+    .header-top {
+      display: flex; align-items: center; gap: 16px;
+      padding: 0 16px; height: 64px; border-bottom: 1px solid #e0e4e7;
+    }
+    .filtro-clientes select {
+      padding: 8px 12px; border-radius: 8px; border: 1px solid #ccc; background: #f9f9f9;
+    }
+    .barra-pesquisa { flex: 1; display: flex; align-items: center; gap: 8px; }
+    .barra-pesquisa input {
+      width: 100%; padding: 8px 12px; border-radius: 8px; border: 1px solid #ccc; background: #f5f6fa;
+    }
+    .barra-pesquisa button {
+      background: #09f; color: #fff; border: none; border-radius: 8px; padding: 7px 10px; cursor: pointer;
+    }
+    .usuario { display: flex; align-items: center; gap: 10px; }
+    .usuario span {
+      color: #333; font-weight: 500; max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .usuario button { background: none; border: none; color: #b90000; font-size: 18px; cursor: pointer; }
+
+    .categorias-menu {
+      display: flex; gap: 10px; overflow-x: auto; padding: 10px 16px;
+      background: #f6f8fa; border-bottom: 1px solid #e0e4e7; scrollbar-width: thin;
+    }
+    .categorias-menu button {
+      background: #fff; color: #222; border: 1px solid #cde8c9;
+      padding: 7px 14px; border-radius: 20px; cursor: pointer; font-size: 15px;
+      transition: background .2s, color .2s, box-shadow .2s;
+    }
+    .categorias-menu button.active,
+    .categorias-menu button:hover {
+      background: #cde8c9; color: #21582a; box-shadow: 0 2px 8px rgba(50, 80, 50, .05);
+    }
+
+    @media (max-width: 768px) {
+      .header-top { flex-direction: column; gap: 8px; height: auto; padding: 8px; }
+      .categorias-menu { padding: 8px 6px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-top">
+      <div class="filtro-clientes">
+        <select id="clienteSelect">
+          <option value="">Todos os clientes</option>
+          <!-- Opções via JS -->
+        </select>
+      </div>
+
+      <div class="barra-pesquisa">
+        <input type="text" id="search" placeholder="Buscar produtos ou marcas..." autocomplete="off">
+        <button id="btn-pesquisa"><ion-icon name="search-outline"></ion-icon></button>
+      </div>
+
+      <div class="usuario">
+        <span id="nomeUsuario"></span>
+        <button id="btnDeslogar" title="Sair"><ion-icon name="log-out-outline"></ion-icon></button>
+      </div>
+    </div>
+
+    <nav class="categorias-menu" aria-label="Categorias de Produtos">
+      <!-- Categorias geradas automaticamente quando #produtos carrega -->
+    </nav>
+  </header>
+
+  <main></main>
+
+  <nav class="navigation" aria-label="Navegação principal">
+    <ul>
+      <li class="list active">
+        <a href="#marcas" aria-current="page">
+          <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+          <span class="text">Marcas</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="#produtos">
+          <span class="icon"><ion-icon name="storefront-outline"></ion-icon></span>
+          <span class="text">Produtos</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="#carrinho">
+          <span class="icon"><ion-icon name="bag-add-outline"></ion-icon></span>
+          <span class="text">Carrinho</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="#propostas">
+          <span class="icon"><ion-icon name="create-outline"></ion-icon></span>
+          <span class="text">Propostas</span>
+        </a>
+      </li>
+      <li class="list">
+        <a href="#pedidos">
+          <span class="icon"><ion-icon name="bag-check-outline"></ion-icon></span>
+          <span class="text">Pedidos</span>
+        </a>
+      </li>
+      <div class="indicator" aria-hidden="true"></div>
+    </ul>
+  </nav>
+
+  <!-- Ionicons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <!-- Script 0: usuário + rotas -->
+  <script>
+    // 0. Controle do usuário e redirect antes de tudo
+    const usuario = JSON.parse(localStorage.getItem("usuario_shelf") || "{}");
+    if (!usuario.cpf) {
+      window.location.href = "abertura.html";
+    }
+
+    // ---- Roteamento e navegação inferior ----
+    const nav = document.querySelector('.navigation');
+    const items = nav.querySelectorAll('.list');
+    const main = document.querySelector('main');
+    nav.style.setProperty('--items', items.length);
+
+    const routes = [
+      { hash: '#marcas',   file: 'main/marcas.html' },
+      { hash: '#produtos', file: 'main/produtos.html', js: 'javascript/produto.js' },
+      { hash: '#carrinho', file: 'main/carrinho.html', js: 'javascript/carrinho.js' },
+      { hash: '#propostas',file: 'main/propostas.html', js: 'javascript/propostas.js' },
+      { hash: '#pedidos',  file: 'main/pedidos.html', js: 'javascript/pedidos.js'  }
+    ];
+
+    let currentTeardown = null;
+
+    async function setActive(index) {
+      items.forEach(li => li.classList.remove('active'));
+      items[index].classList.add('active');
+      nav.style.setProperty('--i', index);
+
+      const route = routes[index];
+
+      const res = await fetch(route.file);
+      const html = await res.text();
+
+      const temp = document.createElement('div');
+      temp.innerHTML = html;
+      const novoMain = temp.querySelector('main');
+      main.innerHTML = novoMain ? novoMain.innerHTML : html;
+
+      if (typeof currentTeardown === 'function') {
+        try { currentTeardown(); } catch (e) {}
+        currentTeardown = null;
+      }
+
+      if (route.js) {
+        const mod = await import(`./${route.js}?v=${Date.now()}`);
+        if (typeof mod.init === 'function') {
+          const td = mod.init(main);
+          if (typeof td === 'function') currentTeardown = td;
+        }
+      }
+
+      // avisa o filtro que o MAIN foi atualizado
+      document.dispatchEvent(new CustomEvent('pf:main-updated', { detail: { hash: route.hash } }));
+    }
+
+    function navigateByHash() {
+      const idx = routes.findIndex(r => r.hash === location.hash);
+      setActive(idx >= 0 ? idx : 0);
+    }
+
+    items.forEach((li, idx) => {
+      li.querySelector('a').addEventListener('click', e => {
+        e.preventDefault();
+        window.location.hash = routes[idx].hash;
+      });
+    });
+
+    window.addEventListener('hashchange', navigateByHash);
+    navigateByHash();
+  </script>
+
+  <!-- Script 1: clientes + logout -->
+  <script>
+    // 1. Carregar o JSON dos clientes
+    let clientes = [];
+    fetch('clientes_com_categorias.json')
+      .then(res => res.json())
+      .then(data => {
+        clientes = Object.keys(data).map(nome => ({
+          id: nome,
+          nome: nome,
+          categorias: data[nome].categorias || []
+        }));
+
+        const clienteSelect = document.getElementById('clienteSelect');
+        clientes.forEach(cli => {
+          const opt = document.createElement('option');
+          opt.value = cli.id;
+          opt.textContent = cli.nome;
+          clienteSelect.appendChild(opt);
+        });
+
+        // Restaura seleção anterior (se houver) e dispara evento
+        const selecionado = localStorage.getItem('cliente_selecionado');
+        if (selecionado) clienteSelect.value = selecionado;
+
+        // dispara estado inicial para o filtro
+        if (selecionado) {
+          const cats = (data[selecionado] && data[selecionado].categorias) ? data[selecionado].categorias : null;
+          document.dispatchEvent(new CustomEvent('pf:cliente-change', { detail: { cliente: selecionado, categorias: cats } }));
+        }
+
+        clienteSelect.addEventListener('change', e => {
+          const nome = e.target.value;
+          localStorage.setItem('cliente_selecionado', nome);
+
+          const cats = (data[nome] && data[nome].categorias) ? data[nome].categorias : null;
+          document.dispatchEvent(new CustomEvent('pf:cliente-change', { detail: { cliente: nome, categorias: cats } }));
+        });
+      });
+
+    // 2. Dados do usuário logado
+    document.getElementById('nomeUsuario').textContent = usuario.usuario || "Usuário";
+
+    // 3. Logout
+    document.getElementById('btnDeslogar').onclick = () => {
+      localStorage.removeItem("usuario_shelf");
+      window.location.href = "abertura.html";
+    };
+  </script>
+
+  <!-- Script 2: Categorias + Busca SEM JSON + Filtro por Cliente -->
+  <script>
+    // =========================
+    // Filtro por classes (cat-*/data-categorias) + busca + cliente
+    // =========================
+    (function () {
+      const PF = {
+        MENU_SEL: '.categorias-menu',
+        CARD_SEL: '.produto-card',
+        MAIN_EL: document.querySelector('main'),
+        SEARCH_INPUT: document.getElementById('search'),
+        SEARCH_BTN: document.getElementById('btn-pesquisa'),
+        LS_CAT: 'pf_cat_sel',
+        LS_Q: 'pf_busca_q',
+        state: {
+          cat: localStorage.getItem('pf_cat_sel') || 'todas',
+          q: localStorage.getItem('pf_busca_q') || '',
+          allowedCats: null // null=todas; ou Array de nomes ["INDUSTRIA","EPIs",...]
+        },
+        norm(s) {
+          return String(s || '')
+            .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+            .toLowerCase();
+        }
+      };
+
+      // CSS utilitário
+      (function PF_injectCSS() {
+        if (document.getElementById('pf-hide-style')) return;
+        const st = document.createElement('style');
+        st.id = 'pf-hide-style';
+        st.textContent = `
+          .pf-hidden { display: none !important; }
+          .categorias-menu .pf-count { opacity:.7; font-weight:500; margin-left:6px; }
+        `;
+        document.head.appendChild(st);
+      })();
+
+      function PF_getCatsFromCard(card) {
+        const dataCats = (card.getAttribute('data-categorias') || '')
+          .split(',').map(s => s.trim()).filter(Boolean);
+
+        const classCats = Array.from(card.classList || [])
+          .filter(c => c.startsWith('cat-'))
+          .map(c => c.replace(/^cat-/, ''));
+
+        const all = Array.from(new Set([...dataCats, ...classCats]));
+        if (all.length === 0) {
+          all.push('sem-categoria');
+          if (!card.classList.contains('cat-sem-categoria')) {
+            card.classList.add('cat-sem-categoria');
+          }
+        }
+        return all;
+      }
+
+      function PF_index() {
+        const cards = Array.from(PF.MAIN_EL.querySelectorAll(PF.CARD_SEL));
+        const catsMap = new Map(); // cat -> count
+        cards.forEach(card => PF_getCatsFromCard(card).forEach(c => {
+          catsMap.set(c, (catsMap.get(c) || 0) + 1);
+        }));
+        return { cards, catsMap };
+      }
+
+      function PF_renderMenu(catsMap) {
+        const menu = document.querySelector(PF.MENU_SEL);
+        if (!menu) return;
+
+        const active = PF.state.cat;
+        const rawCats = Array.from(catsMap.keys());
+        const visibleCats = PF.state.allowedCats
+          ? rawCats.filter(c => PF.state.allowedCats.includes(c))
+          : rawCats;
+
+        const cats = visibleCats.sort((a, b) => a.localeCompare(b));
+        menu.innerHTML = '';
+
+        const total = (PF.state.allowedCats
+          ? visibleCats.reduce((acc, c) => acc + (catsMap.get(c) || 0), 0)
+          : Array.from(catsMap.values()).reduce((acc, v) => acc + v, 0)
+        );
+
+        const btnAll = document.createElement('button');
+        btnAll.textContent = `Todas`;
+        if (active === 'todas') btnAll.classList.add('active');
+        const countAll = document.createElement('span');
+        countAll.className = 'pf-count';
+        countAll.textContent = `(${total})`;
+        btnAll.appendChild(countAll);
+        btnAll.onclick = () => {
+          document.querySelectorAll('.categorias-menu button').forEach(b => b.classList.remove('active'));
+          btnAll.classList.add('active');
+          PF.state.cat = 'todas';
+          localStorage.setItem(PF.LS_CAT, 'todas');
+          PF_apply();
+        };
+        menu.appendChild(btnAll);
+
+        cats.forEach(cat => {
+          const btn = document.createElement('button');
+          btn.textContent = cat;
+          if (active === cat) btn.classList.add('active');
+
+          const count = document.createElement('span');
+          count.className = 'pf-count';
+          count.textContent = `(${catsMap.get(cat)})`;
+          btn.appendChild(count);
+
+          btn.onclick = () => {
+            document.querySelectorAll('.categorias-menu button').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            PF.state.cat = cat;
+            localStorage.setItem(PF.LS_CAT, cat);
+            PF_apply();
+          };
+          menu.appendChild(btn);
+        });
+      }
+
+      function PF_cardText(card) {
+        const t = [
+          card.getAttribute('data-sku') || '',
+          card.getAttribute('data-categorias') || '',
+          card.innerText || ''
+        ].join(' ');
+        return PF.norm(t);
+      }
+
+      function PF_apply() {
+        const { cards } = PF._cache || { cards: [] };
+        const cat = PF.state.cat;
+        const q = PF.norm(PF.state.q);
+        const allowed = PF.state.allowedCats; // null ou array
+
+        cards.forEach(card => {
+          const cats = PF_getCatsFromCard(card);
+
+          const inAllowed = !allowed || cats.some(c => allowed.includes(c));
+          const matchCat  = (cat === 'todas') || cats.includes(cat);
+          const matchQ    = !q || PF_cardText(card).includes(q);
+
+          const show = inAllowed && matchCat && matchQ;
+          card.classList.toggle('pf-hidden', !show);
+        });
+      }
+
+      function PF_refresh() {
+        PF._cache = PF_index();
+        PF_renderMenu(PF._cache.catsMap);
+        PF_apply();
+      }
+
+      function PF_bindSearch() {
+        const inp = PF.SEARCH_INPUT, btn = PF.SEARCH_BTN;
+        if (!inp || !btn) return;
+
+        if (PF.state.q) inp.value = PF.state.q;
+
+        btn.addEventListener('click', () => {
+          PF.state.q = inp.value || '';
+          localStorage.setItem(PF.LS_Q, PF.state.q);
+          PF_apply();
+        });
+        inp.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            PF.state.q = inp.value || '';
+            localStorage.setItem(PF.LS_Q, PF.state.q);
+            PF_apply();
+          }
+        });
+        inp.addEventListener('input', () => {
+          PF.state.q = inp.value || '';
+          localStorage.setItem(PF.LS_Q, PF.state.q);
+          PF_apply();
+        });
+      }
+
+      // Observa trocas no MAIN (quando rotas carregam)
+      let PF_obs = null;
+      function PF_watchMain() {
+        if (PF_obs) { PF_obs.disconnect(); PF_obs = null; }
+        PF_obs = new MutationObserver(() => {
+          if (PF.MAIN_EL.querySelector(PF.CARD_SEL)) {
+            PF_refresh();
+          }
+        });
+        PF_obs.observe(PF.MAIN_EL, { childList: true, subtree: true });
+      }
+
+      // Reage à troca de rota disparada pelo roteador
+      document.addEventListener('pf:main-updated', (ev) => {
+        const isProdutos = (ev.detail && ev.detail.hash === '#produtos') || location.hash === '#produtos';
+        if (isProdutos) PF_refresh();
+      });
+
+      // Reage à troca de cliente (Script 1)
+      document.addEventListener('pf:cliente-change', (ev) => {
+        const cats = ev.detail && ev.detail.categorias;
+        PF.state.allowedCats = Array.isArray(cats) ? cats : null;
+
+        if (PF.state.allowedCats && PF.state.cat !== 'todas' && !PF.state.allowedCats.includes(PF.state.cat)) {
+          PF.state.cat = 'todas';
+          localStorage.setItem(PF.LS_CAT, 'todas');
+        }
+        PF_refresh();
+      });
+
+      // init
+      PF_bindSearch();
+      PF_watchMain();
+      if (location.hash === '#produtos' && document.querySelector('.produto-card')) {
+        PF_refresh();
+      }
+    })();
+  </script>
+
+</body>
+</html>

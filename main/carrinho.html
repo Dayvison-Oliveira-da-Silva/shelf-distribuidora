@@ -1,0 +1,205 @@
+<main class="carrinhoProposta-main">
+  <!-- ITENS -->
+  <section aria-labelledby="itens-carrinho">
+    <h1 class="carrinhoProposta-title">Carrinho de Propostas</h1>
+    <p class="carrinhoProposta-desc">Revise os itens, cadastre o cliente e gere proposta ou pedido.</p>
+    <br><br>
+    <h2 id="itens-carrinho" class="carrinhoProposta-section-title">Itens</h2>
+    <div id="carrinhoProposta-controls"></div>
+    <div id="carrinhoProposta-cart"></div>
+  </section>
+
+  <!-- CLIENTE + ENTREGA + PAGAMENTO -->
+  <section aria-labelledby="dados-cliente">
+    <h2 id="dados-cliente" class="carrinhoProposta-section-title">Dados do cliente</h2>
+
+    <form id="carrinhoProposta-form" autocomplete="off">
+      <!-- básicos -->
+      <div class="carrinhoProposta-campos">
+        <div>
+          <label>Nome <span style="color:#e95;">*</span></label>
+          <input type="text" id="carrinhoProposta-nome" required>
+        </div>
+        <div>
+          <label>Tipo de Pessoa</label>
+          <select id="carrinhoProposta-tipo">
+            <option value="">Selecione</option>
+            <option value="Física">Física</option>
+            <option value="Jurídica">Jurídica</option>
+          </select>
+        </div>
+        <div>
+          <label>CPF/CNPJ <span style="color:#e95;">*</span></label>
+          <input type="text" id="carrinhoProposta-cpfcnpj" placeholder="Apenas números">
+        </div>
+        <div>
+          <label>Telefone</label>
+          <input type="text" id="carrinhoProposta-tel">
+        </div>
+        <div>
+          <label>Email</label>
+          <input type="email" id="carrinhoProposta-email">
+        </div>
+      </div>
+
+      <!-- cadastro -->
+      <h3 class="carrinhoProposta-section-title">Endereço de cadastro</h3>
+      <div class="carrinhoProposta-campos grid-endereco">
+        <div>
+          <label for="cad-cep">CEP</label>
+          <div class="cep-wrap">
+            <input id="cad-cep" inputmode="numeric" placeholder="00000000">
+            <button type="button" class="cep-busca" data-target="cad">🔍</button>
+          </div>
+        </div>
+        <div>
+          <label for="cad-cidade">Cidade</label>
+          <input id="cad-cidade">
+        </div>
+        <div>
+          <label for="cad-uf">UF</label>
+          <select id="cad-uf">
+            <option value="">Selecione</option>
+            <option>AC</option><option>AL</option><option>AP</option><option>AM</option>
+            <option>BA</option><option>CE</option><option>DF</option><option>ES</option>
+            <option>GO</option><option>MA</option><option>MT</option><option>MS</option>
+            <option>MG</option><option>PA</option><option>PB</option><option>PR</option>
+            <option>PE</option><option>PI</option><option>RJ</option><option>RN</option>
+            <option>RS</option><option>RO</option><option>RR</option><option>SC</option>
+            <option>SP</option><option>SE</option><option>TO</option>
+          </select>
+        </div>
+        <div class="full">
+          <label for="cad-endereco">Endereço</label>
+          <input id="cad-endereco">
+        </div>
+        <div>
+          <label for="cad-bairro">Bairro</label>
+          <input id="cad-bairro">
+        </div>
+        <div>
+          <label for="cad-numero">Número</label>
+          <input id="cad-numero" inputmode="numeric">
+        </div>
+        <div>
+          <label for="cad-complemento">Complemento</label>
+          <input id="cad-complemento">
+        </div>
+      </div>
+
+      <label class="chk-line" style="margin:10px 0">
+        <input id="entrega-diferente" type="checkbox">
+        O endereço de entrega do cliente é diferente do endereço de cobrança
+      </label>
+
+      <!-- entrega -->
+      <div id="box-entrega" style="display:none">
+        <h3 class="carrinhoProposta-section-title">Endereço de entrega</h3>
+        <div class="carrinhoProposta-campos grid-endereco">
+          <div>
+            <label for="ent-cep">CEP</label>
+            <div class="cep-wrap">
+              <input id="ent-cep" inputmode="numeric" placeholder="00000000">
+              <button type="button" class="cep-busca" data-target="ent">🔍</button>
+            </div>
+          </div>
+          <div>
+            <label for="ent-cidade">Cidade</label>
+            <input id="ent-cidade">
+          </div>
+          <div>
+            <label for="ent-uf">UF</label>
+            <select id="ent-uf">
+              <option value="">Selecione</option>
+              <option>AC</option><option>AL</option><option>AP</option><option>AM</option>
+              <option>BA</option><option>CE</option><option>DF</option><option>ES</option>
+              <option>GO</option><option>MA</option><option>MT</option><option>MS</option>
+              <option>MG</option><option>PA</option><option>PB</option><option>PR</option>
+              <option>PE</option><option>PI</option><option>RJ</option><option>RN</option>
+              <option>RS</option><option>RO</option><option>RR</option><option>SC</option>
+              <option>SP</option><option>SE</option><option>TO</option>
+            </select>
+          </div>
+          <div class="full">
+            <label for="ent-endereco">Endereço</label>
+            <input id="ent-endereco">
+          </div>
+          <div>
+            <label for="ent-bairro">Bairro</label>
+            <input id="ent-bairro">
+          </div>
+          <div>
+            <label for="ent-numero">Número</label>
+            <input id="ent-numero" inputmode="numeric">
+          </div>
+          <div>
+            <label for="ent-complemento">Complemento</label>
+            <input id="ent-complemento">
+          </div>
+        </div>
+      </div>
+
+      <!-- PAGAMENTO -->
+      <h3 class="carrinhoProposta-section-title">Pagamento</h3>
+
+      <div id="pay-toolbar" class="carrinhoProposta-campos" style="grid-template-columns:repeat(4,minmax(0,1fr));align-items:end;">
+        <div>
+          <label>Forma</label>
+          <select id="pay-kind">
+            <option value="dinheiro">Dinheiro</option>
+            <option value="pix">PIX</option>
+            <option value="debito">Débito</option>
+            <option value="credito">Crédito</option>
+          </select>
+        </div>
+        <div>
+          <label>Valor (R$)</label>
+          <input id="pay-amount" inputmode="decimal" placeholder="0,00" />
+        </div>
+        <div id="pay-extra-gw" style="display:none">
+          <label>Gateway / Meio</label>
+          <input id="pay-gateway" placeholder="Ex.: Cielo Visa / Santander" />
+        </div>
+        <div id="pay-extra-inst" style="display:none">
+          <label>Parcelas (crédito)</label>
+          <select id="pay-installments">
+            <option value="1">1x</option><option value="2">2x</option><option value="3">3x</option>
+            <option value="4">4x</option><option value="5">5x</option><option value="6">6x</option>
+            <option value="7">7x</option><option value="8">8x</option><option value="9">9x</option>
+            <option value="10">10x</option><option value="11">11x</option><option value="12">12x</option>
+          </select>
+        </div>
+        <button type="button" id="pay-add" class="carrinhoProposta-btn" style="grid-column:1/-1;justify-self:end;">+ adicionar recebimento</button>
+      </div>
+
+      <div id="pay-list" class="carrinhoProposta-campos" style="margin-top:6px;"></div>
+
+      <div id="pay-summary" style="display:flex;justify-content:flex-end;gap:24px;margin-top:8px;font-variant-numeric:tabular-nums;">
+        <div>total da venda: <b id="pay-total">R$ 0,00</b></div>
+        <div>recebido: <b id="pay-received">R$ 0,00</b></div>
+        <div>saldo: <b id="pay-balance" style="color:#e74c3c">R$ 0,00</b></div>
+        <div>troco: <b id="pay-change">R$ 0,00</b></div>
+      </div>
+
+      <!-- OUTROS (visuais) -->
+      <div class="carrinhoProposta-campos" style="margin-top:10px;">
+        <div>
+          <label>Marcadores (vírgula)</label>
+          <input id="marcadores" placeholder="Ex.: Landing Page" />
+        </div>
+        <div>
+          <label>Observações</label>
+          <input id="obs" placeholder="Ex.: Pedido gerado pelo carrinho" />
+        </div>
+        <!-- os campos id_ecommerce, id_vendedor, situacao e numero_pedido_ecommerce são automáticos/ocultos -->
+      </div>
+
+      <div class="carrinhoProposta-botoes">
+        <button type="button" id="carrinhoProposta-btn-proposta" class="carrinhoProposta-btn">Salvar Proposta</button>
+        <button type="button" id="carrinhoProposta-btn-pedido" class="carrinhoProposta-btn">Pedido de Venda</button>
+      </div>
+    </form>
+
+    <div class="carrinhoProposta-msg" id="carrinhoProposta-msg"></div>
+  </section>
+</main>

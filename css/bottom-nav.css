@@ -1,0 +1,294 @@
+@media (max-width: 768px) {
+
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+      :root {
+        --clr: #222327;
+        --items: 5;
+        /* quantidade de itens; o JS atualiza isso */
+        --i: 0;
+        /* índice ativo; o JS atualiza isso */
+        --h: 72px;
+        /* altura da barra */
+        --dot: 70px;
+        /* diâmetro do indicador */
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif
+      }
+
+      body {
+        min-height: 100svh;
+        background: var(--clr);
+      }
+
+      /* ====== NAV (mobile) ====== */
+      .navigation {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: var(--h);
+        background: #fff;
+        border-radius: 16px 16px 0 0;
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, .15);
+        display: flex;
+        align-items: center;
+        padding-bottom: env(safe-area-inset-bottom);
+        z-index: 99999;
+      }
+
+      .navigation ul {
+        width: 100%;
+        max-width: 640px;
+        /* limita muito largo em tablets */
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(var(--items), 1fr);
+        position: relative;
+      }
+
+      .navigation li {
+        list-style: none;
+        height: var(--h);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .navigation a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: var(--clr);
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .icon {
+        line-height: 1;
+        font-size: 1.6rem;
+        transition: .35s transform;
+        margin-top: 6px;
+      }
+
+      .text {
+        position: absolute;
+        bottom: 10px;
+        font-size: .72rem;
+        letter-spacing: .02em;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: .35s;
+        color: var(--clr);
+      }
+
+      .navigation li.active .icon {
+        transform: translateY(calc(var(--dot)/-2));
+      }
+
+      .navigation li.active .text {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ====== Indicador totalmente responsivo ====== */
+      .indicator {
+        position: absolute;
+        top: calc(-1 * (var(--dot)/2));
+        /* metade “para fora” da barra */
+        width: var(--dot);
+        height: var(--dot);
+        background: #29fd53;
+        border-radius: 50%;
+        border: 6px solid #f9f9f9;
+        box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+        transition: .4s left;
+        /* centraliza o círculo no slot atual (20% por item) */
+        left: calc((100% / var(--items)) * var(--i)
+            /* início do slot */
+            + ((100% / var(--items)) / 2)
+            /* centro do slot */
+            - (var(--dot) / 2)
+            /* menos metade do diâmetro */
+          );
+      }
+
+      .indicator::before,
+      .indicator::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 20px;
+        height: 20px;
+        background: transparent;
+      }
+
+      .indicator::before {
+        left: -22px;
+        border-top-right-radius: 20px;
+      }
+
+      .indicator::after {
+        right: -22px;
+        border-top-left-radius: 20px;
+      }
+    }
+
+
+    /* ====== Opcional: esconder no desktop ====== */
+    @media (min-width: 769px) {
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+
+      :root {
+        --clr: #222327;
+
+      }
+
+      body {
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: var(--clr);
+      }
+
+      .navigation {
+        width: 100%;
+        height: 70px;
+        background: #fff;
+        position: fixed;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px 10px 0 0;
+        box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+
+      }
+
+      .navigation ul {
+        display: flex;
+        width: 350px;
+      }
+
+      .navigation ul li {
+        position: relative;
+        list-style: none;
+        width: 70px;
+        height: 70px;
+        z-index: 1;
+      }
+
+      .navigation ul li a {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        font-weight: 500;
+      }
+
+      .navigation ul li a .icon {
+        position: relative;
+        display: block;
+        line-height: 75px;
+        font-size: 1.5rem;
+        text-align: center;
+        transition: 0.5s;
+        color: var(--clr);
+      }
+
+      .navigation ul li.active a .icon {
+        transform: translateY(-32px);
+      }
+
+      .navigation ul li a .text {
+        position: absolute;
+        color: var(--clr);
+        font-weight: 400;
+        font-size: 0.75em;
+        letter-spacing: 0.05em;
+        transition: 0.5s;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      .navigation ul li.active a .text {
+        transform: translateY(10px);
+        opacity: 1;
+      }
+
+      .indicator {
+        position: absolute;
+        top: -50%;
+        width: 70px;
+        height: 70px;
+        background: #29fd53;
+        border-radius: 50%;
+        border: 6px solid #f9f9f9;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        transition: 0.5s;
+      }
+
+      .indicator::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -22px;
+        width: 20px;
+        height: 20px;
+        background: transparent;
+        border-top-right-radius: 20px;
+        
+      }
+
+      .indicator::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: -22px;
+        width: 20px;
+        height: 20px;
+        background: transparent;
+        border-top-left-radius: 20px;
+        
+      }
+
+      .navigation ul li:nth-child(1).active~.indicator {
+        transform: translateX(calc(70px * 0));
+      }
+
+      .navigation ul li:nth-child(2).active~.indicator {
+        transform: translateX(calc(70px * 1));
+      }
+
+      .navigation ul li:nth-child(3).active~.indicator {
+        transform: translateX(calc(70px * 2));
+      }
+
+      .navigation ul li:nth-child(4).active~.indicator {
+        transform: translateX(calc(70px * 3));
+      }
+
+      .navigation ul li:nth-child(5).active~.indicator {
+        transform: translateX(calc(70px * 4));
+      }
+    }
