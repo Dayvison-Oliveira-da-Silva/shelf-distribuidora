@@ -1,0 +1,1635 @@
+{
+  "INDUSTRIA": [
+    {
+      "nome": "LUVA LATEX C/ PO TAM G C/100 - TALGE",
+      "sku": "7127"
+    },
+    {
+      "nome": "LUVA LATEX C/ PO TAM M C/100 - TALGE",
+      "sku": "7126"
+    },
+    {
+      "nome": "LUVA LATEX C/ PO TAM P C/100 - TALGE",
+      "sku": "7125"
+    },
+    {
+      "nome": "LUVA LATEX C/ PO TAM PP C/100  - TALGE",
+      "sku": "7361"
+    },
+    {
+      "nome": "LUVA LIMPEZA AMARELA G C/2 - TALGE",
+      "sku": "4-3"
+    },
+    {
+      "nome": "LUVA LIMPEZA AMARELA M C/2 - TALGE",
+      "sku": "4-2"
+    },
+    {
+      "nome": "LUVA LIMPEZA AMARELA P C/2 - TALGE",
+      "sku": "4-1"
+    },
+    {
+      "nome": "LUVA LIMPEZA LARANJA G C/2 - TALGE",
+      "sku": "7371"
+    },
+    {
+      "nome": "LUVA LIMPEZA LARANJA M C/2 - TALGE",
+      "sku": "7370"
+    },
+    {
+      "nome": "LUVA LIMPEZA LARANJA P C/2 - TALGE",
+      "sku": "7369"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO AZUL TAM G C/ 100 - TALGE",
+      "sku": "7242"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO AZUL TAM M C/ 100 - TALGE",
+      "sku": "7241"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO AZUL TAM P C/ 100 - TALGE",
+      "sku": "7240"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO PRETA TAM G C/ 100 - TALGE",
+      "sku": "7352"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO PRETA TAM M C/ 100 - TALGE",
+      "sku": "7351"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO PRETA TAM P C/ 100 - TALGE",
+      "sku": "7350"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO ROSA TAM G C/ 100 - TALGE",
+      "sku": "7355"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO ROSA TAM M C/ 100 - TALGE",
+      "sku": "7354"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO ROSA TAM P C/ 100 - TALGE",
+      "sku": "7353"
+    },
+    {
+      "nome": "LUVA NITRILICA VERDE  P C/2 - TALGE1",
+      "sku": "2006"
+    },
+    {
+      "nome": "LUVA NITRILICA VERDE G C/2 - TALGE",
+      "sku": "6-2"
+    },
+    {
+      "nome": "LUVA NITRILICA VERDE M C/2 - TALGE",
+      "sku": "6-1"
+    },
+    {
+      "nome": "LUVA PLASTICA DESCARTAVEL C/ 100 UN - TALGE",
+      "sku": "1265"
+    },
+    {
+      "nome": "LUVA VINIL S/ PO TAM G C/ 100 - TALGE",
+      "sku": "7216"
+    },
+    {
+      "nome": "LUVA VINIL S/ PO TAM GG C/ 100 - TALGE",
+      "sku": "talge1"
+    },
+    {
+      "nome": "LUVA VINIL S/ PO TAM M C/ 100 - TALGE",
+      "sku": "7214"
+    },
+    {
+      "nome": "LUVA VINIL S/ PO TAM P C/ 100 - TALGE",
+      "sku": "10-1-2-3"
+    },
+    {
+      "nome": "MASCARA TRIPLA BRANCA C/50 - TALGE",
+      "sku": "7392"
+    },
+    {
+      "nome": "PANO MULTIUSO 28cm x 240cm C/600 - TALGE",
+      "sku": "1033"
+    },
+    {
+      "nome": "PANO MULTIUSO AZUL 28CMX300M C/600 - TALGE",
+      "sku": "1026"
+    },
+    {
+      "nome": "PANO MULTIUSO AZUL MRPLUS MINI 30cm x 25m C/50- TALGE",
+      "sku": "1001"
+    },
+    {
+      "nome": "PANO MULTIUSO AZUL MRPLUS PACOTE C/05 - TALGE",
+      "sku": "1021"
+    },
+    {
+      "nome": "PANO MULTIUSO BRANCO 20cm x 300m C/600 - TALGE",
+      "sku": "38"
+    },
+    {
+      "nome": "PANO MULTIUSO BRANCO 28cm x 240cm C/600 - TALGE",
+      "sku": "313"
+    },
+    {
+      "nome": "PANO MULTIUSO BRANCO MRPLUS MINI 30cm x 25m C/50- TALGE",
+      "sku": "1002"
+    },
+    {
+      "nome": "PANO MULTIUSO LARANJA 20cm x 300m C/600 - TALGE",
+      "sku": "1040"
+    },
+    {
+      "nome": "PANO MULTIUSO LARANJA 30cm x 25m C/50 - TALGE",
+      "sku": "6786"
+    },
+    {
+      "nome": "PANO MULTIUSO LARANJA MRPLUS MINI 30cm x 25m C/50 - TALGE",
+      "sku": "1003"
+    },
+    {
+      "nome": "PANO MULTIUSO VERDE 20cm x 300m C/600 - TALGE",
+      "sku": "337"
+    },
+    {
+      "nome": "PANO MULTIUSO VERDE 28cm x 240cm C/600 - TALGE",
+      "sku": "1037"
+    },
+    {
+      "nome": "PANO MULTIUSO VERDE MRPLUS PACOTE C/05 - TALGE",
+      "sku": "1022"
+    },
+    {
+      "nome": "PANO MULTIUSO VERMELHO MRPLUS PACOTE C/05 - TALGE",
+      "sku": "1023"
+    },
+    {
+      "nome": "PANO WIPERTECH BRANCO 30cm x 29cm",
+      "sku": "1024"
+    },
+    {
+      "nome": "SAPATILHA PROPÉ DESCARTAVEL C/100 - TALGE",
+      "sku": "7375"
+    },
+    {
+      "nome": "TOUCA DESCÁRTAVEL C/ELÁSTICO C/ 100 - TALGE",
+      "sku": "7364"
+    },
+    {
+      "nome": "ALCOOL GEL 70% 5L - AUDAX",
+      "sku": "111150"
+    },
+    {
+      "nome": "ALCOOL GEL 70% PUMP 1L - AUDAX",
+      "sku": "111144"
+    },
+    {
+      "nome": "ALCOOL GEL 70% PUMP 500ML - AUDAX",
+      "sku": "111127"
+    },
+    {
+      "nome": "ALCOOL GEL 70% SQUEEZE 500G - AUDAX",
+      "sku": "102"
+    },
+    {
+      "nome": "ALCOOL LIQ 70% 1L  - AUDAX",
+      "sku": "105-1"
+    },
+    {
+      "nome": "ALCOOL LIQ 70% 5L - AUDAX",
+      "sku": "109151"
+    },
+    {
+      "nome": "ALCOOL LIQUIDO 92,8º 1L - AUDAX",
+      "sku": "109104"
+    },
+    {
+      "nome": "ALL CLEAN SABONETE ANTISSEPTICO 5L - AUDAX",
+      "sku": "111149"
+    },
+    {
+      "nome": "ALL CLEAN SABONETE ANTISSEPTICO 800ML - AUDAX",
+      "sku": "111110"
+    },
+    {
+      "nome": "PROKITCHEN LIMPA COIFA 5L",
+      "sku": "106048"
+    },
+    {
+      "nome": "PROKITCHEN SANITIZANTE DE VERDURAS 1kg",
+      "sku": "101050"
+    },
+    {
+      "nome": "ALCOOL EM GEL 70° INPM 4,3 KG - SANTA CRUZ",
+      "sku": "1801B005003"
+    },
+    {
+      "nome": "ALCOOL EM GEL 70° INPM 430G PUMP - SANTA CRUZ",
+      "sku": "1801F430002"
+    },
+    {
+      "nome": "ALCOOL EM GEL 70° INPM SQUEEZE 500G - SANTA CRUZ",
+      "sku": "1801F500004"
+    },
+    {
+      "nome": "ALCOOL LIQ 70% 1L  - SANTA CRUZ",
+      "sku": "1301F001001"
+    },
+    {
+      "nome": "ALCOOL LIQ 70° 5LT - SANTA CRUZ",
+      "sku": "1301F005001"
+    },
+    {
+      "nome": "ALCOOL LIQ 92,8° 1L - SANTA CRUZ",
+      "sku": "1101F001005"
+    },
+    {
+      "nome": "COLETOR PERFUROCORTANTE 13 LT ECOLOGIC (AMARELO) DESCARBOX",
+      "sku": "90"
+    },
+    {
+      "nome": "COLETOR PERFUROCORTANTE 20 LT ECOLOGIC (AMARELO) DESCARBOX",
+      "sku": "91"
+    },
+    {
+      "nome": "COLETOR PERFUROCORTANTE 03L ECO - FLEXPELL",
+      "sku": "07477"
+    },
+    {
+      "nome": "COLETOR PERFUROCORTANTE 07L ECO - FLEXPELL",
+      "sku": "07478"
+    },
+    {
+      "nome": "COLETOR PERFUROCORTANTE 13L ECO - FLEXPELL",
+      "sku": "07479"
+    },
+    {
+      "nome": "COLETOR PERFUROCORTANTE 20L ECO - FLEXPELL",
+      "sku": "07480"
+    },
+    {
+      "nome": "MASCARA PFF-2 N95 SEM DISPENSER ECOMAX",
+      "sku": "749"
+    },
+    {
+      "nome": "SAPATILHA PROPÉ DESCARTAVEL C/ 100 - ECOMAX",
+      "sku": "803"
+    },
+    {
+      "nome": "ALMOTOLIA 250 ML BRANCA",
+      "sku": "9228"
+    },
+    {
+      "nome": "LUVA PROCEDIMENTO LATEX C/ PO TAM G C/100 - MEDIX",
+      "sku": "42"
+    },
+    {
+      "nome": "LUVA PROCEDIMENTO LATEX C/ PO TAM M C/100 - MEDIX",
+      "sku": "30"
+    },
+    {
+      "nome": "LUVA PROCEDIMENTO LATEX C/ PO TAM P C/100 - MEDIX",
+      "sku": "29"
+    },
+    {
+      "nome": "LUVA PROCEDIMENTO LATEX C/ PO TAM PP C/100 - MEDIX",
+      "sku": "1778"
+    },
+    {
+      "nome": "MASCARA TRIPLA AZUL C/50 - MEDIX",
+      "sku": "5587"
+    },
+    {
+      "nome": "MASCARA TRIPLA PRETA C/50 - MEDIX",
+      "sku": "7898652372766"
+    },
+    {
+      "nome": "MASCARA TRIPLA ROSA C/50 - MEDIX",
+      "sku": "7898652372773"
+    },
+    {
+      "nome": "BALANCA DIGITAL BIOHEALTH PRO 8 SENSORES B - MULTILASER",
+      "sku": "HC060N"
+    },
+    {
+      "nome": "BALANCA DIGITAL EATSMART - MULTILASER",
+      "sku": "HC039"
+    },
+    {
+      "nome": "BOLSA TERMICA DE GEL AZUL P - MULTILASER",
+      "sku": "HC347"
+    },
+    {
+      "nome": "CADEIRA DE BANHO - MULTILASER",
+      "sku": "HC399"
+    },
+    {
+      "nome": "KIT COM 100 LANCETAS 28G CAREPLUS - MULTILASER",
+      "sku": "HC516"
+    },
+    {
+      "nome": "KIT COM 50 TIRAS PARA GLICEMIA GLICOCHE - MULTILASER",
+      "sku": "HC489"
+    },
+    {
+      "nome": "MONITOR DE GLICEMIA GLICOCHECK CAREPLUS - MULTILASER",
+      "sku": "HC487"
+    },
+    {
+      "nome": "MONITOR DE GLICEMIA GLICOCHECK CAREPLUSB",
+      "sku": "HC488"
+    },
+    {
+      "nome": "MONITOR DE PRESSAO DE PULSO",
+      "sku": "9852"
+    },
+    {
+      "nome": "TERMOMETRO CLINICO DIGITAL AXILAR - COLORIDO MULTILASER",
+      "sku": "HC171"
+    },
+    {
+      "nome": "TERMOMETRO CLINICO DIGITAL BRANCO",
+      "sku": "HC070"
+    },
+    {
+      "nome": "TERMOMETRO INFRAVERMELHO S/CONTATO - MULTILASER",
+      "sku": "HC260"
+    },
+    {
+      "nome": "UMIDIFICADOR MULTILASER CLEAR TANK 2 1L - MULTILASER",
+      "sku": "HC210"
+    },
+    {
+      "nome": "UMIDIFICADOR MULTILASER CLEAR TANK 3.2L - MULTILASER",
+      "sku": "HC167"
+    }
+  ],
+  "HOSPITALAR": [
+    {
+      "nome": "ABAIXADOR DE LINGUA PCT C/100 - TALGE",
+      "sku": "7395"
+    },
+    {
+      "nome": "LUVA LATEX C/ PO TAM G C/100 - TALGE",
+      "sku": "7127"
+    },
+    {
+      "nome": "LUVA LATEX C/ PO TAM M C/100 - TALGE",
+      "sku": "7126"
+    },
+    {
+      "nome": "LUVA LATEX C/ PO TAM P C/100 - TALGE",
+      "sku": "7125"
+    },
+    {
+      "nome": "LUVA LATEX C/ PO TAM PP C/100  - TALGE",
+      "sku": "7361"
+    },
+    {
+      "nome": "LUVA LIMPEZA AMARELA G C/2 - TALGE",
+      "sku": "4-3"
+    },
+    {
+      "nome": "LUVA LIMPEZA AMARELA M C/2 - TALGE",
+      "sku": "4-2"
+    },
+    {
+      "nome": "LUVA LIMPEZA AMARELA P C/2 - TALGE",
+      "sku": "4-1"
+    },
+    {
+      "nome": "LUVA LIMPEZA LARANJA G C/2 - TALGE",
+      "sku": "7371"
+    },
+    {
+      "nome": "LUVA LIMPEZA LARANJA M C/2 - TALGE",
+      "sku": "7370"
+    },
+    {
+      "nome": "LUVA LIMPEZA LARANJA P C/2 - TALGE",
+      "sku": "7369"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO AZUL TAM G C/ 100 - TALGE",
+      "sku": "7242"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO AZUL TAM M C/ 100 - TALGE",
+      "sku": "7241"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO AZUL TAM P C/ 100 - TALGE",
+      "sku": "7240"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO PRETA TAM G C/ 100 - TALGE",
+      "sku": "7352"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO PRETA TAM M C/ 100 - TALGE",
+      "sku": "7351"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO PRETA TAM P C/ 100 - TALGE",
+      "sku": "7350"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO ROSA TAM G C/ 100 - TALGE",
+      "sku": "7355"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO ROSA TAM M C/ 100 - TALGE",
+      "sku": "7354"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO ROSA TAM P C/ 100 - TALGE",
+      "sku": "7353"
+    },
+    {
+      "nome": "LUVA NITRILICA VERDE  P C/2 - TALGE1",
+      "sku": "2006"
+    },
+    {
+      "nome": "LUVA NITRILICA VERDE G C/2 - TALGE",
+      "sku": "6-2"
+    },
+    {
+      "nome": "LUVA NITRILICA VERDE M C/2 - TALGE",
+      "sku": "6-1"
+    },
+    {
+      "nome": "LUVA PLASTICA DESCARTAVEL C/ 100 UN - TALGE",
+      "sku": "1265"
+    },
+    {
+      "nome": "LUVA VINIL S/ PO TAM G C/ 100 - TALGE",
+      "sku": "7216"
+    },
+    {
+      "nome": "LUVA VINIL S/ PO TAM GG C/ 100 - TALGE",
+      "sku": "talge1"
+    },
+    {
+      "nome": "LUVA VINIL S/ PO TAM M C/ 100 - TALGE",
+      "sku": "7214"
+    },
+    {
+      "nome": "LUVA VINIL S/ PO TAM P C/ 100 - TALGE",
+      "sku": "10-1-2-3"
+    },
+    {
+      "nome": "MASCARA TRIPLA BRANCA C/50 - TALGE",
+      "sku": "7392"
+    },
+    {
+      "nome": "PANO MULTIUSO 28cm x 240cm C/600 - TALGE",
+      "sku": "1033"
+    },
+    {
+      "nome": "PANO MULTIUSO AZUL 28CMX300M C/600 - TALGE",
+      "sku": "1026"
+    },
+    {
+      "nome": "PANO MULTIUSO AZUL MRPLUS MINI 30cm x 25m C/50- TALGE",
+      "sku": "1001"
+    },
+    {
+      "nome": "PANO MULTIUSO AZUL MRPLUS PACOTE C/05 - TALGE",
+      "sku": "1021"
+    },
+    {
+      "nome": "PANO MULTIUSO BRANCO 20cm x 300m C/600 - TALGE",
+      "sku": "38"
+    },
+    {
+      "nome": "PANO MULTIUSO BRANCO 28cm x 240cm C/600 - TALGE",
+      "sku": "313"
+    },
+    {
+      "nome": "PANO MULTIUSO BRANCO MRPLUS MINI 30cm x 25m C/50- TALGE",
+      "sku": "1002"
+    },
+    {
+      "nome": "PANO MULTIUSO LARANJA 20cm x 300m C/600 - TALGE",
+      "sku": "1040"
+    },
+    {
+      "nome": "PANO MULTIUSO LARANJA 30cm x 25m C/50 - TALGE",
+      "sku": "6786"
+    },
+    {
+      "nome": "PANO MULTIUSO LARANJA MRPLUS MINI 30cm x 25m C/50 - TALGE",
+      "sku": "1003"
+    },
+    {
+      "nome": "PANO MULTIUSO VERDE 20cm x 300m C/600 - TALGE",
+      "sku": "337"
+    },
+    {
+      "nome": "PANO MULTIUSO VERDE 28cm x 240cm C/600 - TALGE",
+      "sku": "1037"
+    },
+    {
+      "nome": "PANO MULTIUSO VERDE MRPLUS PACOTE C/05 - TALGE",
+      "sku": "1022"
+    },
+    {
+      "nome": "PANO MULTIUSO VERMELHO MRPLUS PACOTE C/05 - TALGE",
+      "sku": "1023"
+    },
+    {
+      "nome": "PANO WIPERTECH BRANCO 30cm x 29cm",
+      "sku": "1024"
+    },
+    {
+      "nome": "SACO DE LIXO HOSPITALAR 100LT C/100 - TALGE",
+      "sku": "315-3"
+    },
+    {
+      "nome": "SACO DE LIXO HOSPITALAR 30LT C/100 - TALGE",
+      "sku": "315-1"
+    },
+    {
+      "nome": "SACO DE LIXO HOSPITALAR 50LT C/100 - TALGE",
+      "sku": "315-2"
+    },
+    {
+      "nome": "SAPATILHA PROPÉ DESCARTAVEL C/100 - TALGE",
+      "sku": "7375"
+    },
+    {
+      "nome": "TOUCA CAPILAR NYLON PRETA",
+      "sku": "6482"
+    },
+    {
+      "nome": "TOUCA DESCÁRTAVEL C/ELÁSTICO C/ 100 - TALGE",
+      "sku": "7364"
+    },
+    {
+      "nome": "ÁGUA PARA INJEÇÃO 10ML - EQUIPLEX",
+      "sku": "201"
+    },
+    {
+      "nome": "SORO FISIOLÓGICO 0,9% 100ML - EQUIPLEX",
+      "sku": "206"
+    },
+    {
+      "nome": "SORO FISIOLOGICO 0,9% 10ML - EQUIPLEX",
+      "sku": "1210623"
+    },
+    {
+      "nome": "SORO FISIOLOGICO 0,9% 250ML - EQUIPLEX",
+      "sku": "209-1"
+    },
+    {
+      "nome": "SORO FISIOLOGICO 0,9% 500ML - EQUIPLEX",
+      "sku": "1110717"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL DIGUINHO CONFORT PLUS ECONOMICA EG C/ 20 UND",
+      "sku": "10298"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL DIGUINHO CONFORT PLUS ECONOMICA G C/24 UND",
+      "sku": "10297"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL DIGUINHO CONFORT PLUS ECONOMICA M C/28 UND",
+      "sku": "10296"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL DIGUINHO CONFORT PLUS ECONOMICA P C/ 30 UND",
+      "sku": "10295"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL DIGUINHO CONFORT PLUS ECONOMICA RN C/ 32 UND",
+      "sku": "11062"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL DIGUINHO CONFORT PLUS ECONOMICA SXG C/ 16 UND",
+      "sku": "10299"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL DIGUINHO CONFORT PLUS MINI EG C/ 12 UND",
+      "sku": "10313"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL DIGUINHO CONFORT PLUS MINI G C/ 14 UND",
+      "sku": "10312"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL DIGUINHO CONFORT PLUS MINI M C/16 UND",
+      "sku": "10311"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL DIGUINHO CONFORT PLUS MINI P C/ 18 UND",
+      "sku": "10310"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL DIGUINHO CONFORT PLUS MINI SXG C/ 10 UND",
+      "sku": "10314"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL GERIATRICA SUAVIDADE CLASSIC EG C/26 - DIGUINHO",
+      "sku": "13239"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL GERIATRICA SUAVIDADE CLASSIC G C/30 - DIGUINHO",
+      "sku": "13238"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL GERIATRICA SUAVIDADE CLASSIC M C/30 - DIGUINHO",
+      "sku": "13237"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL GERIATRICA SUAVIDADE PREMIUM EG C/7 - DIGUINHO",
+      "sku": "9898"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL GERIATRICA SUAVIDADE PREMIUM G C/8 - DIGUINHO",
+      "sku": "9897"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL TOQUINHO CONFORT SUPER EG C/ 36 UND",
+      "sku": "11453"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL TOQUINHO CONFORT SUPER G C/40 UND",
+      "sku": "11452"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL TOQUINHO CONFORT SUPER M C/ 44 UND",
+      "sku": "11451"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL TOQUINHO CONFORT SUPER P C/ 48 UND",
+      "sku": "11450"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL TOQUINHO CONFORT SUPER SXG C/ 30 UND",
+      "sku": "11454"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL TOQUINHO DE GENTE BASIC PLUS EG C/50 UND",
+      "sku": "11267"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL TOQUINHO DE GENTE BASIC PLUS G C/60 UND",
+      "sku": "11266"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL TOQUINHO DE GENTE BASIC PLUS M C/70 UND",
+      "sku": "11265"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL TOQUINHO DE GENTE BASIC PLUS SXG C/40 UND",
+      "sku": "11268"
+    },
+    {
+      "nome": "ALCOOL GEL 70% 5L - AUDAX",
+      "sku": "111150"
+    },
+    {
+      "nome": "ALCOOL GEL 70% PUMP 1L - AUDAX",
+      "sku": "111144"
+    },
+    {
+      "nome": "ALCOOL GEL 70% PUMP 500ML - AUDAX",
+      "sku": "111127"
+    },
+    {
+      "nome": "ALCOOL GEL 70% SQUEEZE 500G - AUDAX",
+      "sku": "102"
+    },
+    {
+      "nome": "ALCOOL LIQ 70% 1L  - AUDAX",
+      "sku": "105-1"
+    },
+    {
+      "nome": "ALCOOL LIQ 70% 5L - AUDAX",
+      "sku": "109151"
+    },
+    {
+      "nome": "ALCOOL LIQUIDO 92,8º 1L - AUDAX",
+      "sku": "109104"
+    },
+    {
+      "nome": "ALL CLEAN SABONETE ANTISSEPTICO 5L - AUDAX",
+      "sku": "111149"
+    },
+    {
+      "nome": "ALL CLEAN SABONETE ANTISSEPTICO 800ML - AUDAX",
+      "sku": "111110"
+    },
+    {
+      "nome": "PROKITCHEN LIMPA COIFA 5L",
+      "sku": "106048"
+    },
+    {
+      "nome": "PROKITCHEN SANITIZANTE DE VERDURAS 1kg",
+      "sku": "101050"
+    },
+    {
+      "nome": "AVENTAL DESCARTAVEL 30G C/ 10 - AMEDICA",
+      "sku": "131"
+    },
+    {
+      "nome": "AVENTAL DESCARTAVEL 40G C/ 10 - AMEDICA",
+      "sku": "134"
+    },
+    {
+      "nome": "ALCOOL ACENDEDOR EM GEL 480G - SANTA CRUZ",
+      "sku": "1801F500002"
+    },
+    {
+      "nome": "ALCOOL EM GEL 70° INPM 4,3 KG - SANTA CRUZ",
+      "sku": "1801B005003"
+    },
+    {
+      "nome": "ALCOOL EM GEL 70° INPM 430G PUMP - SANTA CRUZ",
+      "sku": "1801F430002"
+    },
+    {
+      "nome": "ALCOOL EM GEL 70° INPM SQUEEZE 500G - SANTA CRUZ",
+      "sku": "1801F500004"
+    },
+    {
+      "nome": "ALCOOL LIQ 54°GL  1L - SANTA CRUZ",
+      "sku": "1101F001003"
+    },
+    {
+      "nome": "ALCOOL LIQ 70% 1L  - SANTA CRUZ",
+      "sku": "1301F001001"
+    },
+    {
+      "nome": "ALCOOL LIQ 70° 5LT - SANTA CRUZ",
+      "sku": "1301F005001"
+    },
+    {
+      "nome": "ALCOOL LIQ 92,8° 1L - SANTA CRUZ",
+      "sku": "1101F001005"
+    },
+    {
+      "nome": "KIT TESTE RAPIDO ANTIGENO COVID 19 (20T)|",
+      "sku": "000013"
+    },
+    {
+      "nome": "KIT TESTE RAPIDO CHIKUNGUNYA IGM/IGG - (20T)|",
+      "sku": "000007"
+    },
+    {
+      "nome": "ATADURA CREPOM EDUARDA 10CMx1,8M SOFT - AMED",
+      "sku": "1081010004"
+    },
+    {
+      "nome": "ATADURA CREPOM EDUARDA 20CMx1,8M SOFT - AMED",
+      "sku": "1081010006"
+    },
+    {
+      "nome": "ATADURA CREPOM EDUARDA 25CMx1,8M SOFT - AMED",
+      "sku": "1081010012"
+    },
+    {
+      "nome": "ATADURA DE CREPOM  JADE 10,0CMX1,8M",
+      "sku": "1081010019"
+    },
+    {
+      "nome": "ATADURA DE CREPOM JADE  20,0CMX1,8M",
+      "sku": "1081010022"
+    },
+    {
+      "nome": "ATADURA DE CREPOM JADE 30,0CMX1,8M",
+      "sku": "1081010024"
+    },
+    {
+      "nome": "CAMPO OPERATÓRIO HELENA 18G C/50UND. RX",
+      "sku": "1032100018"
+    },
+    {
+      "nome": "COMP. LIVIA 11 FIOS/CM2 7,5CMX7,5CM 13CMX24CM C/10 UND.",
+      "sku": "1026100010"
+    },
+    {
+      "nome": "COMP. LIVIA 13 FIOS/CM2 7,5CMX7,5CM 13CMX24CM C/10 UND.",
+      "sku": "1026100012"
+    },
+    {
+      "nome": "COMP. REBECCA 11FIOS/CM2  7,5CMX7,5CM  13CMX24CM C/500UND.",
+      "sku": "1026100014"
+    },
+    {
+      "nome": "COMP. REBECCA 13FIOS/CM2  7,5CMX7,5CM  13CMX24CM C/500UND.",
+      "sku": "1026100015"
+    },
+    {
+      "nome": "COMPRESSA DE GAZE HERIKA 11 FIOS 7,5x7,5 C/10 UND - AMED",
+      "sku": "1012100019"
+    },
+    {
+      "nome": "COMPRESSA DE GAZE HERIKA 13 FIOS 7,5x7,5 - 15cm x 30cm C/10 UND - AMED",
+      "sku": "wgf"
+    },
+    {
+      "nome": "COMPRESSA DE GAZE HERIKA 13 FIOS 7,5x7,5 - 15cm x 30cm C/5 UND - AMED",
+      "sku": "1011100008"
+    },
+    {
+      "nome": "COMPRESSA DE GAZE HERIKA 13 FIOS 7,5x7,5. 15CM X 26CM C/10 UND - AMED",
+      "sku": "1013100022"
+    },
+    {
+      "nome": "COMPRESSA DE GAZE HERIKA COM FIO RADIOPACO 13 FIOS 7,5x7,5. 15CM X 30CM C/10 UND - AMED",
+      "sku": "1023100005"
+    },
+    {
+      "nome": "GAZE EM ROLO ANE 13 FIOS 480G C/1 UND - AMED",
+      "sku": "1064100004"
+    },
+    {
+      "nome": "GAZE EM ROLO NATALY 13FIOS 91Mx91MM C/1 UND - AMED",
+      "sku": "1063100005"
+    },
+    {
+      "nome": "MARIANA BOBINA PARA ESTERILIZACAO 100MMX100M",
+      "sku": "1011000003"
+    },
+    {
+      "nome": "MARIANA BOBINA PARA ESTERILIZACAO 120MMX100M",
+      "sku": "1011000024"
+    },
+    {
+      "nome": "MARIANA BOBINA PARA ESTERILIZACAO 150MMX100M - AMED",
+      "sku": "1011000004"
+    },
+    {
+      "nome": "MARIANA BOBINA PARA ESTERILIZACAO 200MMX100M - AMED",
+      "sku": "1011000005"
+    },
+    {
+      "nome": "MARIANA BOBINA PARA ESTERILIZACAO 250MMX100M",
+      "sku": "1011000006"
+    },
+    {
+      "nome": "MARIANA BOBINA PARA ESTERILIZACAO 300MMX100M - AMED",
+      "sku": "1011000007"
+    },
+    {
+      "nome": "MARIANA BOBINA PARA ESTERILIZACAO 350MMX100M - AMED",
+      "sku": "1011000008"
+    },
+    {
+      "nome": "MARIANA BOBINA PARA ESTERILIZACAO 400MMX100M",
+      "sku": "1011000009"
+    },
+    {
+      "nome": "MARIANA BOBINA PARA ESTERILIZACAO 450MMX100M",
+      "sku": "1011000010"
+    },
+    {
+      "nome": "MARIANA BOBINA PARA ESTERILIZACAO 50MMX100M - AMED",
+      "sku": "1011000001"
+    },
+    {
+      "nome": "AGUA DESTILADA 5L - ASFER",
+      "sku": "4020200101"
+    },
+    {
+      "nome": "LENÇOL TNT DESCARTAVEL C/ ELÁSTICO C/ 10 90 X 200CM - DEJAMARO",
+      "sku": "PA0257"
+    },
+    {
+      "nome": "COLETOR PERFUROCORTANTE 07 LT ECOLOGIC (AMARELO) DESCARBOX",
+      "sku": "89"
+    },
+    {
+      "nome": "COLETOR PERFUROCORTANTE 13 LT ECOLOGIC (AMARELO) DESCARBOX",
+      "sku": "90"
+    },
+    {
+      "nome": "COLETOR PERFUROCORTANTE 20 LT ECOLOGIC (AMARELO) DESCARBOX",
+      "sku": "91"
+    },
+    {
+      "nome": "PAPEL DE MACA 50cm x 50m ECOLOGIC - DESCARBOX",
+      "sku": "447"
+    },
+    {
+      "nome": "PAPEL DE MACA 50cm x 50m NATURAL - DESCARBOX",
+      "sku": "503"
+    },
+    {
+      "nome": "PAPEL DE MACA 50cm x 50m PREMIUM - DESCARBOX",
+      "sku": "449"
+    },
+    {
+      "nome": "PAPEL DE MACA 70cm x 50m ECOLOGIC - DESCARBOX",
+      "sku": "448"
+    },
+    {
+      "nome": "PAPEL DE MACA 70cm x 50m NATURAL - DESCARBOX",
+      "sku": "504"
+    },
+    {
+      "nome": "PAPEL DE MACA 70cm x 50m PREMIUM - DESCARBOX",
+      "sku": "450"
+    },
+    {
+      "nome": "COLETOR PERFUROCORTANTE 03L ECO - FLEXPELL",
+      "sku": "07477"
+    },
+    {
+      "nome": "COLETOR PERFUROCORTANTE 07L ECO - FLEXPELL",
+      "sku": "07478"
+    },
+    {
+      "nome": "COLETOR PERFUROCORTANTE 13L ECO - FLEXPELL",
+      "sku": "07479"
+    },
+    {
+      "nome": "COLETOR PERFUROCORTANTE 20L ECO - FLEXPELL",
+      "sku": "07480"
+    },
+    {
+      "nome": "PAPEL DE MACA 50cm x 50m NATURA - FLEXPELL",
+      "sku": "320"
+    },
+    {
+      "nome": "PAPEL DE MACA 50cm x 70m NATURA - FLEXPELL",
+      "sku": "319"
+    },
+    {
+      "nome": "SORO GLICOSADO 5% 250ML - FRESENIUS KABI",
+      "sku": "214-1"
+    },
+    {
+      "nome": "SORO GLICOSADO 5% 500ML - FRESENIUS KABI",
+      "sku": "211-1"
+    },
+    {
+      "nome": "SORO RINGER C/LACTATO 500ML - FRESENIUS KABI",
+      "sku": "213-3"
+    }
+  ],
+  "HIGIENE / LIMPEZA": [
+    {
+      "nome": "LUVA LATEX C/ PO TAM G C/100 - TALGE",
+      "sku": "7127"
+    },
+    {
+      "nome": "LUVA LATEX C/ PO TAM M C/100 - TALGE",
+      "sku": "7126"
+    },
+    {
+      "nome": "LUVA LATEX C/ PO TAM P C/100 - TALGE",
+      "sku": "7125"
+    },
+    {
+      "nome": "LUVA LATEX C/ PO TAM PP C/100  - TALGE",
+      "sku": "7361"
+    },
+    {
+      "nome": "LUVA LIMPEZA AMARELA G C/2 - TALGE",
+      "sku": "4-3"
+    },
+    {
+      "nome": "LUVA LIMPEZA AMARELA M C/2 - TALGE",
+      "sku": "4-2"
+    },
+    {
+      "nome": "LUVA LIMPEZA AMARELA P C/2 - TALGE",
+      "sku": "4-1"
+    },
+    {
+      "nome": "LUVA LIMPEZA LARANJA G C/2 - TALGE",
+      "sku": "7371"
+    },
+    {
+      "nome": "LUVA LIMPEZA LARANJA M C/2 - TALGE",
+      "sku": "7370"
+    },
+    {
+      "nome": "LUVA LIMPEZA LARANJA P C/2 - TALGE",
+      "sku": "7369"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO AZUL TAM G C/ 100 - TALGE",
+      "sku": "7242"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO AZUL TAM M C/ 100 - TALGE",
+      "sku": "7241"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO AZUL TAM P C/ 100 - TALGE",
+      "sku": "7240"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO PRETA TAM G C/ 100 - TALGE",
+      "sku": "7352"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO PRETA TAM M C/ 100 - TALGE",
+      "sku": "7351"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO PRETA TAM P C/ 100 - TALGE",
+      "sku": "7350"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO ROSA TAM G C/ 100 - TALGE",
+      "sku": "7355"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO ROSA TAM M C/ 100 - TALGE",
+      "sku": "7354"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO ROSA TAM P C/ 100 - TALGE",
+      "sku": "7353"
+    },
+    {
+      "nome": "LUVA NITRILICA VERDE  P C/2 - TALGE1",
+      "sku": "2006"
+    },
+    {
+      "nome": "LUVA NITRILICA VERDE G C/2 - TALGE",
+      "sku": "6-2"
+    },
+    {
+      "nome": "LUVA NITRILICA VERDE M C/2 - TALGE",
+      "sku": "6-1"
+    },
+    {
+      "nome": "LUVA PLASTICA DESCARTAVEL C/ 100 UN - TALGE",
+      "sku": "1265"
+    },
+    {
+      "nome": "LUVA VINIL S/ PO TAM G C/ 100 - TALGE",
+      "sku": "7216"
+    },
+    {
+      "nome": "LUVA VINIL S/ PO TAM GG C/ 100 - TALGE",
+      "sku": "talge1"
+    },
+    {
+      "nome": "LUVA VINIL S/ PO TAM M C/ 100 - TALGE",
+      "sku": "7214"
+    },
+    {
+      "nome": "LUVA VINIL S/ PO TAM P C/ 100 - TALGE",
+      "sku": "10-1-2-3"
+    },
+    {
+      "nome": "MASCARA TRIPLA BRANCA C/50 - TALGE",
+      "sku": "7392"
+    },
+    {
+      "nome": "PANO MULTIUSO 28cm x 240cm C/600 - TALGE",
+      "sku": "1033"
+    },
+    {
+      "nome": "PANO MULTIUSO AZUL 28CMX300M C/600 - TALGE",
+      "sku": "1026"
+    },
+    {
+      "nome": "PANO MULTIUSO AZUL MRPLUS MINI 30cm x 25m C/50- TALGE",
+      "sku": "1001"
+    },
+    {
+      "nome": "PANO MULTIUSO AZUL MRPLUS PACOTE C/05 - TALGE",
+      "sku": "1021"
+    },
+    {
+      "nome": "PANO MULTIUSO BRANCO 20cm x 300m C/600 - TALGE",
+      "sku": "38"
+    },
+    {
+      "nome": "PANO MULTIUSO BRANCO 28cm x 240cm C/600 - TALGE",
+      "sku": "313"
+    },
+    {
+      "nome": "PANO MULTIUSO BRANCO MRPLUS MINI 30cm x 25m C/50- TALGE",
+      "sku": "1002"
+    },
+    {
+      "nome": "PANO MULTIUSO LARANJA 20cm x 300m C/600 - TALGE",
+      "sku": "1040"
+    },
+    {
+      "nome": "PANO MULTIUSO LARANJA 30cm x 25m C/50 - TALGE",
+      "sku": "6786"
+    },
+    {
+      "nome": "PANO MULTIUSO LARANJA MRPLUS MINI 30cm x 25m C/50 - TALGE",
+      "sku": "1003"
+    },
+    {
+      "nome": "PANO MULTIUSO VERDE 20cm x 300m C/600 - TALGE",
+      "sku": "337"
+    },
+    {
+      "nome": "PANO MULTIUSO VERDE 28cm x 240cm C/600 - TALGE",
+      "sku": "1037"
+    },
+    {
+      "nome": "PANO MULTIUSO VERDE MRPLUS PACOTE C/05 - TALGE",
+      "sku": "1022"
+    },
+    {
+      "nome": "PANO MULTIUSO VERMELHO MRPLUS PACOTE C/05 - TALGE",
+      "sku": "1023"
+    },
+    {
+      "nome": "PANO WIPERTECH BRANCO 30cm x 29cm",
+      "sku": "1024"
+    },
+    {
+      "nome": "SAPATILHA PROPÉ DESCARTAVEL C/100 - TALGE",
+      "sku": "7375"
+    },
+    {
+      "nome": "TOUCA CAPILAR NYLON PRETA",
+      "sku": "6482"
+    },
+    {
+      "nome": "TOUCA DESCÁRTAVEL C/ELÁSTICO C/ 100 - TALGE",
+      "sku": "7364"
+    },
+    {
+      "nome": "ALCOOL GEL 70% 5L - AUDAX",
+      "sku": "111150"
+    },
+    {
+      "nome": "ALCOOL GEL 70% PUMP 1L - AUDAX",
+      "sku": "111144"
+    },
+    {
+      "nome": "ALCOOL GEL 70% PUMP 500ML - AUDAX",
+      "sku": "111127"
+    },
+    {
+      "nome": "ALCOOL GEL 70% SQUEEZE 500G - AUDAX",
+      "sku": "102"
+    },
+    {
+      "nome": "ALCOOL LIQ 70% 1L  - AUDAX",
+      "sku": "105-1"
+    },
+    {
+      "nome": "ALCOOL LIQ 70% 5L - AUDAX",
+      "sku": "109151"
+    },
+    {
+      "nome": "ALCOOL LIQUIDO 92,8º 1L - AUDAX",
+      "sku": "109104"
+    },
+    {
+      "nome": "ALL CLEAN SABONETE ANTISSEPTICO 5L - AUDAX",
+      "sku": "111149"
+    },
+    {
+      "nome": "ALL CLEAN SABONETE ANTISSEPTICO 800ML - AUDAX",
+      "sku": "111110"
+    },
+    {
+      "nome": "PROKITCHEN LIMPA COIFA 5L",
+      "sku": "106048"
+    },
+    {
+      "nome": "PROKITCHEN SANITIZANTE DE VERDURAS 1kg",
+      "sku": "101050"
+    },
+    {
+      "nome": "AVENTAL DESCARTAVEL 30G C/ 10 - AMEDICA",
+      "sku": "131"
+    },
+    {
+      "nome": "AVENTAL DESCARTAVEL 40G C/ 10 - AMEDICA",
+      "sku": "134"
+    },
+    {
+      "nome": "ALCOOL EM GEL 70° INPM 4,3 KG - SANTA CRUZ",
+      "sku": "1801B005003"
+    },
+    {
+      "nome": "ALCOOL EM GEL 70° INPM 430G PUMP - SANTA CRUZ",
+      "sku": "1801F430002"
+    },
+    {
+      "nome": "ALCOOL EM GEL 70° INPM SQUEEZE 500G - SANTA CRUZ",
+      "sku": "1801F500004"
+    },
+    {
+      "nome": "ALCOOL LIQ 54°GL  1L - SANTA CRUZ",
+      "sku": "1101F001003"
+    },
+    {
+      "nome": "ALCOOL LIQ 70% 1L  - SANTA CRUZ",
+      "sku": "1301F001001"
+    },
+    {
+      "nome": "ALCOOL LIQ 70° 5LT - SANTA CRUZ",
+      "sku": "1301F005001"
+    },
+    {
+      "nome": "ALCOOL LIQ 92,8° 1L - SANTA CRUZ",
+      "sku": "1101F001005"
+    },
+    {
+      "nome": "AGUA DESTILADA 5L - ASFER",
+      "sku": "4020200101"
+    },
+    {
+      "nome": "EMBALAGEM PARA ESTERILIZACAO BOBINA TERMO SELANTE 100MMx100M  - INJEX",
+      "sku": "5200600035"
+    },
+    {
+      "nome": "EMBALAGEM PARA ESTERILIZACAO BOBINA TERMO SELANTE 150MMx100M - PACKGC",
+      "sku": "PACKGC1"
+    },
+    {
+      "nome": "EMBALAGEM PARA ESTERILIZACAO BOBINA TERMO SELANTE 250MMx100M - INJEX",
+      "sku": "5200600042"
+    },
+    {
+      "nome": "EMBALAGEM PARA ESTERILIZACAO BOBINA TERMO SELANTE 250MMx100M - PACKGC",
+      "sku": "PACKGC2"
+    },
+    {
+      "nome": "MASCARA PFF-2 N95 SEM DISPENSER ECOMAX",
+      "sku": "749"
+    },
+    {
+      "nome": "SAPATILHA PROPÉ DESCARTAVEL C/ 100 - ECOMAX",
+      "sku": "803"
+    },
+    {
+      "nome": "LUVA PROCEDIMENTO LATEX C/ PO TAM G C/100 - MEDIX",
+      "sku": "42"
+    },
+    {
+      "nome": "LUVA PROCEDIMENTO LATEX C/ PO TAM M C/100 - MEDIX",
+      "sku": "30"
+    },
+    {
+      "nome": "LUVA PROCEDIMENTO LATEX C/ PO TAM P C/100 - MEDIX",
+      "sku": "29"
+    },
+    {
+      "nome": "LUVA PROCEDIMENTO LATEX C/ PO TAM PP C/100 - MEDIX",
+      "sku": "1778"
+    },
+    {
+      "nome": "MASCARA TRIPLA AZUL C/50 - MEDIX",
+      "sku": "5587"
+    },
+    {
+      "nome": "MASCARA TRIPLA PRETA C/50 - MEDIX",
+      "sku": "7898652372766"
+    },
+    {
+      "nome": "MASCARA TRIPLA ROSA C/50 - MEDIX",
+      "sku": "7898652372773"
+    }
+  ],
+  "FRALDAS": [
+    {
+      "nome": "FRALDA DESCARTAVEL DIGUINHO CONFORT PLUS ECONOMICA EG C/ 20 UND",
+      "sku": "10298"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL DIGUINHO CONFORT PLUS ECONOMICA G C/24 UND",
+      "sku": "10297"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL DIGUINHO CONFORT PLUS ECONOMICA M C/28 UND",
+      "sku": "10296"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL DIGUINHO CONFORT PLUS ECONOMICA P C/ 30 UND",
+      "sku": "10295"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL DIGUINHO CONFORT PLUS ECONOMICA RN C/ 32 UND",
+      "sku": "11062"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL DIGUINHO CONFORT PLUS ECONOMICA SXG C/ 16 UND",
+      "sku": "10299"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL DIGUINHO CONFORT PLUS MINI EG C/ 12 UND",
+      "sku": "10313"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL DIGUINHO CONFORT PLUS MINI G C/ 14 UND",
+      "sku": "10312"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL DIGUINHO CONFORT PLUS MINI M C/16 UND",
+      "sku": "10311"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL DIGUINHO CONFORT PLUS MINI P C/ 18 UND",
+      "sku": "10310"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL DIGUINHO CONFORT PLUS MINI SXG C/ 10 UND",
+      "sku": "10314"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL GERIATRICA SUAVIDADE CLASSIC EG C/26 - DIGUINHO",
+      "sku": "13239"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL GERIATRICA SUAVIDADE CLASSIC G C/30 - DIGUINHO",
+      "sku": "13238"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL GERIATRICA SUAVIDADE CLASSIC M C/30 - DIGUINHO",
+      "sku": "13237"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL GERIATRICA SUAVIDADE PREMIUM EG C/7 - DIGUINHO",
+      "sku": "9898"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL GERIATRICA SUAVIDADE PREMIUM G C/8 - DIGUINHO",
+      "sku": "9897"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL TOQUINHO CONFORT SUPER EG C/ 36 UND",
+      "sku": "11453"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL TOQUINHO CONFORT SUPER G C/40 UND",
+      "sku": "11452"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL TOQUINHO CONFORT SUPER M C/ 44 UND",
+      "sku": "11451"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL TOQUINHO CONFORT SUPER P C/ 48 UND",
+      "sku": "11450"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL TOQUINHO CONFORT SUPER SXG C/ 30 UND",
+      "sku": "11454"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL TOQUINHO DE GENTE BASIC PLUS EG C/50 UND",
+      "sku": "11267"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL TOQUINHO DE GENTE BASIC PLUS G C/60 UND",
+      "sku": "11266"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL TOQUINHO DE GENTE BASIC PLUS M C/70 UND",
+      "sku": "11265"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL TOQUINHO DE GENTE BASIC PLUS SXG C/40 UND",
+      "sku": "11268"
+    }
+  ],
+  "EPIs": [
+    {
+      "nome": "LUVA LATEX C/ PO TAM G C/100 - TALGE",
+      "sku": "7127"
+    },
+    {
+      "nome": "LUVA LATEX C/ PO TAM M C/100 - TALGE",
+      "sku": "7126"
+    },
+    {
+      "nome": "LUVA LATEX C/ PO TAM P C/100 - TALGE",
+      "sku": "7125"
+    },
+    {
+      "nome": "LUVA LATEX C/ PO TAM PP C/100  - TALGE",
+      "sku": "7361"
+    },
+    {
+      "nome": "LUVA LIMPEZA AMARELA G C/2 - TALGE",
+      "sku": "4-3"
+    },
+    {
+      "nome": "LUVA LIMPEZA AMARELA M C/2 - TALGE",
+      "sku": "4-2"
+    },
+    {
+      "nome": "LUVA LIMPEZA AMARELA P C/2 - TALGE",
+      "sku": "4-1"
+    },
+    {
+      "nome": "LUVA LIMPEZA LARANJA G C/2 - TALGE",
+      "sku": "7371"
+    },
+    {
+      "nome": "LUVA LIMPEZA LARANJA M C/2 - TALGE",
+      "sku": "7370"
+    },
+    {
+      "nome": "LUVA LIMPEZA LARANJA P C/2 - TALGE",
+      "sku": "7369"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO AZUL TAM G C/ 100 - TALGE",
+      "sku": "7242"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO AZUL TAM M C/ 100 - TALGE",
+      "sku": "7241"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO AZUL TAM P C/ 100 - TALGE",
+      "sku": "7240"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO PRETA TAM G C/ 100 - TALGE",
+      "sku": "7352"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO PRETA TAM M C/ 100 - TALGE",
+      "sku": "7351"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO PRETA TAM P C/ 100 - TALGE",
+      "sku": "7350"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO ROSA TAM G C/ 100 - TALGE",
+      "sku": "7355"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO ROSA TAM M C/ 100 - TALGE",
+      "sku": "7354"
+    },
+    {
+      "nome": "LUVA NITRILICA S/ PO ROSA TAM P C/ 100 - TALGE",
+      "sku": "7353"
+    },
+    {
+      "nome": "LUVA NITRILICA VERDE  P C/2 - TALGE1",
+      "sku": "2006"
+    },
+    {
+      "nome": "LUVA NITRILICA VERDE G C/2 - TALGE",
+      "sku": "6-2"
+    },
+    {
+      "nome": "LUVA NITRILICA VERDE M C/2 - TALGE",
+      "sku": "6-1"
+    },
+    {
+      "nome": "LUVA PLASTICA DESCARTAVEL C/ 100 UN - TALGE",
+      "sku": "1265"
+    },
+    {
+      "nome": "LUVA VINIL S/ PO TAM G C/ 100 - TALGE",
+      "sku": "7216"
+    },
+    {
+      "nome": "LUVA VINIL S/ PO TAM GG C/ 100 - TALGE",
+      "sku": "talge1"
+    },
+    {
+      "nome": "LUVA VINIL S/ PO TAM M C/ 100 - TALGE",
+      "sku": "7214"
+    },
+    {
+      "nome": "LUVA VINIL S/ PO TAM P C/ 100 - TALGE",
+      "sku": "10-1-2-3"
+    },
+    {
+      "nome": "MASCARA TRIPLA BRANCA C/50 - TALGE",
+      "sku": "7392"
+    },
+    {
+      "nome": "SAPATILHA PROPÉ DESCARTAVEL C/100 - TALGE",
+      "sku": "7375"
+    },
+    {
+      "nome": "TOUCA DESCÁRTAVEL C/ELÁSTICO C/ 100 - TALGE",
+      "sku": "7364"
+    },
+    {
+      "nome": "AVENTAL DESCARTAVEL 30G C/ 10 - AMEDICA",
+      "sku": "131"
+    },
+    {
+      "nome": "AVENTAL DESCARTAVEL 40G C/ 10 - AMEDICA",
+      "sku": "134"
+    },
+    {
+      "nome": "LENÇOL TNT DESCARTAVEL C/ ELÁSTICO C/ 10 90 X 200CM - DEJAMARO",
+      "sku": "PA0257"
+    },
+    {
+      "nome": "MASCARA PFF-2 N95 SEM DISPENSER ECOMAX",
+      "sku": "749"
+    },
+    {
+      "nome": "SAPATILHA PROPÉ DESCARTAVEL C/ 100 - ECOMAX",
+      "sku": "803"
+    },
+    {
+      "nome": "LUVA PROCEDIMENTO LATEX C/ PO TAM G C/100 - MEDIX",
+      "sku": "42"
+    },
+    {
+      "nome": "LUVA PROCEDIMENTO LATEX C/ PO TAM M C/100 - MEDIX",
+      "sku": "30"
+    },
+    {
+      "nome": "LUVA PROCEDIMENTO LATEX C/ PO TAM P C/100 - MEDIX",
+      "sku": "29"
+    },
+    {
+      "nome": "LUVA PROCEDIMENTO LATEX C/ PO TAM PP C/100 - MEDIX",
+      "sku": "1778"
+    },
+    {
+      "nome": "MASCARA TRIPLA AZUL C/50 - MEDIX",
+      "sku": "5587"
+    },
+    {
+      "nome": "MASCARA TRIPLA PRETA C/50 - MEDIX",
+      "sku": "7898652372766"
+    },
+    {
+      "nome": "MASCARA TRIPLA ROSA C/50 - MEDIX",
+      "sku": "7898652372773"
+    },
+    {
+      "nome": "LUVA CIRURGICA LIFE PLUS ESTERIL 6,5 - LEMGRUBER",
+      "sku": "30351052"
+    },
+    {
+      "nome": "LUVA CIRURGICA LIFE PLUS ESTERIL 7,0 - LEMGRUBER",
+      "sku": "30.351.053"
+    },
+    {
+      "nome": "LUVA CIRURGICA LIFE PLUS ESTERIL 7,5 - LEMGRUBER",
+      "sku": "30.351.054"
+    },
+    {
+      "nome": "LUVA CIRURGICA LIFE PLUS ESTERIL 8,0 - LEMGRUBER",
+      "sku": "30.351.055"
+    },
+    {
+      "nome": "LUVA CIRURGICA LIFE PLUS ESTERIL 8,5 - LEMGRUBER",
+      "sku": "30.351.056"
+    }
+  ],
+  "EQUIPAMENTOS": [],
+  "MEDICAMENTOS": [
+    {
+      "nome": "ÁGUA PARA INJEÇÃO 10ML - EQUIPLEX",
+      "sku": "201"
+    },
+    {
+      "nome": "SORO FISIOLÓGICO 0,9% 100ML - EQUIPLEX",
+      "sku": "206"
+    },
+    {
+      "nome": "SORO FISIOLOGICO 0,9% 10ML - EQUIPLEX",
+      "sku": "1210623"
+    },
+    {
+      "nome": "SORO FISIOLOGICO 0,9% 250ML - EQUIPLEX",
+      "sku": "209-1"
+    },
+    {
+      "nome": "SORO FISIOLOGICO 0,9% 500ML - EQUIPLEX",
+      "sku": "1110717"
+    },
+    {
+      "nome": "FRALDA DESCARTAVEL DIGUINHO CONFORT PLUS ECONOMICA EG C/ 20 UND",
+      "sku": "10298"
+    },
+    {
+      "nome": "SORO GLICOSADO 5% 250ML - FRESENIUS KABI",
+      "sku": "214-1"
+    },
+    {
+      "nome": "SORO GLICOSADO 5% 500ML - FRESENIUS KABI",
+      "sku": "211-1"
+    },
+    {
+      "nome": "SORO RINGER C/LACTATO 500ML - FRESENIUS KABI",
+      "sku": "213-3"
+    },
+    {
+      "nome": "FRASCO P/ NUTRIÇÃO ENTERAL 300ML  CX C/ 90- BIOBASE",
+      "sku": "AAR020"
+    }
+  ]
+}

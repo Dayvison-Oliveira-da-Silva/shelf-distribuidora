@@ -1,0 +1,73 @@
+
+<main>
+  
+  <!-- Lista vazia; os cards vão ser criados via JS -->
+  <ul id="lista-produtos" class="produto-card-list" data-skus="7395, 7127, 7126, 7125, 7361, 4-3, 4-2, 4-1, 7371, 7370, 7369, 7242, 7241, 7240, 7352, 7351, 7350, 7355, 7354, 7353, 2006, 6-2, 6-1, 1265, 7216, talge1, 7214, 10-1-2-3, 7392, 1033, 1026, 1001, 1021, 38, 313, 1002, 1040, 6786, 1003, 337, 1037, 1022, 1023, 1024, 315-3, 315-1, 315-2, 7375, 6482, 7364, 201, 206, 1210623, 209-1, 1110717, 10298, 10297, 10296, 10295, 11062, 10299, 10313, 10312, 10311, 10310, 10314, 13239, 13238, 13237, 9898, 9897, 11453, 11452, 11451, 11450, 11454, 11267, 11266, 11265, 11268, 111150, 111144, 111127, 102, 105-1, 109151, 109104, 111149, 111110, 106048, 101050, 131, 134, 1801F500002, 1801B005003, 1801F430002, 1801F500004, 1101F001003, 1301F001001, 1301F005001, 1101F001005, 000013, 000007, 1081010004, 1081010006, 1081010012, 1081010019, 1081010022, 1081010024, 1032100018, 1026100010, 1026100012, 1026100014, 1026100015, 1012100019, wgf, 1011100008, 1013100022, 1023100005, 1064100004, 1063100005, 1011000003, 1011000024, 1011000004, 1011000005, 1011000006, 1011000007, 1011000008, 1011000009, 1011000010, 1011000001, 4020200101, PA0257, 89, 90, 91, 447, 503, 449, 448, 504, 450, 07477, 07478, 07479, 07480, 320, 319, 214-1, 211-1, 213-3, 51.002.00017, 51.002.00020, 51.002.00021, 5100100340, 51.020.00014, 52.010.00007, 52.010.00004, 52.010.00005, 02150261, 51.002.00016, 51.002.00018, 51.002.00019, 51.023.00018, 51.023.00017, 51.023.00016, 51.023.00004, 5200100035, 5200100036, 5200600035, PACKGC1, 5200600042, PACKGC2, 5201300004, 5200900003, 51.001.00341, 51.001.00370, 5201300001, 5102000044, 5102000001, 5102000005, 51.020.00016, 4431, 444, 445, 446, 4471, 4481, 4491, 4501, 451, 297, 2050, 766, 796821, 405-4, 404, 255, 409, 1025, 33, 34, 290, 749, 803, 9228, 4951, 584A, 585A, 586A, 587A, 588A, 4902, 99, 5401, 455, 5404B, 5408, 513-2, 540-1, 515-2, 516-2, 5233, 520, 519, 521, 516, 489, 490, 488, 283, 184, 680, 681, 521-1, 682, 79, 85, 527, 81., 82, 83-1., 4256, 4257, 4259, 4260, 6254985, 78027, 78024, 78025, 18, 23, 24, 17, 982, 983, 984, 985, 986, 987, 988, 989, 980, 981, 4769, 654, 655, 656, 640, 657, 6394, 641, 658, 642, 659, 643, 660, 644, 661, 645, 662, 646, 663, 513-1, 514, 515-1, 516-1, 517-2, 9815, 9837, 518, 519150, 55201, 521-2, 8382, 8394, 8406, 8418, 526, 42, 30, 29, 1778, 5587, 7898652372766, 7898652372773, 527-1, 2136, 529, 537, HC074, HC060N, HC039, HC347, HC399, HC516, HC489, HC487, HC488, 9852, HC171, HC070, HC260, HC210, HC167, 21859, 204, 21841, 203, 205, 30351052, 30.351.053, 30.351.054, 30.351.055, 30.351.056, 40091, 40092, 40084, 40081, 40000, 400021, 541, 552, 40009, 40012, 40072, sr1, 307, 308, 15004, 10002, 539, 53256, 01139, 531, 533, 538, 03014, 05006, AAR020
+"></ul>
+
+  <!-- Template de card -->
+  <template id="produto-card-tpl">
+    <li class="produto-card" data-categorias="">
+      <div class="produto-card-content">
+        <div class="produto-card-text">
+          <div class="descricao" data-sku=""></div>
+          <div class="marca" data-sku=""></div>
+        </div>
+
+        <div class="produto-card-img" data-sku="">
+          <img alt="Produto" src="" loading="lazy" />
+        </div>
+
+        <div class="produto-card-price" data-sku="">
+          <div class="price"></div>
+          <div class="desconto"></div>
+        </div>
+
+        <div class="quantidade" data-sku="">
+          <button class="menos" aria-label="Diminuir quantidade">-</button>
+          <input type="number" min="1" value="1" readonly />
+          <button class="mais" aria-label="Aumentar quantidade">+</button>
+        </div>
+
+        <div class="produto-card-sold">
+          <button class="btn-add">Adicionar ao carrinho</button>
+        </div>
+      </div>
+    </li>
+  </template>
+  <!-- Modal de estoque (inicialmente oculto) -->
+  <div id="estoque-modal" hidden>
+    <div class="em-backdrop" data-em-close></div>
+    <div class="em-card" role="dialog" aria-modal="true" aria-labelledby="em-title">
+      <header class="em-head">
+        <h3 id="em-title">Selecionar quantidade</h3>
+        <button class="em-x" title="Fechar" data-em-close>&times;</button>
+      </header>
+
+      <div class="em-body">
+        <div class="em-prod">
+          <img id="em-img" alt="" />
+          <div class="em-info">
+            <div class="em-nome" id="em-nome"></div>
+            <div class="em-sku" id="em-sku"></div>
+            <div class="em-estoque">Estoque: <b id="em-estoque">0</b> un.</div>
+            <div class="em-preco">Preço: <b id="em-preco">R$ 0,00</b></div>
+          </div>
+        </div>
+
+        <label class="em-lb">Quantidade</label>
+        <input id="em-qtd" class="em-input" type="number" min="1" value="1" inputmode="numeric" />
+        <small class="em-hint">o valor deve ser entre 1 e o estoque disponível</small>
+      </div>
+
+      <footer class="em-foot">
+        <button class="em-btn em-sec" data-em-close>Cancelar</button>
+        <button id="em-ok" class="em-btn em-pri">Adicionar</button>
+      </footer>
+    </div>
+    <div class="print-actions" style="display:flex; gap:8px; align-items:center;">
+      <button id="prn-visiveis" class="btn-sec">Imprimir (visíveis)</button>
+      <button id="prn-todos" class="btn-sec">Imprimir (todos)</button>
+    </div>
+
+</main>

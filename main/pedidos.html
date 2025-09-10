@@ -1,0 +1,40 @@
+<main id="pd-root" aria-label="Pedidos">
+  <aside id="pd-side">
+    <h2 class="pd-side-title">Meus Pedidos</h2>
+
+    <label class="pd-lb" for="pd-busca">Buscar por cliente/CPF/E-mail</label>
+    <input id="pd-busca" class="pd-inp" placeholder="Buscar por cliente/CPF/E-mail" />
+
+    <label class="pd-lb" for="pd-status-select">Status</label>
+    <select id="pd-status-select" class="pd-inp">
+      <option value="todos">Todos status</option>
+      <option value="em aberto">em aberto</option>
+      <option value="aprovado">aprovado</option>
+      <option value="preparando envio">preparando envio</option>
+      <option value="faturado">faturado</option>
+      <option value="pronto para envio">pronto para envio</option>
+      <option value="enviado">enviado</option>
+      <option value="entregue">entregue</option>
+      <option value="não entregue">não entregue</option>
+      <option value="cancelado">cancelado</option>
+    </select>
+  </aside>
+
+  <section id="pd-list">
+    <div class="pd-head">
+      <div>Cliente</div>
+      <div>CPF/CNPJ</div>
+      <div>Criado em</div>
+      <div>Total</div>
+      <div>Itens</div>
+      <div>Nº pedido</div>
+      <div>Situação</div>
+      <div></div>
+    </div>
+
+    <div id="pd-erro" class="pd-error" style="display:none"></div>
+    <div id="pd-vazio" class="pd-empty" style="display:none">Nenhum pedido encontrado.</div>
+
+    <div id="pd-corpo"></div>
+  </section>
+</main>
