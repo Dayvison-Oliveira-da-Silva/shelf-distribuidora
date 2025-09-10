@@ -160,7 +160,7 @@ function makeModal() {
             <tbody></tbody>
           </table>
         </div>
-        
+        <button id="pp-btn-additem" class="pp-btn-sec" style="margin:8px 0;"></button>
 
         <div id="pp-totais" style="margin-top:8px; display:grid; gap:6px; justify-content:end;">
           <div>Subtotal (bruto): <b id="pp-subtotal">R$ 0,00</b></div>
