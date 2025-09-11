@@ -1,8 +1,12 @@
 // Carrinho SPA: itens + descontos + cadastro/entrega + PROPOSTA (RTDB)
 // + Múltiplos recebimentos (editar/trocar/excluir) + envio de PEDIDO pro Tiny via proxy.
-// Regras automáticas: PIX → meio_pagamento:"Santander"; id_ecommerce:"13850";
-// id_vendedor do localStorage; situacao: "aberto" se tiver boleto, senão "aprovado";
-// numero_pedido_ecommerce = id_vendedor-YYYYMMDD-HHmmss.
+// Regras automáticas:
+// • PIX → meio_pagamento: "Santander"
+// • Boleto → meio_pagamento: "Santander" (fixo/oculto) + suporte a "dias" e "data" por parcela
+// • id_ecommerce: "13850"
+// • id_vendedor: lido do localStorage
+// • situacao: "aberto" se tiver boleto; senão "aprovado"
+// • numero_pedido_ecommerce = id_vendedor-YYYYMMDD-HHmmss
 // PEDIDO: não cria proposta; salva em /pedidos/<vendedorKey>/<numero_pedido_ecommerce> após sucesso no Tiny.
 
 export function init(root) {
@@ -13,7 +17,7 @@ export function init(root) {
   const API_URL = 'https://southamerica-east1-vendas-distribuidora-b0ea1.cloudfunctions.net/api/pedidos';
   const IDECOMMERCE_FIXO = '13850';
   const PIX_MEIO_FIXO = 'Santander';
-  const BOLETO_MEIO_FIXO = 'Santander'; // boleto sempre Santander (oculto ao usuário)
+  const BOLETO_MEIO_FIXO = 'Santander';
 
   // ===== Loading overlay / busy state =====
   function ensureLoadingStyles() {
@@ -44,6 +48,7 @@ export function init(root) {
     ov.querySelector('.msg').textContent = msg;
     ov.style.display = on ? 'flex' : 'none';
 
+    // trava/destrava campos (exceto data-keep-enabled="1")
     const all = root.querySelectorAll('button, input, select, textarea');
     all.forEach(el=>{
       if(on){
@@ -291,7 +296,7 @@ export function init(root) {
     }
 
     applyNomeWidth(); hidratarNomes(itens.filter(it=>!it?.nome));
-    recalcPaySummary();
+    recalcPaySummary(); // atualiza total no resumo de pagamento
   }
 
   async function hidratarNomes(itensSemNome){
@@ -430,6 +435,7 @@ export function init(root) {
 
   // ====== PAGAMENTO (múltiplos recebimentos) ======
   let payments=[]; let nextPid=1;
+  const payToolbar=root.querySelector('#pay-toolbar');
   const payKind=root.querySelector('#pay-kind'), payAmount=root.querySelector('#pay-amount'),
         payGW=root.querySelector('#pay-gateway'), payInst=root.querySelector('#pay-installments'),
         payGWBox=root.querySelector('#pay-extra-gw'), payInstBox=root.querySelector('#pay-extra-inst'),
@@ -437,40 +443,106 @@ export function init(root) {
   const elTotal=root.querySelector('#pay-total'), elRecv=root.querySelector('#pay-received'),
         elBal=root.querySelector('#pay-balance'), elChange=root.querySelector('#pay-change');
 
-  // garante que "Boleto" exista na toolbar sem mexer no HTML
-  if (payKind && !Array.from(payKind.options).some(o => o.value === 'boleto')) {
-    const opt = document.createElement('option');
-    opt.value = 'boleto';
-    opt.textContent = 'Boleto';
-    payKind.appendChild(opt);
-  }
+  // garante que a opção "boleto" exista no select, sem precisar mexer no HTML
+  (function ensureBoletoOption(){
+    if (!payKind) return;
+    const exists = Array.from(payKind.options).some(o => String(o.value).toLowerCase() === 'boleto');
+    if (!exists) {
+      const opt = document.createElement('option');
+      opt.value = 'boleto'; opt.textContent = 'Boleto';
+      payKind.appendChild(opt);
+    }
+  })();
 
-  function toggleExtras(){ const t=payKind.value;
+  // bloco extra de boleto (dias) – montado via JS
+  let payBoletoBox, payBoletoOffsets;
+  (function mountBoletoOffsets(){
+    if (!payToolbar) return;
+    payBoletoBox = document.createElement('div');
+    payBoletoBox.id = 'pay-extra-boleto';
+    payBoletoBox.style.display = 'none';
+    payBoletoBox.innerHTML = `
+      <label>Dias das parcelas (boleto)</label>
+      <input id="pay-boleto-offsets" placeholder="ex.: 7 15 30" />
+      <small style="color:#6b7280;display:block;margin-top:4px;">
+        O valor <b>do saldo</b> será dividido igualmente entre as parcelas. Banco: Santander.
+      </small>
+    `;
+    payToolbar.insertBefore(payBoletoBox, payAddBtn);
+    payBoletoOffsets = payBoletoBox.querySelector('#pay-boleto-offsets');
+  })();
+
+  // toolbar extra: crédito e boleto
+  function toggleExtras(){
+    const t=payKind.value;
+    // extras de crédito
     payGWBox.style.display   = (t==='credito') ? '' : 'none';
     payInstBox.style.display = (t==='credito') ? '' : 'none';
+    // extras de boleto
+    if (payBoletoBox) payBoletoBox.style.display = (t==='boleto') ? '' : 'none';
+    // esconder "Valor" quando for boleto
+    const amountWrap = payAmount?.closest('div');
+    if (amountWrap) amountWrap.style.display = (t==='boleto') ? 'none' : '';
   }
   payKind.addEventListener('change', toggleExtras); toggleExtras();
 
   function addPayment(p){ payments.push({ id:nextPid++, ...p }); renderPayments(); recalcPaySummary(); }
-  payAddBtn.addEventListener('click', ()=>{
-    const tipo=payKind.value; const valor=brToNumber(payAmount.value); if(valor<=0) return;
-    const base={ tipo, valor };
 
+  // botão: adicionar recebimento
+  payAddBtn.addEventListener('click', ()=>{
+    const tipo=payKind.value;
+
+    // -------- BOLETO com "dias" --------
+    if (tipo === 'boleto') {
+      const raw = (payBoletoOffsets?.value || '').trim();
+      const offsets = raw
+        .split(/[,\s]+/)
+        .map(s => onlyDigits(s))
+        .filter(Boolean)
+        .map(s => parseInt(s, 10))
+        .filter(n => Number.isFinite(n) && n > 0);
+
+      if (!offsets.length) { showMsg('Informe os dias das parcelas. Ex.: 7 15 30', true); return; }
+
+      const saldo = calcularSaldo(); // total - já recebido
+      if (saldo <= 0) { showMsg('Nada para receber: saldo já está quitado.', true); return; }
+
+      // divide o saldo em N parcelas, distribuindo centavos
+      const centsTotal = Math.round(saldo * 100);
+      const n = offsets.length;
+      const base = Math.floor(centsTotal / n);
+      const extra = centsTotal - base * n;
+
+      offsets.forEach((dias, i) => {
+        const vCents = base + (i < extra ? 1 : 0);
+        addPayment({
+          tipo: 'boleto',
+          valor: vCents / 100,
+          meio: BOLETO_MEIO_FIXO, // fixo/oculto
+          dias: String(dias),
+          data: '',
+          obs: ''
+        });
+      });
+
+      if (payBoletoOffsets) payBoletoOffsets.value = '';
+      return;
+    }
+
+    // -------- DEMAIS TIPOS (com Valor) --------
+    const valor=brToNumber(payAmount.value);
+    if(valor<=0) return;
+
+    const base={ tipo, valor };
     if(tipo==='credito'){
       base.gateway=(payGW.value||'').trim();
       base.parcelas=parseInt(payInst.value||'1',10)||1;
-    }
-    if (tipo==='boleto'){
-      base.meio = BOLETO_MEIO_FIXO; // fixo e oculto
-      base.dias = '';
-      base.data = '';
-      base.obs  = '';
-    }
-    if (tipo!=='boleto' && tipo!=='credito'){
+    } else {
       base.obs = '';
     }
 
-    addPayment(base); payAmount.value='';
+    addPayment(base);
+    payAmount.value='';
   });
 
   function renderPayments(){
@@ -483,6 +555,7 @@ export function init(root) {
           <span>Recebimento</span>
           <button class="pay-del" title="remover">🗑</button>
         </h4>
+
         <div>
           <label>Tipo</label>
           <select class="tipo">
@@ -496,7 +569,7 @@ export function init(root) {
 
         <div>
           <label>Valor (R$)</label>
-          <input class="v" value="${(p.valor||0).toFixed(2).replace('.',',')}" inputmode="decimal">
+          <input class="v" value="${(p.valor||0).toFixed(2).replace('.',',')}" inputmode="decimal" ${p.tipo==='boleto'?'disabled':''}>
         </div>
 
         <div class="cred-wrap" ${p.tipo==='credito'?'':'style="display:none"'} >
@@ -509,7 +582,7 @@ export function init(root) {
         </div>
 
         <div class="boleto-wrap" ${p.tipo==='boleto'?'':'style="display:none"'} >
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:0;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px;">
             <div>
               <label>Dias</label>
               <input class="dias" value="${p.dias??''}" inputmode="numeric" placeholder="ex.: 30">
@@ -523,6 +596,9 @@ export function init(root) {
             <label>Obs</label>
             <input class="obs" value="${p.obs||''}" placeholder="Observação da parcela">
           </div>
+          <small style="display:block;color:#6b7280;margin-top:6px;">
+            Banco/Carteira: <b>${BOLETO_MEIO_FIXO}</b>
+          </small>
         </div>
 
         <div class="outros-wrap" ${p.tipo!=='boleto' && p.tipo!=='credito' ? '' : 'style="display:none"'} >
@@ -534,8 +610,10 @@ export function init(root) {
       // excluir
       card.querySelector('.pay-del').onclick=()=>{ payments=payments.filter(x=>x.id!==p.id); renderPayments(); recalcPaySummary(); };
 
-      // editar valor
-      card.querySelector('.v').addEventListener('blur', e=>{
+      // editar valor (desabilitado para boleto)
+      const vInp = card.querySelector('.v');
+      vInp?.addEventListener('blur', e=>{
+        if (p.tipo==='boleto') return;
         const v=brToNumber(e.target.value); p.valor = v>0 ? v : 0;
         e.target.value=(p.valor).toFixed(2).replace('.',','); recalcPaySummary();
       });
@@ -547,29 +625,29 @@ export function init(root) {
         if(p.tipo==='credito'){
           p.parcelas = p.parcelas || 1;
         }else{
-          delete p.parcelas;
-          delete p.gateway;
+          delete p.parcelas; delete p.gateway;
         }
 
         if(p.tipo==='boleto'){
-          p.meio = BOLETO_MEIO_FIXO;
+          p.valor = Number(p.valor)||0; // mantém valor atual (geralmente já veio do split)
           p.dias = p.dias || '';
           p.data = p.data || '';
           p.obs  = p.obs  || '';
         }else{
-          delete p.meio; delete p.dias; delete p.data;
+          delete p.dias; delete p.data;
         }
 
         renderPayments(); recalcPaySummary();
       });
 
-      // listeners específicos
+      // gateway (crédito)
       const gw=card.querySelector('.gw'); if(gw) gw.addEventListener('blur', e=>{ p.gateway=e.target.value.trim(); });
       const inst=card.querySelector('.inst'); if(inst) inst.addEventListener('change', e=>{ p.parcelas=parseInt(e.target.value,10)||1; });
 
+      // boleto fields
       const dias=card.querySelector('.dias'); if(dias) dias.addEventListener('blur', e=>{ const v=onlyDigits(e.target.value); p.dias = v||''; e.target.value=p.dias; });
       const data=card.querySelector('.data'); if(data) data.addEventListener('blur', e=>{ p.data=e.target.value.trim(); });
-
+      // obs para qualquer tipo
       card.querySelectorAll('.obs').forEach(inp=>inp.addEventListener('blur', e=>{ p.obs = e.target.value.trim(); }));
 
       payList.appendChild(card);
@@ -627,12 +705,13 @@ export function init(root) {
           obs:(p.tipo==='credito' && p.parcelas>1)?`Cartão crédito ${p.parcelas}x`:(p.obs||'')
         };
         if(p.tipo==='pix'){
-          base.meio_pagamento = PIX_MEIO_FIXO;
+          base.meio_pagamento = PIX_MEIO_FIXO; // fixo
         }else if(p.tipo==='credito' && p.gateway){
           base.meio_pagamento = p.gateway;
         }else if(p.tipo==='boleto'){
-          base.meio_pagamento = BOLETO_MEIO_FIXO;
+          base.meio_pagamento = BOLETO_MEIO_FIXO; // fixo/oculto
         }
+        // boleto (e outros, se desejar) podem levar dias/data
         if(p.dias) base.dias = String(p.dias);
         if(p.data) base.data = String(p.data); // dd/mm/aaaa
         return base;
@@ -713,6 +792,7 @@ export function init(root) {
     const numeroPedidoEcomm = `${idVendedor}-${nowStamp()}`;
     const vendedorKey = sanitizeKey(idVendedor || VENDEDOR?.cpfKey || VENDEDOR?.nome || 'sem_vendedor');
 
+    // situação calculada: se tiver boleto → aberto; senão aprovado
     const temBoleto = payments.some(p => p.tipo === 'boleto');
     const situacaoFinal = temBoleto ? 'aberto' : 'aprovado';
 
@@ -732,6 +812,7 @@ export function init(root) {
 
     setBusy(true, "Enviando pedido…");
     try{
+      // 1) Tiny via proxy
       const resp=await fetch(API_URL,{ method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body) });
       const data=await resp.json();
 
@@ -745,6 +826,7 @@ export function init(root) {
       const numeroTiny = tinyRegistro?.numero || '(sem número)';
       showMsg(`Pedido enviado! Nº Tiny: <b>${numeroTiny}</b>`);
 
+      // 2) RTDB pedidos (chave = numero_pedido_ecommerce)
       const clienteRTDB = coletarClienteRTDB();
       await salvarPedidoRTDB({
         vendedorKey,
@@ -757,6 +839,7 @@ export function init(root) {
         situacaoFinal
       });
 
+      // 3) Reset UI
       resetCarrinhoEPagamentos();
 
     }catch(e){
@@ -770,6 +853,7 @@ export function init(root) {
   const btnProp=root.querySelector('#carrinhoProposta-btn-proposta');
   const btnPed =root.querySelector('#carrinhoProposta-btn-pedido');
 
+  // Proposta: grava /propostas (POST ou PATCH se vier de edição)
   async function salvarProposta(status = "rascunho") {
     if (!validarProposta()) { showMsg("Preencha Nome e CPF/CNPJ.", true); return; }
     if (!getCarrinho().length) { showMsg("Adicione itens ao carrinho.", true); return; }
@@ -807,6 +891,7 @@ export function init(root) {
         showMsg(`Proposta salva! <b>#${name}</b>`);
       }
 
+      // limpar handoff e carrinho
       localStorage.removeItem('carrinhoProposta_itens');
       localStorage.removeItem(DESC_MODE_KEY);
       localStorage.removeItem(DESC_GLOBAL_KEY);
@@ -826,6 +911,7 @@ export function init(root) {
     try { await salvarProposta("rascunho"); } catch (e) { showMsg(e.message || "Erro ao salvar", true); }
   });
 
+  // Pedido de Venda: Tiny -> /pedidos -> reset
   btnPed?.addEventListener('click', async () => {
     try {
       if (calcularSaldo() > 0) {
@@ -843,7 +929,7 @@ export function init(root) {
   window.addEventListener("storage", onStorage);
   const onResize=()=> applyNomeWidth(); window.addEventListener("resize", onResize);
 
-  // ===== Bootstrap do handoff =====
+  // ===== Bootstrap do handoff (vem do modal de propostas) =====
   async function bootstrapFromHandoff(){
     try{
       const rawRef = localStorage.getItem(EDIT_REF_KEY);
@@ -852,6 +938,7 @@ export function init(root) {
     const cpf = localStorage.getItem(CLIENTE_CPF_KEY);
     if (cpf && elDoc) {
       elDoc.value = cpf;
+      // reaproveita seu blur para puxar o cadastro do RTDB
       elDoc.dispatchEvent(new Event('blur'));
     }
   }
