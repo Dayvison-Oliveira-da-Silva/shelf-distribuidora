@@ -24,7 +24,7 @@ main {
 
 .produto-card {
   width: 200px;
-  max-height: 380px;  
+  max-height: 337px;  
   border-radius: 10px;
   overflow: hidden;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -438,6 +438,7 @@ input[type="number"] {
 .pm-sec{ background:#fff; border-color:#d1d5db; }
 .pm-pri{ background:#2563eb; color:#fff; }
 .pm-btn:disabled{ opacity:.6; cursor:not-allowed; }
+
 
 
 
