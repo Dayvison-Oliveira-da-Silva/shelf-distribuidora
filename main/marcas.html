@@ -1,135 +1,274 @@
 <main>
+    <div id="quadro-avisos">
+        <style>
+            #quadro-avisos{
+                display:flex;
+                flex-direction:column;
+                
+            }
+        </style>
+        <!-- AVISO: BOLETO -->
+        <div id="aviso-boleto"
+            style="margin:16px 0; border:1px solid #e6eaef; border-radius:14px; background:#fff; box-shadow:0 4px 20px rgba(0,0,0,.04);">
+            <style>
+                #aviso-boleto {
+                    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+                    color: #1f2d2a
+                }
 
-  <!-- AVISO: BOLETO -->
-  <div id="aviso-boleto" style="margin:16px 0; border:1px solid #e6eaef; border-radius:14px; background:#fff; box-shadow:0 4px 20px rgba(0,0,0,.04);">
-    <style>
-      #aviso-boleto { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:#1f2d2a }
-      #aviso-boleto .wrap { display:flex; gap:18px; padding:16px 18px; align-items:flex-start }
-      #aviso-boleto .img { flex:0 0 120px; display:flex; align-items:center; justify-content:center; background:#f4f7fa; border-radius:12px; padding:10px }
-      #aviso-boleto .title { font-weight:800; font-size:18px; color:#0f5b4d; margin:2px 0 6px }
-      #aviso-boleto .tag { background:#fff3cd; color:#8a6d3b; padding:2px 8px; border-radius:999px; font-size:12px; border:1px solid #f2e3a6 }
-      #aviso-boleto p { margin:6px 0 10px; line-height:1.45 }
-      #aviso-boleto ul { margin:0; padding:0 0 0 18px }
-      #aviso-boleto li { margin:6px 0; }
-      #aviso-boleto .ok { color:#107058; font-weight:600 }
-      #aviso-boleto .note { font-size:12px; color:#5e6a67; margin-top:8px }
-      @media (max-width:720px){ #aviso-boleto .wrap{ flex-direction:column } #aviso-boleto .img{ width:100%; } }
-    </style>
+                #aviso-boleto .wrap {
+                    display: flex;
+                    gap: 18px;
+                    padding: 16px 18px;
+                    align-items: flex-start
+                }
 
-    <div class="wrap">
-      <div class="img" aria-hidden="true">
-        <!-- Ícone/ilustração inline -->
-        <svg viewBox="0 0 128 96" width="96" height="72" role="img" aria-label="Boleto bancário">
-          <defs>
-            <linearGradient id="g" x1="0" x2="1">
-              <stop offset="0" stop-color="#1db286"/>
-              <stop offset="1" stop-color="#0f5b4d"/>
-            </linearGradient>
-          </defs>
-          <rect x="6" y="10" width="116" height="76" rx="10" fill="#ffffff" stroke="#cfd8e3"/>
-          <rect x="14" y="20" width="100" height="12" rx="2" fill="#e9eef5"/>
-          <!-- “código de barras” -->
-          <g fill="#8aa0b6">
-            <rect x="16" y="38" width="2"  height="36"/>
-            <rect x="20" y="38" width="4"  height="36"/>
-            <rect x="26" y="38" width="1.5"height="36"/>
-            <rect x="30" y="38" width="3"  height="36"/>
-            <rect x="35" y="38" width="2"  height="36"/>
-            <rect x="40" y="38" width="5"  height="36"/>
-            <rect x="47" y="38" width="1.5"height="36"/>
-            <rect x="50" y="38" width="3"  height="36"/>
-            <rect x="55" y="38" width="2"  height="36"/>
-            <rect x="60" y="38" width="4"  height="36"/>
-            <rect x="66" y="38" width="1.5"height="36"/>
-            <rect x="70" y="38" width="3"  height="36"/>
-            <rect x="75" y="38" width="2"  height="36"/>
-            <rect x="80" y="38" width="5"  height="36"/>
-            <rect x="87" y="38" width="1.5"height="36"/>
-            <rect x="90" y="38" width="3"  height="36"/>
-            <rect x="95" y="38" width="2"  height="36"/>
-            <rect x="100"y="38" width="4"  height="36"/>
-          </g>
-          <!-- selo “ABERTO” -->
-          <g>
-            <rect x="60" y="12" rx="6" width="58" height="18" fill="url(#g)"/>
-            <text x="89" y="25" text-anchor="middle" font-family="system-ui, Arial" font-size="10" fill="#fff" font-weight="700">STATUS: ABERTO</text>
-          </g>
-        </svg>
-      </div>
+                #aviso-boleto .img {
+                    flex: 0 0 120px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: #f4f7fa;
+                    border-radius: 12px;
+                    padding: 10px
+                }
 
-      <div class="txt">
-        <div class="title">Atenção para pedidos com <span class="tag">Boleto</span></div>
-        <p>
-          Quando o cliente paga via <b>boleto</b>, o pedido é enviado ao Tiny com <b>situação “aberto”</b>.
-          Isso acontece porque todo boleto precisa de <b>aprovação do financeiro</b>.
-        </p>
-        <ul>
-          <li>O <b>Banco/Carteira</b> (meio de pagamento) é definido <span class="ok">automaticamente como “Santander”</span>.</li>
-          <li>Você pode informar <b>Dias</b> (offset) e/ou <b>Data</b> (dd/mm/aaaa) para cada parcela do boleto.</li>
-          <li>Outras formas (PIX, Débito, Crédito, Dinheiro) seguem como <b>“aprovado”</b> ao enviar, desde que o total esteja quitado.</li>
-        </ul>
-        <p class="note">
-          Plataforma: este carrinho integra produtos, cadastro do cliente, proposta e <b>pedido Tiny</b> em um só fluxo,
-          com regras automáticas de pagamento e registro do envio — pensado para dar agilidade ao vendedor e
-          transparência ao backoffice.
-        </p>
-      </div>
-    </div>
-  </div>
+                #aviso-boleto .title {
+                    font-weight: 800;
+                    font-size: 18px;
+                    color: #0f5b4d;
+                    margin: 2px 0 6px
+                }
 
-  <!-- AVISO: OFERTAS (mesma estrutura do primeiro, com <style> escopado) -->
-  <div id="aviso-ofertas" style="margin:16px 0; border:1px solid #e6eaef; border-radius:14px; background:#fff; box-shadow:0 4px 20px rgba(0,0,0,.04);">
-    <style>
-      #aviso-ofertas { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:#1f2d2a }
-      #aviso-ofertas .wrap { display:flex; gap:18px; padding:16px 18px; align-items:flex-start }
-      #aviso-ofertas .img { flex:0 0 120px; display:flex; align-items:center; justify-content:center; background:#fff4f3; border-radius:12px; padding:10px }
-      #aviso-ofertas .title { font-weight:800; font-size:18px; color:#8a1d2b; margin:2px 0 6px }
-      #aviso-ofertas .chip { background:#fee2e2; color:#b91c1c; padding:2px 8px; border-radius:999px; font-size:12px; border:1px solid #fecaca }
-      #aviso-ofertas p { margin:6px 0 10px; line-height:1.45 }
-      #aviso-ofertas ul { margin:0; padding:0 0 0 18px }
-      #aviso-ofertas li { margin:6px 0; }
-      #aviso-ofertas .note { font-size:12px; color:#5e6a67; margin-top:8px }
-      @media (max-width:720px){ #aviso-ofertas .wrap{ flex-direction:column } #aviso-ofertas .img{ width:100%; } }
-    </style>
+                #aviso-boleto .tag {
+                    background: #fff3cd;
+                    color: #8a6d3b;
+                    padding: 2px 8px;
+                    border-radius: 999px;
+                    font-size: 12px;
+                    border: 1px solid #f2e3a6
+                }
 
-    <div class="wrap">
-      <div class="img" aria-hidden="true">
-        <!-- Ícone/ilustração inline -->
-        <svg viewBox="0 0 128 96" width="96" height="72" role="img" aria-label="Ofertas promocionais">
-          <defs>
-            <linearGradient id="g-off" x1="0" x2="1">
-              <stop offset="0" stop-color="#ff3b30"/><stop offset="1" stop-color="#ff9500"/>
-            </linearGradient>
-          </defs>
-          <path d="M18 30 L74 12 a6 6 0 0 1 7 3 l24 44 a6 6 0 0 1 -3 8 L46 85 a6 6 0 0 1 -7 -3 L15 38 a6 6 0 0 1 3 -8z" fill="url(#g-off)"/>
-          <circle cx="69" cy="25" r="5" fill="#fff" opacity=".9"/>
-          <g fill="#fff">
-            <circle cx="44" cy="48" r="6"/><circle cx="74" cy="66" r="6"/>
-            <rect x="50" y="50" width="26" height="6" transform="rotate(-32 63 53)" rx="3"/>
-          </g>
-        </svg>
-      </div>
+                #aviso-boleto p {
+                    margin: 6px 0 10px;
+                    line-height: 1.45
+                }
 
-      <div class="txt">
-        <div class="title">
-          Dica: encontre os itens em promoção
-          <span class="chip">PROMOÇÃO</span>
+                #aviso-boleto ul {
+                    margin: 0;
+                    padding: 0 0 0 18px
+                }
+
+                #aviso-boleto li {
+                    margin: 6px 0;
+                }
+
+                #aviso-boleto .ok {
+                    color: #107058;
+                    font-weight: 600
+                }
+
+                #aviso-boleto .note {
+                    font-size: 12px;
+                    color: #5e6a67;
+                    margin-top: 8px
+                }
+
+                @media (max-width:720px) {
+                    #aviso-boleto .wrap {
+                        flex-direction: column
+                    }
+
+                    #aviso-boleto .img {
+                        width: 100%;
+                    }
+                }
+            </style>
+
+            <div class="wrap">
+                <div class="img" aria-hidden="true">
+                    <!-- Ícone/ilustração inline -->
+                    <svg viewBox="0 0 128 96" width="96" height="72" role="img" aria-label="Boleto bancário">
+                        <defs>
+                            <linearGradient id="g" x1="0" x2="1">
+                                <stop offset="0" stop-color="#1db286" />
+                                <stop offset="1" stop-color="#0f5b4d" />
+                            </linearGradient>
+                        </defs>
+                        <rect x="6" y="10" width="116" height="76" rx="10" fill="#ffffff" stroke="#cfd8e3" />
+                        <rect x="14" y="20" width="100" height="12" rx="2" fill="#e9eef5" />
+                        <!-- “código de barras” -->
+                        <g fill="#8aa0b6">
+                            <rect x="16" y="38" width="2" height="36" />
+                            <rect x="20" y="38" width="4" height="36" />
+                            <rect x="26" y="38" width="1.5" height="36" />
+                            <rect x="30" y="38" width="3" height="36" />
+                            <rect x="35" y="38" width="2" height="36" />
+                            <rect x="40" y="38" width="5" height="36" />
+                            <rect x="47" y="38" width="1.5" height="36" />
+                            <rect x="50" y="38" width="3" height="36" />
+                            <rect x="55" y="38" width="2" height="36" />
+                            <rect x="60" y="38" width="4" height="36" />
+                            <rect x="66" y="38" width="1.5" height="36" />
+                            <rect x="70" y="38" width="3" height="36" />
+                            <rect x="75" y="38" width="2" height="36" />
+                            <rect x="80" y="38" width="5" height="36" />
+                            <rect x="87" y="38" width="1.5" height="36" />
+                            <rect x="90" y="38" width="3" height="36" />
+                            <rect x="95" y="38" width="2" height="36" />
+                            <rect x="100" y="38" width="4" height="36" />
+                        </g>
+                        <!-- selo “ABERTO” -->
+                        <g>
+                            <rect x="60" y="12" rx="6" width="58" height="18" fill="url(#g)" />
+                            <text x="89" y="25" text-anchor="middle" font-family="system-ui, Arial" font-size="10"
+                                fill="#fff" font-weight="700">STATUS: ABERTO</text>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="txt">
+                    <div class="title">Atenção para pedidos com <span class="tag">Boleto</span></div>
+                    <p>
+                        Quando o cliente paga via <b>boleto</b>, o pedido é enviado ao Tiny com <b>situação
+                            “aberto”</b>.
+                        Isso acontece porque todo boleto precisa de <b>aprovação do financeiro</b>.
+                    </p>
+                    <ul>
+                        <li>O <b>Banco/Carteira</b> (meio de pagamento) é definido <span class="ok">automaticamente como
+                                “Santander”</span>.</li>
+                        <li>Você pode informar <b>Dias</b> (offset) e/ou <b>Data</b> (dd/mm/aaaa) para cada parcela do
+                            boleto.</li>
+                        <li>Outras formas (PIX, Débito, Crédito, Dinheiro) seguem como <b>“aprovado”</b> ao enviar,
+                            desde que o total esteja quitado.</li>
+                    </ul>
+                    <p class="note">
+                        Plataforma: este carrinho integra produtos, cadastro do cliente, proposta e <b>pedido Tiny</b>
+                        em um só fluxo,
+                        com regras automáticas de pagamento e registro do envio — pensado para dar agilidade ao vendedor
+                        e
+                        transparência ao backoffice.
+                    </p>
+                </div>
+            </div>
         </div>
-        <p>
-          Para visualizar <b>apenas</b> os produtos com desconto, digite <b>OFF</b> na barra de busca.
-          O filtro reconhece <i>OFF</i>, <i>Off</i> ou <i>off</i>.
-        </p>
-        <ul>
-          <li>Use <b>somente</b> <code>OFF</code> para listar as ofertas.</li>
-          <li>Se combinar com outras palavras (ex.: “off talge”), o filtro pode <b>não retornar</b> os itens esperados.</li>
-          <li>Para voltar ao catálogo completo, basta limpar o campo de busca.</li>
-          <li>Os produtos em promoção exibem selo de desconto e preço destacado.</li>
-        </ul>
-        <p class="note">
-          Dica rápida: escreveu <b>OFF</b>, vê ofertas. Apagou, volta a ver tudo.
-        </p>
-      </div>
-    </div>
-  </div>
 
+        <!-- AVISO: OFERTAS (mesma estrutura do primeiro, com <style> escopado) -->
+        <div id="aviso-ofertas"
+            style="margin:16px 0; border:1px solid #e6eaef; border-radius:14px; background:#fff; box-shadow:0 4px 20px rgba(0,0,0,.04);">
+            <style>
+                #aviso-ofertas {
+                    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+                    color: #1f2d2a
+                }
+
+                #aviso-ofertas .wrap {
+                    display: flex;
+                    gap: 18px;
+                    padding: 16px 18px;
+                    align-items: flex-start
+                }
+
+                #aviso-ofertas .img {
+                    flex: 0 0 120px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: #fff4f3;
+                    border-radius: 12px;
+                    padding: 10px
+                }
+
+                #aviso-ofertas .title {
+                    font-weight: 800;
+                    font-size: 18px;
+                    color: #8a1d2b;
+                    margin: 2px 0 6px
+                }
+
+                #aviso-ofertas .chip {
+                    background: #fee2e2;
+                    color: #b91c1c;
+                    padding: 2px 8px;
+                    border-radius: 999px;
+                    font-size: 12px;
+                    border: 1px solid #fecaca
+                }
+
+                #aviso-ofertas p {
+                    margin: 6px 0 10px;
+                    line-height: 1.45
+                }
+
+                #aviso-ofertas ul {
+                    margin: 0;
+                    padding: 0 0 0 18px
+                }
+
+                #aviso-ofertas li {
+                    margin: 6px 0;
+                }
+
+                #aviso-ofertas .note {
+                    font-size: 12px;
+                    color: #5e6a67;
+                    margin-top: 8px
+                }
+
+                @media (max-width:720px) {
+                    #aviso-ofertas .wrap {
+                        flex-direction: column
+                    }
+
+                    #aviso-ofertas .img {
+                        width: 100%;
+                    }
+                }
+            </style>
+
+            <div class="wrap">
+                <div class="img" aria-hidden="true">
+                    <!-- Ícone/ilustração inline -->
+                    <svg viewBox="0 0 128 96" width="96" height="72" role="img" aria-label="Ofertas promocionais">
+                        <defs>
+                            <linearGradient id="g-off" x1="0" x2="1">
+                                <stop offset="0" stop-color="#ff3b30" />
+                                <stop offset="1" stop-color="#ff9500" />
+                            </linearGradient>
+                        </defs>
+                        <path
+                            d="M18 30 L74 12 a6 6 0 0 1 7 3 l24 44 a6 6 0 0 1 -3 8 L46 85 a6 6 0 0 1 -7 -3 L15 38 a6 6 0 0 1 3 -8z"
+                            fill="url(#g-off)" />
+                        <circle cx="69" cy="25" r="5" fill="#fff" opacity=".9" />
+                        <g fill="#fff">
+                            <circle cx="44" cy="48" r="6" />
+                            <circle cx="74" cy="66" r="6" />
+                            <rect x="50" y="50" width="26" height="6" transform="rotate(-32 63 53)" rx="3" />
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="txt">
+                    <div class="title">
+                        Dica: encontre os itens em promoção
+                        <span class="chip">PROMOÇÃO</span>
+                    </div>
+                    <p>
+                        Para visualizar <b>apenas</b> os produtos com desconto, digite <b>OFF</b> na barra de busca.
+                        O filtro reconhece <i>OFF</i>, <i>Off</i> ou <i>off</i>.
+                    </p>
+                    <ul>
+                        <li>Use <b>somente</b> <code>OFF</code> para listar as ofertas.</li>
+                        <li>Se combinar com outras palavras (ex.: “off talge”), o filtro pode <b>não retornar</b> os
+                            itens esperados.</li>
+                        <li>Para voltar ao catálogo completo, basta limpar o campo de busca.</li>
+                        <li>Os produtos em promoção exibem selo de desconto e preço destacado.</li>
+                    </ul>
+                    <p class="note">
+                        Dica rápida: escreveu <b>OFF</b>, vê ofertas. Apagou, volta a ver tudo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
