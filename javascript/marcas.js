@@ -51,7 +51,7 @@
             "825720218": {
               chip: "ID: 825720218",
               itens: [
-                "Cadastro de 10 novos clientes com venda gerada (pedido mínimo R$300) → +R$ 200",
+                "Cadastro de 10 novos clientes com venda gerada (pedido mínimo R$200) → +R$ 200",
                 "Alcança a meta de R$70.000,00 → +R$ 500",
                 "Cadastro de nova rede com CNPJ Matriz + filiais → +R$ 500",
                 "Vende R$ 10.000 em SKUs prioritários → +R$ 200"
@@ -61,7 +61,7 @@
             "821382109": {
               chip: "ID: 821382109",
               itens: [
-                "Cadastro de 10 novos clientes com venda gerada (pedido mínimo R$300) → +R$ 200",
+                "Cadastro de 10 novos clientes com venda gerada (pedido mínimo R$200) → +R$ 200",
                 "Alcança a meta de R$120.000,00 → +R$ 500",
                 "Cadastro de nova rede com CNPJ Matriz + filiais → +R$ 500",
                 "Vende R$ 10.000 em SKUs prioritários → +R$ 200"
@@ -96,4 +96,5 @@
         }
 
         renderBonus();
+
       })();
