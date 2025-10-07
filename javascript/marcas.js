@@ -28,10 +28,10 @@
             varejo: {
               chip: "Varejo",
               itens: [
-                "Faz 30 coberturas de clientes já cadastrados (pedido mínimo R$ 200) → +R$ 300",
+                "Fazer 30 coberturas de clientes já cadastrados (pedido mínimo R$ 200) → +R$ 300",
                 "Cadastro de 20 novos clientes com venda gerada (pedido mínimo R$ 200) → +R$ 400",
-                "Alcança a meta de R$ 25.000,00 → +R$ 400",
-                "Vende R$ 4.000 em SKUs prioritários → +R$ 300"
+                "Alcançar a meta de R$ 25.000,00 → +R$ 400",
+                "Vender R$ 4.000 em SKUs prioritários → +R$ 300"
               ],
               total: "Totalizando R$ 1.400 em bonificações"
             },
@@ -39,9 +39,9 @@
               chip: "Grandes Contas",
               itens: [
                 "Cadastro de 10 novos clientes com venda gerada (pedido mínimo R$300) → +R$ 200",
-                "Alcança a meta de R$55.000,00 → +R$ 500",
+                "Alcançar a meta de R$55.000,00 → +R$ 500",
                 "Cadastro de nova rede com CNPJ Matriz + filiais → +R$ 500",
-                "Vende R$ 4.000 em SKUs prioritários → +R$ 200"
+                "Vender R$ 4.000 em SKUs prioritários → +R$ 200"
               ],
               total: "Totalizando R$ 1.400 em bonificações"
             }
@@ -52,9 +52,9 @@
               chip: "ID: 825720218",
               itens: [
                 "Cadastro de 10 novos clientes com venda gerada (pedido mínimo R$200) → +R$ 200",
-                "Alcança a meta de R$70.000,00 → +R$ 500",
+                "Alcançar a meta de R$70.000,00 → +R$ 500",
                 "Cadastro de nova rede com CNPJ Matriz + filiais → +R$ 500",
-                "Vende R$ 10.000 em SKUs prioritários → +R$ 200"
+                "Vender R$ 10.000 em SKUs prioritários → +R$ 200"
               ],
               total: "Totalizando R$ 1.400 em bonificações"
             },
@@ -62,9 +62,9 @@
               chip: "ID: 821382109",
               itens: [
                 "Cadastro de 10 novos clientes com venda gerada (pedido mínimo R$200) → +R$ 200",
-                "Alcança a meta de R$120.000,00 → +R$ 500",
+                "Alcançar a meta de R$120.000,00 → +R$ 500",
                 "Cadastro de nova rede com CNPJ Matriz + filiais → +R$ 500",
-                "Vende R$ 10.000 em SKUs prioritários → +R$ 200"
+                "Vender R$ 10.000 em SKUs prioritários → +R$ 200"
               ],
               total: "Totalizando R$ 1.400 em bonificações"
             }
@@ -98,3 +98,4 @@
         renderBonus();
 
       })();
+
