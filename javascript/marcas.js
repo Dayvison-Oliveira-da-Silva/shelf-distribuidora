@@ -53,7 +53,7 @@
               itens: [
                 "Cadastro de 10 novos clientes com venda gerada (pedido mínimo R$200) → +R$ 200",
                 "Alcançar a meta de R$70.000,00 → +R$ 500",
-                "Cadastro de nova rede com CNPJ Matriz + filiais → +R$ 500",
+                "Positivação para nova rede (Revenda) → +R$ 500",
                 "Vender R$ 10.000 em SKUs prioritários → +R$ 200"
               ],
               total: "Totalizando R$ 1.400 em bonificações"
@@ -63,7 +63,7 @@
               itens: [
                 "Cadastro de 10 novos clientes com venda gerada (pedido mínimo R$200) → +R$ 200",
                 "Alcançar a meta de R$120.000,00 → +R$ 500",
-                "Cadastro de nova rede com CNPJ Matriz + filiais → +R$ 500",
+                "Positivação para nova rede (Revenda) → +R$ 500",
                 "Vender R$ 10.000 em SKUs prioritários → +R$ 200"
               ],
               total: "Totalizando R$ 1.400 em bonificações"
@@ -98,4 +98,5 @@
         renderBonus();
 
       })();
+
 
