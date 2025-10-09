@@ -1,5 +1,5 @@
 {
-  "CONSTRUTORA-teste09/10": { "categorias": ["industria", "higiene-limpeza", "epis"] },
+  "CONSTRUTORA": { "categorias": ["industria", "higiene-limpeza", "epis"] },
   "COZINHA INDUSTRIAL": { "categorias": ["higiene-limpeza", "epis"] },
   "DISTRIBUIDORES ATACADISTA": { "categorias": ["hospitalar", "higiene-limpeza", "fraldas", "epis"] },
   "INDUSTRIA": { "categorias": ["industria", "hospitalar", "higiene-limpeza", "epis"] },
