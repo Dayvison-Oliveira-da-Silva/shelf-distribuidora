@@ -15,6 +15,8 @@
   "LABORATÓRIO": { "categorias": ["hospitalar", "higiene-limpeza", "epis", "equipamentos", "medicamentos"] },
   "ACOUGUE / FRIGORIFICO": { "categorias": ["higiene-limpeza", "epis"] },
   "CASA DE REPOUSO / ONG/ ASILO / ABRIGO": { "categorias": ["hospitalar", "higiene-limpeza", "fraldas", "epis", "medicamentos"] },
+  "HOTEL/MOTEL": { "categorias": ["higiene-limpeza", "epis"] },
+  "CONDOMINIO": { "categorias": ["higiene-limpeza", "epis"] },
   "EMPRESA DE LIMPEZA": { "categorias": ["higiene-limpeza", "epis"] },
   "ESCOLA": { "categorias": ["industria", "hospitalar", "higiene-limpeza", "fraldas", "epis", "medicamentos"] },
   "FARMACIAS E DROGARIAS BAIRRO": { "categorias": ["hospitalar", "higiene-limpeza", "fraldas", "epis", "medicamentos"] },
