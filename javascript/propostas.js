@@ -492,14 +492,21 @@ async function shareCurrentProposal() {
 function buildOpenLink(vendorKey, id) { const u = new URL(window.location.href); u.searchParams.set("open", id); u.searchParams.set("vendor", vendorKey); return u.toString(); }
 
 // imprimir / pdf
+// imprimir / pdf
 function printOrPdf(kind = "print") {
   const s = Modal.state;
   const win = window.open("", "_blank");
   const rows = s.itens.map(it => {
     const nome = it.nome || "—";
+    const img = (it.imagemUrl && String(it.imagemUrl).trim()) || "img/logo-nav.png";
     return `
       <tr>
-        <td>${nome}<br><small style="color:#6b7280">${it.sku}</small></td>
+        <td>
+          <div style="display:flex;align-items:center;gap:8px">
+            <img src="${img}" alt="" style="width:42px;height:42px;object-fit:contain;background:#fff;border:1px solid #e5e7eb;border-radius:6px">
+            <div>${nome}<br><small style="color:#6b7280">${it.sku}</small></div>
+          </div>
+        </td>
         <td style="text-align:right">${Number(it.quantidade)||0}</td>
         <td style="text-align:right">${fmtBRL(Number(it.preco)||0)}</td>
         <td style="text-align:right">${s.descMode==='item' ? (Number(it.descPerc)||0).toFixed(1) +'%' : '-'}</td>
@@ -689,3 +696,4 @@ function handoffToCart(){
   closeModal();
   window.location.hash = "#carrinho";
 }
+
