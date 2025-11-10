@@ -1,390 +1,676 @@
-  <main>
+<main>
     <div id="quadro-avisos">
-      <style>
-        #quadro-avisos {
-          display: flex;
-          flex-direction: column;
-
-        }
-      </style>
-      <!-- AVISO: BOLETO -->
-      <div id="aviso-boleto"
-        style="margin:16px 0; border:1px solid #e6eaef; border-radius:14px; background:#fff; box-shadow:0 4px 20px rgba(0,0,0,.04);">
         <style>
-          #aviso-boleto {
-            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-            color: #1f2d2a
-          }
+            #quadro-avisos {
+                display: flex;
+                flex-direction: column;
 
-          #aviso-boleto .wrap {
-            display: flex;
-            gap: 18px;
-            padding: 16px 18px;
-            align-items: flex-start
-          }
-
-          #aviso-boleto .img {
-            flex: 0 0 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f4f7fa;
-            border-radius: 12px;
-            padding: 10px
-          }
-
-          #aviso-boleto .title {
-            font-weight: 800;
-            font-size: 18px;
-            color: #0f5b4d;
-            margin: 2px 0 6px
-          }
-
-          #aviso-boleto .tag {
-            background: #fff3cd;
-            color: #8a6d3b;
-            padding: 2px 8px;
-            border-radius: 999px;
-            font-size: 12px;
-            border: 1px solid #f2e3a6
-          }
-
-          #aviso-boleto p {
-            margin: 6px 0 10px;
-            line-height: 1.45
-          }
-
-          #aviso-boleto ul {
-            margin: 0;
-            padding: 0 0 0 18px
-          }
-
-          #aviso-boleto li {
-            margin: 6px 0;
-          }
-
-          #aviso-boleto .ok {
-            color: #107058;
-            font-weight: 600
-          }
-
-          #aviso-boleto .note {
-            font-size: 12px;
-            color: #5e6a67;
-            margin-top: 8px
-          }
-
-          @media (max-width:720px) {
-            #aviso-boleto .wrap {
-              flex-direction: column
             }
-
-            #aviso-boleto .img {
-              width: 100%;
-            }
-          }
         </style>
+        <!-- AVISO: BOLETO -->
+        <div id="aviso-boleto"
+            style="margin:16px 0; border:1px solid #e6eaef; border-radius:14px; background:#fff; box-shadow:0 4px 20px rgba(0,0,0,.04);">
+            <style>
+                #aviso-boleto {
+                    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+                    color: #1f2d2a
+                }
 
-        <div class="wrap">
-          <div class="img" aria-hidden="true">
-            <!-- Ícone/ilustração inline -->
-            <svg viewBox="0 0 128 96" width="96" height="72" role="img" aria-label="Boleto bancário">
-              <defs>
-                <linearGradient id="g" x1="0" x2="1">
-                  <stop offset="0" stop-color="#1db286" />
-                  <stop offset="1" stop-color="#0f5b4d" />
-                </linearGradient>
-              </defs>
-              <rect x="6" y="10" width="116" height="76" rx="10" fill="#ffffff" stroke="#cfd8e3" />
-              <rect x="14" y="20" width="100" height="12" rx="2" fill="#e9eef5" />
-              <!-- “código de barras” -->
-              <g fill="#8aa0b6">
-                <rect x="16" y="38" width="2" height="36" />
-                <rect x="20" y="38" width="4" height="36" />
-                <rect x="26" y="38" width="1.5" height="36" />
-                <rect x="30" y="38" width="3" height="36" />
-                <rect x="35" y="38" width="2" height="36" />
-                <rect x="40" y="38" width="5" height="36" />
-                <rect x="47" y="38" width="1.5" height="36" />
-                <rect x="50" y="38" width="3" height="36" />
-                <rect x="55" y="38" width="2" height="36" />
-                <rect x="60" y="38" width="4" height="36" />
-                <rect x="66" y="38" width="1.5" height="36" />
-                <rect x="70" y="38" width="3" height="36" />
-                <rect x="75" y="38" width="2" height="36" />
-                <rect x="80" y="38" width="5" height="36" />
-                <rect x="87" y="38" width="1.5" height="36" />
-                <rect x="90" y="38" width="3" height="36" />
-                <rect x="95" y="38" width="2" height="36" />
-                <rect x="100" y="38" width="4" height="36" />
-              </g>
-              <!-- selo “ABERTO” -->
-              <g>
-                <rect x="60" y="12" rx="6" width="58" height="18" fill="url(#g)" />
-                <text x="89" y="25" text-anchor="middle" font-family="system-ui, Arial" font-size="10" fill="#fff"
-                  font-weight="700">STATUS: ABERTO</text>
-              </g>
-            </svg>
-          </div>
+                #aviso-boleto .wrap {
+                    display: flex;
+                    gap: 18px;
+                    padding: 16px 18px;
+                    align-items: flex-start
+                }
 
-          <div class="txt">
-            <div class="title">Atenção para pedidos com <span class="tag">Boleto</span></div>
-            <p>
-              Quando o cliente paga via <b>boleto</b>, o pedido é enviado ao Tiny com <b>situação
-                “aberto”</b>.
-              Isso acontece porque todo boleto precisa de <b>aprovação do financeiro</b>.
-            </p>
-            <ul>
-              <li>O <b>Banco/Carteira</b> (meio de pagamento) é definido <span class="ok">automaticamente como
-                  “Santander”</span>.</li>
-              <li>Você pode informar <b>Dias</b> (offset) e/ou <b>Data</b> (dd/mm/aaaa) para cada parcela do
-                boleto.</li>
-              <li>Outras formas (PIX, Débito, Crédito, Dinheiro) seguem como <b>“aprovado”</b> ao enviar,
-                desde que o total esteja quitado.</li>
-            </ul>
-            <p class="note">
-              Plataforma: este carrinho integra produtos, cadastro do cliente, proposta e <b>pedido Tiny</b>
-              em um só fluxo,
-              com regras automáticas de pagamento e registro do envio — pensado para dar agilidade ao vendedor
-              e
-              transparência ao backoffice.
-            </p>
-          </div>
-        </div>
-      </div>
+                #aviso-boleto .img {
+                    flex: 0 0 120px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: #f4f7fa;
+                    border-radius: 12px;
+                    padding: 10px
+                }
 
-      <!-- AVISO: OFERTAS (mesma estrutura do primeiro, com <style> escopado) -->
-      <div id="aviso-ofertas"
-        style="margin:16px 0; border:1px solid #e6eaef; border-radius:14px; background:#fff; box-shadow:0 4px 20px rgba(0,0,0,.04);">
-        <style>
-          #aviso-ofertas {
-            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-            color: #1f2d2a
-          }
+                #aviso-boleto .title {
+                    font-weight: 800;
+                    font-size: 18px;
+                    color: #0f5b4d;
+                    margin: 2px 0 6px
+                }
 
-          #aviso-ofertas .wrap {
-            display: flex;
-            gap: 18px;
-            padding: 16px 18px;
-            align-items: flex-start
-          }
+                #aviso-boleto .tag {
+                    background: #fff3cd;
+                    color: #8a6d3b;
+                    padding: 2px 8px;
+                    border-radius: 999px;
+                    font-size: 12px;
+                    border: 1px solid #f2e3a6
+                }
 
-          #aviso-ofertas .img {
-            flex: 0 0 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #fff4f3;
-            border-radius: 12px;
-            padding: 10px
-          }
+                #aviso-boleto p {
+                    margin: 6px 0 10px;
+                    line-height: 1.45
+                }
 
-          #aviso-ofertas .title {
-            font-weight: 800;
-            font-size: 18px;
-            color: #8a1d2b;
-            margin: 2px 0 6px
-          }
+                #aviso-boleto ul {
+                    margin: 0;
+                    padding: 0 0 0 18px
+                }
 
-          #aviso-ofertas .chip {
-            background: #fee2e2;
-            color: #b91c1c;
-            padding: 2px 8px;
-            border-radius: 999px;
-            font-size: 12px;
-            border: 1px solid #fecaca
-          }
+                #aviso-boleto li {
+                    margin: 6px 0;
+                }
 
-          #aviso-ofertas p {
-            margin: 6px 0 10px;
-            line-height: 1.45
-          }
+                #aviso-boleto .ok {
+                    color: #107058;
+                    font-weight: 600
+                }
 
-          #aviso-ofertas ul {
-            margin: 0;
-            padding: 0 0 0 18px
-          }
+                #aviso-boleto .note {
+                    font-size: 12px;
+                    color: #5e6a67;
+                    margin-top: 8px
+                }
 
-          #aviso-ofertas li {
-            margin: 6px 0;
-          }
+                @media (max-width:720px) {
+                    #aviso-boleto .wrap {
+                        flex-direction: column
+                    }
 
-          #aviso-ofertas .note {
-            font-size: 12px;
-            color: #5e6a67;
-            margin-top: 8px
-          }
+                    #aviso-boleto .img {
+                        width: 100%;
+                    }
+                }
+            </style>
 
-          @media (max-width:720px) {
-            #aviso-ofertas .wrap {
-              flex-direction: column
-            }
+            <div class="wrap">
+                <div class="img" aria-hidden="true">
+                    <!-- Ícone/ilustração inline -->
+                    <svg viewBox="0 0 128 96" width="96" height="72" role="img" aria-label="Boleto bancário">
+                        <defs>
+                            <linearGradient id="g" x1="0" x2="1">
+                                <stop offset="0" stop-color="#1db286" />
+                                <stop offset="1" stop-color="#0f5b4d" />
+                            </linearGradient>
+                        </defs>
+                        <rect x="6" y="10" width="116" height="76" rx="10" fill="#ffffff" stroke="#cfd8e3" />
+                        <rect x="14" y="20" width="100" height="12" rx="2" fill="#e9eef5" />
+                        <!-- “código de barras” -->
+                        <g fill="#8aa0b6">
+                            <rect x="16" y="38" width="2" height="36" />
+                            <rect x="20" y="38" width="4" height="36" />
+                            <rect x="26" y="38" width="1.5" height="36" />
+                            <rect x="30" y="38" width="3" height="36" />
+                            <rect x="35" y="38" width="2" height="36" />
+                            <rect x="40" y="38" width="5" height="36" />
+                            <rect x="47" y="38" width="1.5" height="36" />
+                            <rect x="50" y="38" width="3" height="36" />
+                            <rect x="55" y="38" width="2" height="36" />
+                            <rect x="60" y="38" width="4" height="36" />
+                            <rect x="66" y="38" width="1.5" height="36" />
+                            <rect x="70" y="38" width="3" height="36" />
+                            <rect x="75" y="38" width="2" height="36" />
+                            <rect x="80" y="38" width="5" height="36" />
+                            <rect x="87" y="38" width="1.5" height="36" />
+                            <rect x="90" y="38" width="3" height="36" />
+                            <rect x="95" y="38" width="2" height="36" />
+                            <rect x="100" y="38" width="4" height="36" />
+                        </g>
+                        <!-- selo “ABERTO” -->
+                        <g>
+                            <rect x="60" y="12" rx="6" width="58" height="18" fill="url(#g)" />
+                            <text x="89" y="25" text-anchor="middle" font-family="system-ui, Arial" font-size="10"
+                                fill="#fff" font-weight="700">STATUS: ABERTO</text>
+                        </g>
+                    </svg>
+                </div>
 
-            #aviso-ofertas .img {
-              width: 100%;
-            }
-          }
-        </style>
-
-        <div class="wrap">
-          <div class="img" aria-hidden="true">
-            <!-- Ícone/ilustração inline -->
-            <svg viewBox="0 0 128 96" width="96" height="72" role="img" aria-label="Ofertas promocionais">
-              <defs>
-                <linearGradient id="g-off" x1="0" x2="1">
-                  <stop offset="0" stop-color="#ff3b30" />
-                  <stop offset="1" stop-color="#ff9500" />
-                </linearGradient>
-              </defs>
-              <path
-                d="M18 30 L74 12 a6 6 0 0 1 7 3 l24 44 a6 6 0 0 1 -3 8 L46 85 a6 6 0 0 1 -7 -3 L15 38 a6 6 0 0 1 3 -8z"
-                fill="url(#g-off)" />
-              <circle cx="69" cy="25" r="5" fill="#fff" opacity=".9" />
-              <g fill="#fff">
-                <circle cx="44" cy="48" r="6" />
-                <circle cx="74" cy="66" r="6" />
-                <rect x="50" y="50" width="26" height="6" transform="rotate(-32 63 53)" rx="3" />
-              </g>
-            </svg>
-          </div>
-
-          <div class="txt">
-            <div class="title">
-              Dica: encontre os itens em promoção
-              <span class="chip">PROMOÇÃO</span>
+                <div class="txt">
+                    <div class="title">Atenção para pedidos com <span class="tag">Boleto</span></div>
+                    <p>
+                        Quando o cliente paga via <b>boleto</b>, o pedido é enviado ao Tiny com <b>situação
+                            “aberto”</b>.
+                        Isso acontece porque todo boleto precisa de <b>aprovação do financeiro</b>.
+                    </p>
+                    <ul>
+                        <li>O <b>Banco/Carteira</b> (meio de pagamento) é definido <span class="ok">automaticamente como
+                                “Santander”</span>.</li>
+                        <li>Você pode informar <b>Dias</b> (offset) e/ou <b>Data</b> (dd/mm/aaaa) para cada parcela do
+                            boleto.</li>
+                        <li>Outras formas (PIX, Débito, Crédito, Dinheiro) seguem como <b>“aprovado”</b> ao enviar,
+                            desde que o total esteja quitado.</li>
+                    </ul>
+                    <p class="note">
+                        Plataforma: este carrinho integra produtos, cadastro do cliente, proposta e <b>pedido Tiny</b>
+                        em um só fluxo,
+                        com regras automáticas de pagamento e registro do envio — pensado para dar agilidade ao vendedor
+                        e
+                        transparência ao backoffice.
+                    </p>
+                </div>
             </div>
-            <p>
-              Para visualizar <b>apenas</b> os produtos com desconto, digite <b>OFF</b> na barra de busca.
-              O filtro reconhece <i>OFF</i>, <i>Off</i> ou <i>off</i>.
-            </p>
-            <ul>
-              <li>Use <b>somente</b> <code>OFF</code> para listar as ofertas.</li>
-              <li>Se combinar com outras palavras (ex.: “off talge”), o filtro pode <b>não retornar</b> os
-                itens esperados.</li>
-              <li>Para voltar ao catálogo completo, basta limpar o campo de busca.</li>
-              <li>Os produtos em promoção exibem selo de desconto e preço destacado.</li>
-            </ul>
-            <p class="note">
-              Dica rápida: escreveu <b>OFF</b>, vê ofertas. Apagou, volta a ver tudo.
-            </p>
-          </div>
         </div>
-      </div>
-      <!-- AVISO: BONIFICAÇÕES (dinâmico por vendedor) -->
-      <div id="aviso-bonus"
-        style="margin:16px 0; border:1px solid #e6eaef; border-radius:14px; background:#fff; box-shadow:0 4px 20px rgba(0,0,0,.04);">
-        <style>
-          #aviso-bonus {
-            font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-            color: #1f2d2a
-          }
 
-          #aviso-bonus .wrap {
-            display: flex;
-            gap: 18px;
-            padding: 16px 18px;
-            align-items: flex-start
-          }
+        <!-- AVISO: OFERTAS (mesma estrutura do primeiro, com <style> escopado) -->
+        <div id="aviso-ofertas"
+            style="margin:16px 0; border:1px solid #e6eaef; border-radius:14px; background:#fff; box-shadow:0 4px 20px rgba(0,0,0,.04);">
+            <style>
+                #aviso-ofertas {
+                    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+                    color: #1f2d2a
+                }
 
-          #aviso-bonus .img {
-            flex: 0 0 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f3f8f5;
-            border-radius: 12px;
-            padding: 10px
-          }
+                #aviso-ofertas .wrap {
+                    display: flex;
+                    gap: 18px;
+                    padding: 16px 18px;
+                    align-items: flex-start
+                }
 
-          #aviso-bonus .title {
-            font-weight: 800;
-            font-size: 18px;
-            color: #0f5132;
-            margin: 2px 0 6px
-          }
+                #aviso-ofertas .img {
+                    flex: 0 0 120px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: #fff4f3;
+                    border-radius: 12px;
+                    padding: 10px
+                }
 
-          #aviso-bonus .chip {
-            background: #d1fae5;
-            color: #065f46;
-            padding: 2px 8px;
-            border-radius: 999px;
-            font-size: 12px;
-            border: 1px solid #a7f3d0
-          }
+                #aviso-ofertas .title {
+                    font-weight: 800;
+                    font-size: 18px;
+                    color: #8a1d2b;
+                    margin: 2px 0 6px
+                }
 
-          #aviso-bonus p {
-            margin: 6px 0 10px;
-            line-height: 1.45
-          }
+                #aviso-ofertas .chip {
+                    background: #fee2e2;
+                    color: #b91c1c;
+                    padding: 2px 8px;
+                    border-radius: 999px;
+                    font-size: 12px;
+                    border: 1px solid #fecaca
+                }
 
-          #aviso-bonus ul {
-            margin: 0;
-            padding: 0 0 0 18px
-          }
+                #aviso-ofertas p {
+                    margin: 6px 0 10px;
+                    line-height: 1.45
+                }
 
-          #aviso-bonus li {
-            margin: 6px 0;
-          }
+                #aviso-ofertas ul {
+                    margin: 0;
+                    padding: 0 0 0 18px
+                }
 
-          #aviso-bonus .total {
-            margin-top: 10px;
-            font-weight: 800;
-            color: #0f5132
-          }
+                #aviso-ofertas li {
+                    margin: 6px 0;
+                }
 
-          #aviso-bonus .note {
-            font-size: 12px;
-            color: #5e6a67;
-            margin-top: 6px
-          }
+                #aviso-ofertas .note {
+                    font-size: 12px;
+                    color: #5e6a67;
+                    margin-top: 8px
+                }
 
-          @media (max-width:720px) {
-            #aviso-bonus .wrap {
-              flex-direction: column
-            }
+                @media (max-width:720px) {
+                    #aviso-ofertas .wrap {
+                        flex-direction: column
+                    }
 
-            #aviso-bonus .img {
-              width: 100%
-            }
-          }
-        </style>
+                    #aviso-ofertas .img {
+                        width: 100%;
+                    }
+                }
+            </style>
 
-        <div class="wrap">
-          <div class="img" aria-hidden="true">
-            <!-- selo/ilustração -->
-            <svg viewBox="0 0 128 96" width="96" height="72" role="img" aria-label="Bonificações">
-              <defs>
-                <linearGradient id="g-bonus" x1="0" x2="1">
-                  <stop offset="0" stop-color="#22c55e" />
-                  <stop offset="1" stop-color="#0ea5e9" />
-                </linearGradient>
-              </defs>
-              <rect x="8" y="12" rx="10" width="112" height="72" fill="#fff" stroke="#cfe3d6" />
-              <path d="M20 64h88" stroke="#cfe3d6" />
-              <circle cx="40" cy="40" r="16" fill="url(#g-bonus)" />
-              <path d="M34 40l4 4 8-8" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"
-                stroke-linejoin="round" />
-              <rect x="60" y="32" rx="3" width="40" height="6" fill="#e6f7ee" />
-              <rect x="60" y="44" rx="3" width="36" height="6" fill="#e6f7ee" />
-            </svg>
-          </div>
+            <div class="wrap">
+                <div class="img" aria-hidden="true">
+                    <!-- Ícone/ilustração inline -->
+                    <svg viewBox="0 0 128 96" width="96" height="72" role="img" aria-label="Ofertas promocionais">
+                        <defs>
+                            <linearGradient id="g-off" x1="0" x2="1">
+                                <stop offset="0" stop-color="#ff3b30" />
+                                <stop offset="1" stop-color="#ff9500" />
+                            </linearGradient>
+                        </defs>
+                        <path
+                            d="M18 30 L74 12 a6 6 0 0 1 7 3 l24 44 a6 6 0 0 1 -3 8 L46 85 a6 6 0 0 1 -7 -3 L15 38 a6 6 0 0 1 3 -8z"
+                            fill="url(#g-off)" />
+                        <circle cx="69" cy="25" r="5" fill="#fff" opacity=".9" />
+                        <g fill="#fff">
+                            <circle cx="44" cy="48" r="6" />
+                            <circle cx="74" cy="66" r="6" />
+                            <rect x="50" y="50" width="26" height="6" transform="rotate(-32 63 53)" rx="3" />
+                        </g>
+                    </svg>
+                </div>
 
-          <div class="txt">
-            <div class="title">
-              Bonificações do mês
-              <span id="bonus-chip" class="chip">Vendedor</span>
+                <div class="txt">
+                    <div class="title">
+                        Dica: encontre os itens em promoção
+                        <span class="chip">PROMOÇÃO</span>
+                    </div>
+                    <p>
+                        Para visualizar <b>apenas</b> os produtos com desconto, digite <b>OFF</b> na barra de busca.
+                        O filtro reconhece <i>OFF</i>, <i>Off</i> ou <i>off</i>.
+                    </p>
+                    <ul>
+                        <li>Use <b>somente</b> <code>OFF</code> para listar as ofertas.</li>
+                        <li>Se combinar com outras palavras (ex.: “off talge”), o filtro pode <b>não retornar</b> os
+                            itens esperados.</li>
+                        <li>Para voltar ao catálogo completo, basta limpar o campo de busca.</li>
+                        <li>Os produtos em promoção exibem selo de desconto e preço destacado.</li>
+                    </ul>
+                    <p class="note">
+                        Dica rápida: escreveu <b>OFF</b>, vê ofertas. Apagou, volta a ver tudo.
+                    </p>
+                </div>
             </div>
-            <p>As metas abaixo são aplicadas conforme o seu perfil.</p>
-            <ul id="bonus-list">
-              <!-- itens inseridos via JS -->
-            </ul>
-            <div id="bonus-total" class="total"></div>
-            <p class="note">Critérios válidos para pedidos dentro do período vigente e respeitando os mínimos por pedido.
-            </p>
-          </div>
         </div>
-      </div>
+        <!-- AVISO: BONIFICAÇÕES (dinâmico por vendedor) -->
+        <div id="aviso-bonus"
+            style="margin:16px 0; border:1px solid #e6eaef; border-radius:14px; background:#fff; box-shadow:0 4px 20px rgba(0,0,0,.04);">
+            <style>
+                #aviso-bonus {
+                    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+                    color: #1f2d2a
+                }
+
+                #aviso-bonus .wrap {
+                    display: flex;
+                    gap: 18px;
+                    padding: 16px 18px;
+                    align-items: flex-start
+                }
+
+                #aviso-bonus .img {
+                    flex: 0 0 120px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: #f3f8f5;
+                    border-radius: 12px;
+                    padding: 10px
+                }
+
+                #aviso-bonus .title {
+                    font-weight: 800;
+                    font-size: 18px;
+                    color: #0f5132;
+                    margin: 2px 0 6px
+                }
+
+                #aviso-bonus .chip {
+                    background: #d1fae5;
+                    color: #065f46;
+                    padding: 2px 8px;
+                    border-radius: 999px;
+                    font-size: 12px;
+                    border: 1px solid #a7f3d0
+                }
+
+                #aviso-bonus p {
+                    margin: 6px 0 10px;
+                    line-height: 1.45
+                }
+
+                #aviso-bonus ul {
+                    margin: 0;
+                    padding: 0 0 0 18px
+                }
+
+                #aviso-bonus li {
+                    margin: 6px 0;
+                }
+
+                #aviso-bonus .total {
+                    margin-top: 10px;
+                    font-weight: 800;
+                    color: #0f5132
+                }
+
+                #aviso-bonus .note {
+                    font-size: 12px;
+                    color: #5e6a67;
+                    margin-top: 6px
+                }
+
+                @media (max-width:720px) {
+                    #aviso-bonus .wrap {
+                        flex-direction: column
+                    }
+
+                    #aviso-bonus .img {
+                        width: 100%
+                    }
+                }
+            </style>
+
+            <div class="wrap">
+                <div class="img" aria-hidden="true">
+                    <!-- selo/ilustração -->
+                    <svg viewBox="0 0 128 96" width="96" height="72" role="img" aria-label="Bonificações">
+                        <defs>
+                            <linearGradient id="g-bonus" x1="0" x2="1">
+                                <stop offset="0" stop-color="#22c55e" />
+                                <stop offset="1" stop-color="#0ea5e9" />
+                            </linearGradient>
+                        </defs>
+                        <rect x="8" y="12" rx="10" width="112" height="72" fill="#fff" stroke="#cfe3d6" />
+                        <path d="M20 64h88" stroke="#cfe3d6" />
+                        <circle cx="40" cy="40" r="16" fill="url(#g-bonus)" />
+                        <path d="M34 40l4 4 8-8" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <rect x="60" y="32" rx="3" width="40" height="6" fill="#e6f7ee" />
+                        <rect x="60" y="44" rx="3" width="36" height="6" fill="#e6f7ee" />
+                    </svg>
+                </div>
+
+                <div class="txt">
+                    <div class="title">
+                        Bonificações do mês
+                        <span id="bonus-chip" class="chip">Vendedor</span>
+                    </div>
+                    <p>As metas abaixo são aplicadas conforme o seu perfil.</p>
+                    <ul id="bonus-list">
+                        <!-- itens inseridos via JS -->
+                    </ul>
+                    <div id="bonus-total" class="total"></div>
+                    <p class="note">Critérios válidos para pedidos dentro do período vigente e respeitando os mínimos
+                        por pedido.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- AVISO: CAMPANHA DIGUINHO / SUAVIDADE -->
+        <div id="aviso-campanha"
+            style="margin:16px 0;border:1px solid #e6eaef;border-radius:14px;background:#fff;box-shadow:0 4px 20px rgba(0,0,0,.04);">
+            <style>
+                #aviso-campanha {
+                    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+                    color: #1f2d2a
+                }
+
+                #aviso-campanha .wrap {
+                    display: flex;
+                    gap: 18px;
+                    padding: 16px 18px;
+                    align-items: flex-start
+                }
+
+                #aviso-campanha .img {
+                    flex: 0 0 120px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: #f6faf7;
+                    border-radius: 12px;
+                    padding: 10px
+                }
+
+                #aviso-campanha .title {
+                    font-weight: 800;
+                    font-size: 18px;
+                    color: #0f5b4d;
+                    margin: 2px 0 6px
+                }
+
+                #aviso-campanha .tag {
+                    background: #dcfce7;
+                    color: #065f46;
+                    padding: 2px 8px;
+                    border-radius: 9999px;
+                    font-size: 12px;
+                    border: 1px solid #bbf7d0
+                }
+
+                #aviso-campanha p {
+                    margin: 6px 0 10px;
+                    line-height: 1.45
+                }
+
+                #aviso-campanha .scroll {
+                    overflow: auto;
+                    border: 1px solid #eef2f7;
+                    border-radius: 10px
+                }
+
+                #aviso-campanha table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    min-width: 720px
+                }
+
+                #aviso-campanha th,
+                #aviso-campanha td {
+                    padding: 8px 10px;
+                    border-bottom: 1px solid #eef2f7;
+                    text-align: center
+                }
+
+                #aviso-campanha thead th {
+                    background: #e8f3ff;
+                    color: #0f3b6d;
+                    font-weight: 800
+                }
+
+                #aviso-campanha .prod {
+                    background: #eaf7ff;
+                    text-align: left;
+                    font-weight: 700
+                }
+
+                #aviso-campanha .mk25 {
+                    background: #f1fbf5
+                }
+
+                #aviso-campanha .mk30 {
+                    background: #e8fff4
+                }
+
+                #aviso-campanha .mk35 {
+                    background: #e8fff9
+                }
+
+                #aviso-campanha .mk40 {
+                    background: #e8fffe
+                }
+
+                #aviso-campanha .ok {
+                    background: #ecfdf5;
+                    color: #047857;
+                    border: 1px solid #d1fae5;
+                    border-radius: 999px;
+                    padding: 2px 8px;
+                    font-size: 12px;
+                    font-weight: 700
+                }
+
+                #aviso-campanha .caption {
+                    font-size: 12px;
+                    color: #5e6a67;
+                    margin: 6px 0 12px
+                }
+
+                #aviso-campanha .combo thead th {
+                    background: #fff1e6;
+                    color: #8a3b05
+                }
+
+                #aviso-campanha .combo td:nth-child(1) {
+                    font-weight: 700;
+                    text-align: left
+                }
+
+                #aviso-campanha .combo td:nth-child(2) {
+                    font-weight: 700
+                }
+
+                #aviso-campanha ol {
+                    margin: 8px 0 0 18px;
+                    padding: 0
+                }
+
+                #aviso-campanha ol li {
+                    margin: 4px 0
+                }
+
+                @media (max-width:720px) {
+                    #aviso-campanha .wrap {
+                        flex-direction: column
+                    }
+
+                    #aviso-campanha .img {
+                        width: 100%
+                    }
+                }
+            </style>
+
+            <div class="wrap">
+                <div class="img" aria-hidden="true">
+                    <!-- ilustração -->
+                    <svg viewBox="0 0 128 96" width="96" height="72" role="img" aria-label="Campanha de combos">
+                        <defs>
+                            <linearGradient id="g-cm" x1="0" x2="1">
+                                <stop offset="0" stop-color="#22c55e" />
+                                <stop offset="1" stop-color="#0ea5e9" />
+                            </linearGradient>
+                        </defs>
+                        <rect x="8" y="12" rx="10" width="112" height="72" fill="#fff" stroke="#cfe3d6" />
+                        <rect x="20" y="28" rx="4" width="88" height="12" fill="#e6f7ee" />
+                        <rect x="20" y="46" rx="4" width="72" height="12" fill="#dff1ff" />
+                        <rect x="20" y="64" rx="4" width="56" height="12" fill="#fff3e6" />
+                        <circle cx="96" cy="64" r="12" fill="url(#g-cm)" />
+                        <path d="M90 64l4 4 8-8" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+
+                <div class="txt">
+                    <div class="title">
+                        Campanha <span class="tag">Diguinho & Suavidade</span>
+                    </div>
+                    <p>Referências de preço e **combos bonificáveis**. Utilize como guia na negociação.</p>
+
+                    <!-- Tabela de preços -->
+                    <div class="caption">Tabela de referência — valores em R$</div>
+                    <div class="scroll" style="margin-bottom:10px">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="prod">PRODUTO</th>
+                                    <th>SELL OUT SHELF</th>
+                                    <th class="mk25">MK 25%</th>
+                                    <th class="mk30">MK 30%</th>
+                                    <th class="mk35">MK 35%</th>
+                                    <th class="mk40">MK 40%</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="prod">Diguinho Econômica</td>
+                                    <td>R$ 17,12</td>
+                                    <td class="mk25">R$ 21,40</td>
+                                    <td class="mk30">R$ 22,26</td>
+                                    <td class="mk35">R$ 23,11</td>
+                                    <td class="mk40">R$ 23,97</td>
+                                    <td><span class="ok">BONIFICÁVEL</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="prod">Diguinho Mini</td>
+                                    <td>R$ 8,86</td>
+                                    <td class="mk25">R$ 11,08</td>
+                                    <td class="mk30">R$ 11,52</td>
+                                    <td class="mk35">R$ 11,96</td>
+                                    <td class="mk40">R$ 12,40</td>
+                                    <td><span class="ok">BONIFICÁVEL</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="prod">Suavidade Classic</td>
+                                    <td>R$ 49,78</td>
+                                    <td class="mk25">R$ 62,23</td>
+                                    <td class="mk30">R$ 64,71</td>
+                                    <td class="mk35">R$ 67,70</td>
+                                    <td class="mk40">R$ 69,69</td>
+                                    <td>—</td>
+                                </tr>
+                                <tr>
+                                    <td class="prod">Suavidade Premium</td>
+                                    <td>R$ 20,39</td>
+                                    <td class="mk25">R$ 25,49</td>
+                                    <td class="mk30">R$ 26,51</td>
+                                    <td class="mk35">R$ 27,53</td>
+                                    <td class="mk40">R$ 28,55</td>
+                                    <td>—</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Tabela de combos -->
+                    <div class="caption">Modelos de combo e bonificações</div>
+                    <div class="scroll">
+                        <table class="combo">
+                            <thead>
+                                <tr>
+                                    <th>TIPO DE COMBO</th>
+                                    <th>PED. MÍNIMO</th>
+                                    <th>BONIFICAÇÃO</th>
+                                    <th>MODELO</th>
+                                    <th>DESCONTO</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>COMBO 1</td>
+                                    <td>R$ 250,00</td>
+                                    <td>1 PCT</td>
+                                    <td>ECONÔMICA</td>
+                                    <td>6,85%</td>
+                                </tr>
+                                <tr>
+                                    <td>COMBO 1</td>
+                                    <td>R$ 250,00</td>
+                                    <td>2 PCT</td>
+                                    <td>MINI</td>
+                                    <td>7,09%</td>
+                                </tr>
+                                <tr>
+                                    <td>COMBO 2</td>
+                                    <td>R$ 450,00</td>
+                                    <td>2 PCT</td>
+                                    <td>ECONÔMICA</td>
+                                    <td>7,61%</td>
+                                </tr>
+                                <tr>
+                                    <td>COMBO 2</td>
+                                    <td>R$ 450,00</td>
+                                    <td>3 PCT</td>
+                                    <td>MINI</td>
+                                    <td>5,91%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- orientações -->
+                    <ol>
+                        <li><b>Clusters:</b> farmácias/drogarias de bairro e minimercados em todos os canais para a
+                            campanha Diguinho.</li>
+                        <li>Negociar <b>combo 2</b> cumulativo, ofertando maior bonificação em fraldas ao multiplicar o
+                            combo.</li>
+                        <li>A bonificação dos pacotes será escolhida entre <b>ECONÔMICA</b> ou <b>MINI</b> de acordo com
+                            o tipo de combo e a preferência do cliente.</li>
+                        <li>Opção de apresentar o valor do desconto direto no valor do produto.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
 
     </div>
-  </main>
-
+</main>
