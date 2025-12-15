@@ -61,7 +61,7 @@ main {
 
 .produto-card-img {
   display: flex;
-  height: 160px;
+  height: 190px;
   width: 100%;
   align-items: center;
   justify-content: center;
@@ -69,8 +69,8 @@ main {
 }
 
 .produto-card-img img {
-  height: 160px;
-  width: 160px;
+  height: 190px;
+  width: 190px;
   background-color: white;
   object-fit: contain;
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
@@ -436,6 +436,7 @@ input[type="number"] {
 .pm-sec{ background:#fff; border-color:#d1d5db; }
 .pm-pri{ background:#2563eb; color:#fff; }
 .pm-btn:disabled{ opacity:.6; cursor:not-allowed; }
+
 
 
 
