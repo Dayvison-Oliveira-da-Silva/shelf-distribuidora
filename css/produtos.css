@@ -33,6 +33,8 @@ main {
 }
 
 .produto-card-content {
+  height: 397.8px;
+  max-height: 397.8px;
   background-color: white;
   border-radius: 25px 25px 0 0;
   background-color: transparent;
@@ -42,7 +44,7 @@ main {
 
   min-width: 70px;
   width: 100%;
-  height: 99.8px;
+  min-height: 99.8px;
   text-align: center;
   justify-content: center;
   padding: 4px;
@@ -59,7 +61,7 @@ main {
 }
 
 .marca {
-  height: 12px;
+  min-height: 12px;
   font-size: 11px;
   color: #777;
 }
@@ -443,6 +445,7 @@ input[type="number"] {
 .pm-sec{ background:#fff; border-color:#d1d5db; }
 .pm-pri{ background:#2563eb; color:#fff; }
 .pm-btn:disabled{ opacity:.6; cursor:not-allowed; }
+
 
 
 
