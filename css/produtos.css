@@ -41,7 +41,7 @@ main {
 
   min-width: 70px;
   width: 100%;
-  height: 76.8px;
+  height: 99.8px;
   text-align: center;
   justify-content: center;
   padding: 4px;
@@ -442,6 +442,7 @@ input[type="number"] {
 .pm-sec{ background:#fff; border-color:#d1d5db; }
 .pm-pri{ background:#2563eb; color:#fff; }
 .pm-btn:disabled{ opacity:.6; cursor:not-allowed; }
+
 
 
 
