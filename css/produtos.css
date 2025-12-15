@@ -141,6 +141,7 @@ input[type="number"] {
   border-radius: 0 0 10px 10px;
   align-items: center;
   justify-content: center;
+  margin-bottom:0;
 }
 
 .produto-card-sold button {
@@ -439,6 +440,7 @@ input[type="number"] {
 .pm-sec{ background:#fff; border-color:#d1d5db; }
 .pm-pri{ background:#2563eb; color:#fff; }
 .pm-btn:disabled{ opacity:.6; cursor:not-allowed; }
+
 
 
 
