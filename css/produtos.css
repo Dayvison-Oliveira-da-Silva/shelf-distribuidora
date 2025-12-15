@@ -28,7 +28,6 @@ main {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  background: linear-gradient(160deg, #09f 50%, white 50%);
 }
 
 .produto-card-content {
@@ -437,6 +436,7 @@ input[type="number"] {
 .pm-sec{ background:#fff; border-color:#d1d5db; }
 .pm-pri{ background:#2563eb; color:#fff; }
 .pm-btn:disabled{ opacity:.6; cursor:not-allowed; }
+
 
 
 
